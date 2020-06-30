@@ -1,0 +1,24 @@
+﻿
+Dependence injection
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1#framework-provided-services
+
+Connect to mysql
+https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework-core-example.html
+
+create model for auto table creating
+https://docs.microsoft.com/en-us/ef/core/modeling/
+
+Convert entity to dto
+https://viblo.asia/p/su-dung-automapper-de-anh-xa-mot-object-toi-mot-object-khac-trong-aspnet-core-ORNZqx2rK0n
+https://medium.com/@nicky2983/how-to-using-automapper-on-asp-net-core-3-0-via-dependencyinjection-a5d25bd33e5b
+https://docs.automapper.org/en/stable/Custom-type-converters.html
+
+Create ManyToMany Tables
+with automatic: 
+https://www.entityframeworktutorial.net/code-first/configure-many-to-many-relationship-in-code-first.aspx
+https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx
+with cus: 
+https://stackoverflow.com/questions/19342908/how-to-create-a-many-to-many-mapping-in-entity-framework
+
+join mutiple table
+https://stackoverflow.com/questions/10822656/entity-framework-include-multiple-levels-of-properties

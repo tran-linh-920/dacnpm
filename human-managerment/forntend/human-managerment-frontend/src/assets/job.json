@@ -1,0 +1,16 @@
+{
+    "job":[
+        {
+            "Job_ID": 1,
+    "Job_Name": "Cố vấn",
+    "Min_Salary": 20,
+    "Max_Salary": 30
+        },
+        {
+            "Job_ID": 2,
+    "Job_Name": "Thi hành",
+    "Min_Salary": 20,
+    "Max_Salary": 30
+        }
+    ]
+}

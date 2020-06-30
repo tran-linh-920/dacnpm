@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col">
+        <span>Thời gian làm việc: </span>
+        <!-- <select [(ngModel)]="customerTypeId" (change)="loadCustomer()">
+                    <option value="0"> --- All ---</option>
+                    <option *ngFor="let aCUT of customerTypes" value="{{aCUT.id}}">
+                        {{aCUT.name}}
+                    </option>
+                </select> -->
+      </div>
+      <div class="col-auto">
+        <button type="button" (click)="openAdd()" class="btn btn-primary"><i class="fa fa-plus"></i>
+          Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Tên</th>
+            <th scope="col">Mô tả</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let wt of workingTimes">
+            <td>{{wt.name}}</td>
+            <td>{{wt.bio}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="workingTimeForm" (ngSubmit)="save()">
+        <div class="modal-header">
+          <h4 id="dialog-child-name" class="modal-title pull-left">Thời gian làm việc</h4>
+          <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="name">Tên</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="bio">Mô tả</label>
+            <textarea class="form-control" id="bio" formControlName="bio" rows="3"></textarea>
+          </div>
+          <div>
+            <label for="period">Khung giờ</label>
+            <ul class="time-slot-area" formArrayName="workingTimeDetails">
+              <li *ngFor="let ts of timeSlots; index as i">
+                <input #tsCBox type="checkbox" (change)="onCheckChange($event)" [value]="ts.id">
+                {{ts.name}} ({{ts.period}})
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary">Đóng</button>
+          <button type="submit" class="btn btn-primary">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

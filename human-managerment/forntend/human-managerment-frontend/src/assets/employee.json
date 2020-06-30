@@ -1,0 +1,64 @@
+{
+    "employee": [
+        {
+            "Emp_ID": 1,
+            "F_Name": "Tiger",
+            "L_Name": "Trần Dần",
+            "Hire_Date": null,
+            "image": "data:image/jpeg;base64,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",
+            "IDCard": "215885564855",
+            "email": "dore@gmail.com",
+            "address": "19A, Houston, Liên bang Hoa Kỳ",
+            "salary": 30000,
+            "commission": 4,
+            " isActive": true,
+            "Manager_ID": null,
+            "Department_ID": null
+        },
+        {
+            "Emp_ID": 2,
+            "F_Name": "Doremon",
+            "L_Name": "Doremon",
+            "image": "https://i.pinimg.com/originals/b9/b4/a3/b9b4a3d9e7f705308bcee2250701d7ac.png",
+            "IDCard": "string",
+            "Hire_Date": null,
+            "email": "nobi@mail.cs",
+            "address": "Tokyo, Nhật Bản",
+            "salary": 4000,
+            "commission": 4,
+            " isActive": true,
+            "Manager_ID": null,
+            "Department_ID": null
+        },
+        {
+            "Emp_ID": 3,
+            "F_Name": "Nobita",
+            "L_Name": "Nobita",
+            "image": "https://upload.wikimedia.org/wikipedia/vi/f/f7/Nobita001.png",
+            "IDCard": "string",
+            "Hire_Date": null,
+            "email": "ad@mail.com",
+            "address": "Tokyo, Nhật Bản",
+            "salary": 5000,
+            "commission": 4,
+            " isActive": true,
+            "Manager_ID": null,
+            "Department_ID": null
+        },
+        {
+            "Emp_ID": 4,
+            "F_Name": "doremon",
+            "L_Name": "doremon",
+            "image": "string",
+            "IDCard": "string",
+            "Hire_Date": null,
+            "email": "sadsa",
+            "address": "aasa",
+            "salary": 5,
+            "commission": 4,
+            " isActive": true,
+            "Manager_ID": null,
+            "Department_ID": null
+        }
+    ]
+}

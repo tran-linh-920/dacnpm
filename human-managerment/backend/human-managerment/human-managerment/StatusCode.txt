@@ -1,0 +1,9 @@
+﻿Success:
+return Ok() ← Http status code 200
+return Created() ← Http status code 201
+return NoContent(); ← Http status code 204
+
+Client Error:
+return BadRequest(); ← Http status code 400
+return Unauthorized(); ← Http status code 401
+return NotFound(); ← Http status code 404

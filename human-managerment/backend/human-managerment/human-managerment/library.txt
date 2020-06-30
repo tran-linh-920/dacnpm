@@ -1,0 +1,2 @@
+﻿Microsoft.EntityFrameworkCore.Sqlite
+MySql.Data.EntityFrameworkCore

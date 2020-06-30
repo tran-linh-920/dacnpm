@@ -1,0 +1,253 @@
+<div class="card" style="height: 280px;">
+    <div>
+        <tabset #staticTabs>
+            <tab heading="Thông tin cơ bản">
+                <div class="row">
+                    <div class="col-3">
+                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                            style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
+                            *ngIf="img">
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-capitalize h4 p-6"><small>Họ tên: </small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-capitalize text-md-left h4 p-6"><small>Chứng minh thư: </small> </p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-capitalize text-md-left h4 p-6"><small>Ngày làm việc: </small> </p>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-uppercase h4 text-danger"><small>{{choosedEmp.L_Name}}</small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-primary"><small> {{choosedEmp.IDCard}}</small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-primary"><small>{{choosedEmp.Hire_Date}}</small></p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </tab>
+            <tab heading="Liên lạc">
+                <div class="row">
+                    <div class="col-3">
+                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                            style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
+                            *ngIf="img">
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-capitalize h4 p-6"><small>Email: </small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-capitalize text-md-left h4 p-6"><small>Địa chỉ: </small> </p>
+                                </div>
+                               
+                            </div>
+                            <div class="col-8">
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-danger"><small>{{choosedEmp.email}}</small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-primary"><small> {{choosedEmp.address}}</small></p>
+                                </div>
+                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </tab>
+            <tab heading="Công Việc">
+                <div class="row">
+                    <div class="col-3">
+                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                            style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
+                            *ngIf="img">
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-capitalize h4 p-6"><small>Lương cơ bản:  </small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-capitalize h4 p-6"><small>Công việc:  </small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="text-capitalize text-md-left h4 p-6"><small>Nơi làm việc: </small> </p>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-danger"><small> {{choosedEmp.salary}}</small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-danger"><small></small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-primary"><small> </small></p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </tab>
+            <tab heading="Bằng Cấp">
+                <div class="row">
+                    <div class="col-3">
+                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                            style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
+                            *ngIf="img">
+                    </div>
+                    <div class="col-9">
+                        <div class="h3">Cố vấn tối cao tổng thống donal chum</div>
+                        </div>
+                    </div>
+            </tab>
+        </tabset>
+    </div>
+</div>
+
+<div class="card mt-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <span>Danh sách nhân viên: </span>
+                <!-- <select [(ngModel)]="customerTypeId" (change)="loadCustomer()">
+                      <option value="0"> --- All ---</option>
+                      <option *ngFor="let aCUT of customerTypes" value="{{aCUT.id}}">
+                          {{aCUT.name}}
+                      </option>
+                  </select> -->
+            </div>
+            <div class="col-auto">
+                <button type="button" (click)="exportAsXLSX()" class="btn btn-success"><i class="fa fa-download"></i>
+                    Export</button>
+
+                <button type="button" (click)="showAddModal()" class="btn btn-primary"><i class="fa fa-plus"></i>
+                    Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <ngx-datatable class="material" [limit]="3" [rows]="employees" [rowHeight]="50" [columns]="columns"
+            [columnMode]="'force'" [sortType]="'multi'" [headerHeight]="50" [footerHeight]="50">
+            <ngx-datatable-column name="Tên" >
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span class="cursor-hover" (click)="choose(row)">{{ row.F_Name}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Lương cơ bản" prop="salary">
+
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Email">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.email}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Địa chỉ" [sortable]="true">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.address}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [width]="40">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <i (click)="openEdit(row.Emp_ID)" class="fa fa-edit text-primary mr-1 pointer"></i>
+                    <i (click)="delete(row.Emp_ID)" class="fa fa-trash-o text-danger pointer"></i>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>
+
+<!-- -------------------------------------------------------- -->
+<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title pull-left"> Employee</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="row form-group ">
+                                <div class="col-6">
+                                    <label for="pwd">Họ</label>
+                                    <input type="text" class="form-control" [(ngModel)]="employee.F_Name" name="f_name">
+                                </div>
+                                <div class="col-6">
+                                    <label for="pwd">Tên</label>
+                                    <input type="text" class="form-control" [(ngModel)]="employee.L_Name" name="l_name">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Địa chỉ</label>
+                                <input type="text" class="form-control" [(ngModel)]="employee.address" name="address">
+                            </div>
+                            <div class="form-group ">
+                                <label for="pwd">Email</label>
+                                <input type="text" class="form-control" [(ngModel)]="employee.email" name="email">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <img [src]="img" height="230em" width="155em"
+                                style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
+                                *ngIf="img">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Ảnh</label>
+                        <div class="custom-file">
+                            <input #file type="file" class="custom-file-input" accept='image/*'
+                                (change)="preview(file.files)" [(ngModel)]="image" name="image">
+                            <label class="custom-file-label" for="customFile">{{imgName}}</label>
+                        </div>
+                    </div>
+                    <div class="row form-group ">
+                        <div class="col-4">
+                            <label for="pwd">Công việc</label>
+                            <select [(ngModel)]="job" class="form-control">
+                                <option *ngFor="let j of job" value="{{j.Job_ID}}">
+                                    {{j.Job_Name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-8">
+                            <label for="pwd">Nơi làm việc</label>
+                            <input type="text" class="form-control" [(ngModel)]="employee.department">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Lương cơ bản</label>
+                        <input type="text" class="form-control" [(ngModel)]="employee.salary" name="currency">
+                    </div>
+                    <!-- <div class="form-group">
+              <label for="pwd">Description</label>
+              <angular-editor [(ngModel)]="description" name="employee.description"></angular-editor>
+            </div> -->
+
+                    <div class="form-group col text-center">
+                        <button type="button" class="btn btn-outline-dark center" (click)="save()"
+                            (click)="hideModal()">SAVE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------ -->

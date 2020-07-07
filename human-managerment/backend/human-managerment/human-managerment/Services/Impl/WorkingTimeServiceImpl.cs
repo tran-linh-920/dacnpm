@@ -24,11 +24,18 @@ namespace HumanManagermentBackend.Services.Impl
             _wtUpdater = wtUpdater;
         }
 
-        public List<WorkingTimeDTO> FindAll()
+        public int CountAll()
+        {
+           return _humanManagerContext.WorkingTimes.Count();
+        }
+
+        public List<WorkingTimeDTO> FindAll(int page, int limit)
         {
             List<WorkingTimeDTO> dtos = new List<WorkingTimeDTO>();
 
             List<WorkingTimeEntity> entities = _humanManagerContext.WorkingTimes
+                                            .Skip((page - 1) * limit)
+                                            .Take(limit)
                                             .Include(wt => wt.WorkingTimeDetails)
                                             .ThenInclude(wtd => wtd.TimeSlot).ToList();
 
@@ -92,7 +99,8 @@ namespace HumanManagermentBackend.Services.Impl
             }
         }
 
-        public bool Delete(WorkingTimeEntity newEntity) {
+        public bool Delete(WorkingTimeEntity newEntity)
+        {
             var transaction = _humanManagerContext.Database.BeginTransaction();
             WorkingTimeEntity entity = null;
 
@@ -115,6 +123,6 @@ namespace HumanManagermentBackend.Services.Impl
                 transaction.Rollback();
                 return false;
             }
-        } 
+        }
     }
 }

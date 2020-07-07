@@ -55,8 +55,16 @@ export const routes: Routes = [
         loadChildren: () => import('./views/employee-managerment/employee-managerment.module').then(m => m.EmployeeManagermentModule)
       },
       {
+        path: 'quan-ly-cong-viec',
+        loadChildren: () => import('./views/job-managerment/job-managerment.module').then(m => m.JobManagermentModule)
+      },
+      {
         path: 'quan-ly-thoi-gian',
         loadChildren: () => import('./views/workingtime-managerment/workingtime-managerment.module').then(m => m.WorkingtimeManagermentModule)
+      },
+      {
+        path: 'quan-ly-vi-tri',
+        loadChildren: () => import('./views/location-managerment/location-managerment.module').then(m => m.LocationManagermentModule)
       },
       {
         path: 'base',

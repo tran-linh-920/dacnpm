@@ -10,6 +10,7 @@ namespace HumanManagermentBackend.Models
         public int statusCode { get; set; }
         public T data { get; set; }
         public String massage { get; set; }
+        public Paging paging { get; set; }
 
         public Api()
         {
@@ -20,6 +21,14 @@ namespace HumanManagermentBackend.Models
             this.statusCode = statusCode;
             this.data = data;
             this.massage = massage;
+        }
+
+        public Api(int statusCode, T data, string massage, Paging paging)
+        {
+            this.statusCode = statusCode;
+            this.data = data;
+            this.massage = massage;
+            this.paging = paging;
         }
     }
 }

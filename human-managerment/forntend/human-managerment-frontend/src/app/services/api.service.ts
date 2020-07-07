@@ -11,7 +11,7 @@ export class ApiService {
   baseUrl = 'http://localhost:50618/';
   apiUrl = {
     workingTimes: {
-      home: `${this.baseUrl}working-times`
+      home: `${this.baseUrl}working-times?page=1`
     },
     timeSlots: {
       home: `${this.baseUrl}time-slots`

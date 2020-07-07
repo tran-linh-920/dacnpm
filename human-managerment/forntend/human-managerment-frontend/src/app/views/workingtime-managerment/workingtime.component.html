@@ -17,25 +17,33 @@
     </div>
   </div>
   <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Tên</th>
-            <th scope="col">Mô tả</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let wt of workingTimes">
-            <td>{{wt.name}}</td>
-            <td>{{wt.bio}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <ngx-datatable 
+    class="material" 
+    [rows]="workingTimes" 
+    [rowHeight]="50" 
+    [columnMode]="'force'" 
+    [sortType]="'multi'" 
+    [headerHeight]="50" 
+    [footerHeight]="50" >
+    <ngx-datatable-column name="Tên" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span class="cursor-hover" (click)="choose(row)">{{ row.name}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Mô tả">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <span>{{ row.bio}}</span>
+    </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [width]="40">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <i (click)="openEdit(row.Emp_ID)" class="fa fa-edit text-primary mr-1 pointer"></i>
+            <i (click)="delete(row.Emp_ID)" class="fa fa-trash-o text-danger pointer"></i>
+        </ng-template>
+    </ngx-datatable-column>
+</ngx-datatable>
   </div>
 </div>
-
 
 <div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
   <div class="modal-dialog">

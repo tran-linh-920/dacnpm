@@ -8,13 +8,16 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 @NgModule({
   declarations: [WorkingtimeComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     WorkingtimeManagermentRoutingModule,
-    ModalModule
+    ModalModule,
+    NgxDatatableModule,
   ]
 })
 export class WorkingtimeManagermentModule { }

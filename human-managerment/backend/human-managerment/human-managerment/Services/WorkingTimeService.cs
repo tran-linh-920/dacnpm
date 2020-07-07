@@ -9,7 +9,8 @@ namespace HumanManagermentBackend.Services
 {
     public interface WorkingTimeService
     {
-        public List<WorkingTimeDTO> FindAll();
+        public int CountAll();
+        public List<WorkingTimeDTO> FindAll(int page, int limit);
 
         public WorkingTimeDTO Save(WorkingTimeEntity entity);
 

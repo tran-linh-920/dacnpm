@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using human_managerment_backend;
@@ -27,11 +29,18 @@ namespace HumanManagermentBackend.Controller
         }
 
         [HttpGet]
-        public ActionResult<Api<List<WorkingTimeDTO>>> GetAll()
-        {   
-            List<WorkingTimeDTO> dtos = _workingTimeService.FindAll();
+        public ActionResult<Api<List<WorkingTimeDTO>>> GetAll(//
+                                                              [FromQuery(Name = "page"), DefaultValue(1), Required] int page,//
+                                                              [FromQuery(Name = "limit"), DefaultValue(10),] int limit//
+                                                              )
+        {
+            int totalItems = _workingTimeService.CountAll();
 
-            Api<List<WorkingTimeDTO>> result = new Api<List<WorkingTimeDTO>>(200, dtos, "Success");
+            int totalPages = (int)Math.Ceiling((double)totalItems / limit);
+
+            List<WorkingTimeDTO> dtos = _workingTimeService.FindAll(page, limit);
+
+            Api<List<WorkingTimeDTO>> result = new Api<List<WorkingTimeDTO>>(200, dtos, "Success", new Paging(page, totalPages, totalItems));
 
             return Ok(result);
         }
@@ -51,7 +60,7 @@ namespace HumanManagermentBackend.Controller
         [HttpPost]
         public ActionResult<Api<WorkingTimeDTO>> New(WorkingTimeEntity newEntity)
         {
-            WorkingTimeDTO dto =  _workingTimeService.Save(newEntity);
+            WorkingTimeDTO dto = _workingTimeService.Save(newEntity);
             Api<WorkingTimeDTO> result = new Api<WorkingTimeDTO>(200, dto, "Add Success");
             return Ok(result);
         }

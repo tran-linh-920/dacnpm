@@ -8278,11 +8278,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+      "projectUniqueName": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
       "projectName": "HumanManagermentBackend",
-      "projectPath": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+      "projectPath": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
       "packagesPath": "C:\\Users\\Tran Linh\\.nuget\\packages\\",
-      "outputPath": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\human-managerment\\backend\\human-managerment\\human-managerment\\obj\\",
+      "outputPath": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Tran Linh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8344,7 +8344,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

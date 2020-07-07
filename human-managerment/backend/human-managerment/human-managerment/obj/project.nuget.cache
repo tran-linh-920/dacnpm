@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9a+xCLnWCh0AkrwoMQBg+x/JYVofJeIAOGMFHHSo9mWvyyUGG6UeuiZ02ZHmyfe9wm7HnDtHFXt7shqeqLr1VQ==",
+  "dgSpecHash": "qa04Vq0FzkIkS1tNnmUQ2IkOTB4CUuowkXcC7QEZq7r9XJVcPq0tVNYl1fg8nu1ZUfGsQtx8YFJPPf2609815A==",
   "success": true,
-  "projectFilePath": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+  "projectFilePath": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tran Linh\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Tran Linh\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

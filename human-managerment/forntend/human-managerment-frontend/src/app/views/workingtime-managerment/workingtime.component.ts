@@ -5,6 +5,7 @@ import { WorkingTimeService } from '../../services/working-time.service';
 import { WorkingTime } from '../../models/working-time';
 import { TimeSlotService } from '../../services/time-slot.service';
 import { TimeSlot } from '../../models/time-slot';
+import { Paging } from '../../models/paging';
 
 @Component({
   selector: 'app-workingtime',
@@ -17,6 +18,8 @@ export class WorkingtimeComponent implements OnInit {
 
   workingTimes = [];
   timeSlots = [];
+  paging = { page: 0} as Paging;
+  
 
   workingTimeForm = new FormGroup({
     name: new FormControl(''),
@@ -47,9 +50,16 @@ export class WorkingtimeComponent implements OnInit {
     this.editModal.show();
   }
 
-  loadWorkingTime() {
+  loadWorkingTime(page = null) {
+    if (page != null) {
+      this.paging.page = page.offset;
+      console.log(this.paging.page);
+    }
     this.workingTimeService.list().subscribe(res => {
       this.workingTimes = res.data;
+      this.paging = res.paging;
+      console.log(this.paging);
+      
     });    
   }
 

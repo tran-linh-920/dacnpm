@@ -4,34 +4,56 @@
             <tab heading="Thông tin cơ bản">
                 <div class="row">
                     <div class="col-3">
-                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                        <img [src]="empImgPath + choosedEmp.imageName" height="210em" width="155em"
                             style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
                             *ngIf="img">
                     </div>
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-capitalize h4 p-6"><small>Họ tên: </small></p>
+                                    <p class=" h4 p-6"><small>Họ tên: </small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-capitalize text-md-left h4 p-6"><small>Chứng minh thư: </small> </p>
+                                    <p class=" text-md-left h4 p-6"><small>Ngày sinh: </small> </p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-capitalize text-md-left h4 p-6"><small>Ngày làm việc: </small> </p>
+                                    <p class=" text-md-left h4 p-6"><small>Giới tính: </small> </p>
                                 </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-3">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-uppercase h4 text-danger"><small>{{choosedEmp.L_Name}}</small></p>
-                                </div>
-                                <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-primary"><small> {{choosedEmp.IDCard}}</small></p>
+                                    <p class=" h4 text-danger"><small>{{choosedEmp.lastname}} {{choosedEmp.firstname}}</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-primary"><small>{{choosedEmp.Hire_Date}}</small></p>
+                                    <p class="h4 text-dark"><small> {{choosedEmp.birthDay}}</small></p>
                                 </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-dark"><small>{{choosedEmp.gender}}</small></p>
                                 </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class=" h4 p-6"><small>Ngày vào làm: </small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class=" text-md-left h4 p-6"><small>Lương cơ bản: </small> </p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class=" text-md-left h4 p-6"><small></small> </p>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class=" h4 text-dark"><small>{{choosedEmp.hireDay}}</small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-primary"><small> {{choosedEmp.salary}}</small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-primary"><small></small></p>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -47,19 +69,25 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-capitalize h4 p-6"><small>Email: </small></p>
+                                    <p class=" h4 p-6"><small>Email: </small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-capitalize text-md-left h4 p-6"><small>Địa chỉ: </small> </p>
+                                    <p class=" h4 p-6"><small>Số điện thoại: </small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class=" text-md-left h4 p-6"><small>Địa chỉ: </small> </p>
                                 </div>
                                
                             </div>
                             <div class="col-8">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-danger"><small>{{choosedEmp.email}}</small></p>
+                                    <p class="h4 text-dark"><small>{{choosedEmp.email}}</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-primary"><small> {{choosedEmp.address}}</small></p>
+                                    <p class="h4 text-darkr"><small>{{choosedEmp.phoneNumber}}</small></p>
+                                </div>
+                                <div class="ml-3 mt-3 mb-4">
+                                    <p class="h4 text-dark"><small> {{choosedEmp.address}}</small></p>
                                 </div>
                                
                                 </div>
@@ -78,24 +106,24 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-capitalize h4 p-6"><small>Lương cơ bản:  </small></p>
+                                    <p class=" h4 p-6"><small>Lương cơ bản:  </small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-capitalize h4 p-6"><small>Công việc:  </small></p>
+                                    <p class=" h4 p-6"><small>Công việc:  </small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="text-capitalize text-md-left h4 p-6"><small>Nơi làm việc: </small> </p>
+                                    <p class=" text-md-left h4 p-6"><small>Nơi làm việc: </small> </p>
                                 </div>
                             </div>
                             <div class="col-8">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-danger"><small> {{choosedEmp.salary}}</small></p>
+                                    <p class="h4 text-dark"><small> {{choosedEmp.salary}}</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-danger"><small></small></p>
+                                    <p class="h4text-dark"><small></small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-primary"><small> </small></p>
+                                    <p class="h4 text-dark"><small> </small></p>
                                 </div>
                                 </div>
                             </div>
@@ -141,18 +169,22 @@
     </div>
     <div class="card-body">
         <ngx-datatable 
-            class="material" 
-            [limit]="3" 
-            [rows]="employees" 
-            [rowHeight]="50" 
-            [columns]="columns"
-            [columnMode]="'force'" 
-            [sortType]="'multi'" 
-            [headerHeight]="50" 
-            [footerHeight]="50">
+        class="material" 
+        [rows]="employees" 
+        [rowHeight]="50" 
+        [columnMode]="'force'" 
+        [sortType]="'multi'" 
+        [headerHeight]="50" 
+        [footerHeight]="50" 
+        [externalPaging]="true"
+        [count]="paging.totalItems"
+        [offset]="paging.page - 1"
+        [limit]="paging.pageLimit"
+        (page)="loadEmployee($event)"  
+        >
             <ngx-datatable-column name="Tên" >
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    <span class="cursor-hover" (click)="choose(row)">{{ row.F_Name}}</span>
+                    <span class="cursor-hover" (click)="choose(row)">{{ row.firstname}}</span>
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Lương cơ bản" prop="salary">
@@ -161,11 +193,6 @@
             <ngx-datatable-column name="Email">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                     <span>{{ row.email}}</span>
-                </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Địa chỉ" [sortable]="true">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                    <span>{{ row.address}}</span>
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column [width]="40">
@@ -179,7 +206,7 @@
 </div>
 
 <!-- -------------------------------------------------------- -->
-<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+<!-- <div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -244,11 +271,6 @@
                         <label for="pwd">Lương cơ bản</label>
                         <input type="text" class="form-control" [(ngModel)]="employee.salary" name="currency">
                     </div>
-                    <!-- <div class="form-group">
-              <label for="pwd">Description</label>
-              <angular-editor [(ngModel)]="description" name="employee.description"></angular-editor>
-            </div> -->
-
                     <div class="form-group col text-center">
                         <button type="button" class="btn btn-outline-dark center" (click)="save()"
                             (click)="hideModal()">SAVE</button>
@@ -257,5 +279,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- ------------------------------------------------ -->

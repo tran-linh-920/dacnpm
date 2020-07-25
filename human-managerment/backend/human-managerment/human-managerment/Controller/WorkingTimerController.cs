@@ -17,13 +17,13 @@ namespace HumanManagermentBackend.Controller
 {
     [Route("/working-times")]
     [ApiController]
-    public class WorkingTimeControllerController : ControllerBase
+    public class WorkingTimerController : ControllerBase
     {
         private readonly WorkingTimeService _workingTimeService;
 
         //private readonly WorkingTimeDetailService _workingTimeDetailService;
 
-        public WorkingTimeControllerController(WorkingTimeServiceImpl workingTimeService)
+        public WorkingTimerController(WorkingTimeServiceImpl workingTimeService)
         {
             _workingTimeService = workingTimeService;
         }
@@ -31,7 +31,7 @@ namespace HumanManagermentBackend.Controller
         [HttpGet]
         public ActionResult<Api<List<WorkingTimeDTO>>> GetAll(//
                                                               [FromQuery(Name = "page"), DefaultValue(1), Required] int page,//
-                                                              [FromQuery(Name = "limit"), DefaultValue(10),] int limit//
+                                                              [FromQuery(Name = "page_limit"), DefaultValue(10),] int limit//
                                                               )
         {
             int totalItems = _workingTimeService.CountAll();
@@ -40,7 +40,7 @@ namespace HumanManagermentBackend.Controller
 
             List<WorkingTimeDTO> dtos = _workingTimeService.FindAll(page, limit);
 
-            Api<List<WorkingTimeDTO>> result = new Api<List<WorkingTimeDTO>>(200, dtos, "Success", new Paging(page, totalPages, totalItems));
+            Api<List<WorkingTimeDTO>> result = new Api<List<WorkingTimeDTO>>(200, dtos, "Success", new Paging(page, limit,totalPages, totalItems));
 
             return Ok(result);
         }

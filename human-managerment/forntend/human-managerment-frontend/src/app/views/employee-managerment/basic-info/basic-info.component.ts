@@ -1,10 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
-import {Employee} from '../../../models/employee';
-import {Job} from '../../../models/job';
+import { Employee } from '../../../models/employee';
+import { Job } from '../../../models/job';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { HttpClient } from '@angular/common/http';
-import {ExcelService} from '../../../services/excel.service';
+import { ExcelService } from '../../../services/excel.service';
+import { Paging } from '../../../models/paging';
+import { EmployeeService } from '../../../services/employee.service';
+import { JsonPipe } from '@angular/common';
+import { ApiService } from '../../../services/api.service';
 
 
 @Component({
@@ -19,58 +23,64 @@ export class BasicInfoComponent implements OnInit {
   @ViewChild('materialModal', { static: false }) materialModal: ModalDirective;
 
   columns = [
-    { name: 'Name', prop: 'F_Name ', sortTable: true },
-    { name: 'Lương cơ bản',prop: 'Salary', sortTable: true },
+    { name: 'Tên', prop: 'firstname ', sortTable: true },
+    { name: 'Lương cơ bản', prop: 'salary', sortTable: true },
     { name: 'Email', sortTable: true },
     { name: 'Địa chỉ', sortTable: true },
   ];
   employees: Employee[] = [];
-  employee: Employee = {Emp_ID: 0} as Employee;
+  employee: Employee = { id: 0 } as Employee;
+  paging = { page: 0, pageLimit: 10, totalItems: 3 } as Paging;
   img: any = 'https://screenshotlayer.com/images/assets/placeholder.png';
+  empImgPath: any = this.apiService.apiUrl.employees.images;
   imgName: string = 'Choose file';
   public imagePath;
   public job: any;
+
   choosedEmp: Employee = {
-    Emp_ID: 0,
-    F_Name: '',
-    L_Name: '',
-    image: 'https://screenshotlayer.com/images/assets/placeholder.png',
-    IDCard: '',
-    Hire_Date: null,
+    id: 0,
+    firstname: '',
+    lastname: '',
+    birthDay: '',
+    gender: true,
     email: '',
-    address: '',
-    salary: 0, 
-    commission: 0,
-    isActive:true, 
-    Manager_ID: null,
-    Department_ID:null
-};
+    phoneNumber: '',
+    hireDay: '',
+    salary: 0,
+    imageName: '',
+  };
 
-
-
-
-  constructor(private http: HttpClient, private excelService: ExcelService) { }
+  constructor(
+    private http: HttpClient,
+    private excelService: ExcelService,
+    private employeeService: EmployeeService,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit(): void {
     this.loadEmployee();
 
   }
- 
+
   selectTab(tabId: number) {
     this.staticTabs.tabs[tabId].active = true;
   }
 
-  loadEmployee() {
-    this.http.get<any>('../../../../assets/job.json')
-    .subscribe((res) => {
-      this.job = res.job;
+  loadEmployee(page = null) {
+    if (page != null) {
+      this.paging.page = page.offset;
+    }
+    this.employeeService.list(this.paging).subscribe(res => {
+      this.employees = res.data;
+      this.paging = res.paging;
+      console.log(res);
     });
-    this.http.get<any>('../../../../assets/employee.json')
-    .subscribe((res) => {
-      this.employees = res.employee;
-    });
-      console.log(this.employees);
   };
+
+
+  choose(row) {
+    this.choosedEmp = row;
+  }
 
   showAddModal() {
     this.addModal.show();
@@ -81,34 +91,28 @@ export class BasicInfoComponent implements OnInit {
     this.imgName = 'Choose file';
     this.img = 'https://screenshotlayer.com/images/assets/placeholder.png';
     this.addModal.hide();
-}
-
-exportAsXLSX() {
-  this.excelService.exportAsExcelFile(this.employees, 'DSNV');
-}
-
-choose(row){
-  this.choosedEmp = row;
-  this.choosedEmp.Hire_Date = new Date();
-  console.log(this.choosedEmp);
-}
-
-preview(files) {
-  if (files.length === 0)
-    return;
-
-  var mimeType = files[0].type;
-  this.imgName = files[0].name;
-  if (mimeType.match(/image\/*/) == null) {
-    return;
   }
 
-  var reader = new FileReader();
-  this.imagePath = files;
-  reader.readAsDataURL(files[0]); 
-  reader.onload = (_event) => { 
-    this.img = reader.result; 
-    
+  exportAsXLSX() {
+    this.excelService.exportAsExcelFile(this.employees, 'DSNV');
   }
-}
+
+  preview(files) {
+    if (files.length === 0)
+      return;
+
+    var mimeType = files[0].type;
+    this.imgName = files[0].name;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.img = reader.result;
+
+    }
+  }
 }

@@ -1,10 +1,13 @@
 ﻿using human_managerment_backend.Entities;
+using HumanManagermentBackend.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanManagermentBackend.Database
 {
     public class HumanManagerContext : DbContext
     {
+        public DbSet<EmployeeEntity> Employees { get; set; }
+        public DbSet<ShiftEntity> Shifts { get; set; }
         public DbSet<WorkingTimeEntity> WorkingTimes { get; set; }
         public DbSet<WorkingTimeDetailEntity> WorkingTimeDetails { get; set; }
         public DbSet<TimeSlotEntity> TimeSlots { get; set; }

@@ -10,8 +10,12 @@ export class ApiService {
   }
   baseUrl = 'http://localhost:50618/';
   apiUrl = {
+    employees: {
+      home: `${this.baseUrl}employees`,
+      images: `${this.baseUrl}uploads/images/employees/`
+    },
     workingTimes: {
-      home: `${this.baseUrl}working-times?page=1`
+      home: `${this.baseUrl}working-times`
     },
     timeSlots: {
       home: `${this.baseUrl}time-slots`

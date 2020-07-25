@@ -18,8 +18,8 @@ export class WorkingtimeComponent implements OnInit {
 
   workingTimes = [];
   timeSlots = [];
-  paging = { page: 0} as Paging;
-  
+  paging = { page: 0, pageLimit: 10, totalItems: 3 } as Paging;
+
 
   workingTimeForm = new FormGroup({
     name: new FormControl(''),
@@ -51,16 +51,14 @@ export class WorkingtimeComponent implements OnInit {
   }
 
   loadWorkingTime(page = null) {
+    
     if (page != null) {
       this.paging.page = page.offset;
-      console.log(this.paging.page);
     }
-    this.workingTimeService.list().subscribe(res => {
+    this.workingTimeService.list(this.paging).subscribe(res => {
       this.workingTimes = res.data;
       this.paging = res.paging;
-      console.log(this.paging);
-      
-    });    
+    });
   }
 
   loadTimeSlot() {
@@ -69,20 +67,20 @@ export class WorkingtimeComponent implements OnInit {
     });
   }
 
-  onCheckChange(event){
+  onCheckChange(event) {
     // (this.workingTimeForm.controls.periods as FormArray).push(new FormControl(val));
     let formArray = this.workingTimeForm.controls.workingTimeDetails as FormArray;
-    
+
     console.log(event);
     /*selected*/
-    if(event.target.checked){
-      formArray.push(new FormControl({"timeSlotId": parseInt(event.target.value)}));
-    }else{
+    if (event.target.checked) {
+      formArray.push(new FormControl({ "timeSlotId": parseInt(event.target.value) }));
+    } else {
       // find the unselected element
       let i: number = 0;
-  
+
       formArray.controls.forEach((ctrl: FormControl) => {
-        if(ctrl.value == event.target.value) {
+        if (ctrl.value == event.target.value) {
           // Remove the unselected element from the arrayForm
           formArray.removeAt(i);
           return;
@@ -93,15 +91,16 @@ export class WorkingtimeComponent implements OnInit {
   }
 
   save() {
-     let workingTime = this.workingTimeForm.value;
-     workingTime.id = 0;
+    let workingTime = this.workingTimeForm.value;
+    workingTime.id = 0;
 
-     console.log(workingTime);
-     
+    console.log(workingTime);
 
-     this.workingTimeService.save(workingTime).subscribe(res => {
-       this.workingTimes.push(res.data);
-     });
+
+    this.workingTimeService.save(workingTime).subscribe(res => {
+      this.workingTimes.push(res.data);
+    });
+
   }
 
 }

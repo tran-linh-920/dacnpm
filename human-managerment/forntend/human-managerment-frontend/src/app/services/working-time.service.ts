@@ -3,6 +3,7 @@ import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
 import { RootObj } from '../models/root-obj';
 import { WorkingTime } from '../models/working-time';
+import { Paging } from '../models/paging';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,11 @@ export class WorkingTimeService {
 
   constructor(private apiService: ApiService) { }
 
-  list(): Observable<RootObj<[WorkingTime]>> {
+  list(paging: Paging): Observable<RootObj<[WorkingTime]>> {
+    const query = `page=${paging.page + 1}&page_limit=4`;
+    console.log(`${this.apiService.apiUrl.workingTimes.home}&${query}`);   
     return this.apiService.get<RootObj<[WorkingTime]>>
-      (`${this.apiService.apiUrl.workingTimes.home}`);
+      (`${this.apiService.apiUrl.workingTimes.home}?${query}`);
   }
 
   save(data: WorkingTime): Observable<RootObj<WorkingTime>> {

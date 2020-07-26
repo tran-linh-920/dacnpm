@@ -19,6 +19,13 @@ export class ApiService {
     },
     timeSlots: {
       home: `${this.baseUrl}time-slots`
+    },
+    location:{
+      province: `${this.baseUrl}addresses/province`,
+      district: `${this.baseUrl}addresses/district`,
+      ward: `${this.baseUrl}addresses/ward`,
+      address: `${this.baseUrl}addresses/address`
+
     }
   };
 

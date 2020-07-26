@@ -2,6 +2,7 @@
 using human_managerment_backend.Dto;
 using human_managerment_backend.Entities;
 using human_managerment_backend.Forms;
+using HumanManagermentBackend.Convert;
 using HumanManagermentBackend.Dto;
 using HumanManagermentBackend.Entities;
 using System;
@@ -23,6 +24,12 @@ namespace MyApiWithDB.Convert
             CreateMap<WorkingTimeEntity, WorkingTimeDTO>();
             CreateMap<WorkingTimeDetailEntity, WorkingTimeDetailDTO>().ConvertUsing<EntityWorkingTimeDetailConverter>();
             CreateMap<TimeSlotEntity, TimeSlotDTO>();
+            CreateMap<ProvinceEntity, ProvinceDTO>();
+            CreateMap<DistrictEntity, DistrictDTO>().ConvertUsing<EntityDistrictConverter>();
+            CreateMap<WardEntity, WardDTO>().ConvertUsing<EntityWardConverter>();
+            CreateMap<AddressEntity, AddressDTO>().ConvertUsing<AddressConverter>();
+
+
         }
     }
 

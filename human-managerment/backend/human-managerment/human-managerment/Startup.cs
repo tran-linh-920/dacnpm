@@ -43,6 +43,8 @@ namespace HumanManagermentBackend
             services.AddScoped<DegreeServiceImpl>();
             services.AddScoped<DepartmentServiceImpl>();
             services.AddScoped<IndentificationServiceImpl>();
+            services.AddScoped<JobUpdater>();
+
 
 
 

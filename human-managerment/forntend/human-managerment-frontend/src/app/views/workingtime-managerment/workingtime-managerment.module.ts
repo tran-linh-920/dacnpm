@@ -9,14 +9,18 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ShiftComponent } from './shift/shift.component';
+
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 @NgModule({
-  declarations: [WorkingtimeComponent],
+  declarations: [WorkingtimeComponent, ShiftComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     WorkingtimeManagermentRoutingModule,
     ModalModule,
+    TimepickerModule,
     NgxDatatableModule,
   ]
 })

@@ -17,17 +17,17 @@ namespace HumanManagermentBackend.Entities
         [Column("shiName", TypeName = "nvarchar(256)"), Required]
         public string Name { get; set; }
 
-        [Column("shiWorkStartTime", TypeName = "time"), Required]
-        public TimeSpan WorkStartTime { get; set; }
+        [Column("shiWorkStartTime", TypeName = "varchar(10)"), Required]
+        public string WorkStartTime { get; set; }
 
-        [Column("shiWorkEndTime", TypeName = "time"), Required]
-        public TimeSpan WorkEndTime { get; set; }
+        [Column("shiWorkEndTime", TypeName = "varchar(10)"), Required]
+        public string WorkEndTime { get; set; }
 
-        [Column("shiBreakStartTime", TypeName = "time")]
-        public TimeSpan? BreakStartTime { get; set; }
+        [Column("shiBreakStartTime", TypeName = "varchar(10)")]
+        public string? BreakStartTime { get; set; }
 
-        [Column("shiBreakEndTime", TypeName = "time")]
-        public TimeSpan? BreakEndTime { get; set; }
+        [Column("shiBreakEndTime", TypeName = "varchar(10)")]
+        public string? BreakEndTime { get; set; }
 
         [Column("shiWorkingHoursNumber", TypeName = "double"), Required]
         public double WorkingHoursNumber { get; set; }

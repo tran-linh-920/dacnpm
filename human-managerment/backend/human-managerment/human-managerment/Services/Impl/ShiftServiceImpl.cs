@@ -25,7 +25,7 @@ namespace HumanManagermentBackend.Services.Impl
 
         public int CountAll()
         {
-           return _humanManagerContext.WorkingTimes.Count();
+           return _humanManagerContext.Shifts.Count();
         }
 
         public List<ShiftDTO> FindAll(int page, int limit)

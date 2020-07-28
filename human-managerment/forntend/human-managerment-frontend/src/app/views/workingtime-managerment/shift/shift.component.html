@@ -1,0 +1,48 @@
+<timepicker [(ngModel)]="myTime" [showMeridian]="false" [showSpinners]="true"></timepicker>
+<hr>
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col">
+        <span>Ca làm việc: </span>
+      </div>
+      <div class="col-auto">
+        <button type="button" (click)="openAdd()" class="btn btn-primary"><i class="fa fa-plus"></i>
+          Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <ngx-datatable 
+    class="material" 
+    [rows]="shifts" 
+    [rowHeight]="50" 
+    [columnMode]="'force'" 
+    [sortType]="'multi'" 
+    [headerHeight]="50" 
+    [footerHeight]="50" 
+    [externalPaging]="true"
+    [count]="paging.totalItems"
+    [offset]="paging.page - 1"
+    [limit]="paging.pageLimit"
+    (page)="loadShifts($event)"   
+    >
+    <ngx-datatable-column name="Tên" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span class="cursor-hover" (click)="choose(row)">{{row.name}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Bắt đầu từ">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <span>{{ row.workStartTime}}</span>
+    </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [width]="40">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <i (click)="openEdit(row.Emp_ID)" class="fa fa-edit text-primary mr-1 pointer"></i>
+            <i (click)="delete(row.Emp_ID)" class="fa fa-trash-o text-danger pointer"></i>
+        </ng-template>
+    </ngx-datatable-column>
+</ngx-datatable>
+  </div>
+</div>

@@ -287,8 +287,6 @@ E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerm
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.csprojAssemblyReference.cache
-E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.csproj.CoreCompileInputs.cache
-E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.MvcApplicationPartsAssemblyInfo.cache
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.AssemblyInfoInputs.cache
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.AssemblyInfo.cs
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.RazorTargetAssemblyInfo.cache
@@ -298,6 +296,10 @@ E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerm
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.dll
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.pdb
 E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.genruntimeconfig.cache
+<<<<<<< HEAD
+E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.csproj.CoreCompileInputs.cache
+E:\TaiLieu\CNTT\DotNet\workspace\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.MvcApplicationPartsAssemblyInfo.cache
+=======
 E:\DOTNET\QLNS\dacnpm\human-managerment\backend\human-managerment\human-managerment\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\DOTNET\QLNS\dacnpm\human-managerment\backend\human-managerment\human-managerment\bin\Debug\netcoreapp3.1\appsettings.json
 E:\DOTNET\QLNS\dacnpm\human-managerment\backend\human-managerment\human-managerment\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -448,3 +450,4 @@ E:\DOTNET\QLNS\dacnpm\human-managerment\backend\human-managerment\human-managerm
 E:\DOTNET\QLNS\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.dll
 E:\DOTNET\QLNS\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.pdb
 E:\DOTNET\QLNS\dacnpm\human-managerment\backend\human-managerment\human-managerment\obj\Debug\netcoreapp3.1\HumanManagermentBackend.genruntimeconfig.cache
+>>>>>>> 989be7dcff5c950e2225deb0b66f4f7a3f608cef

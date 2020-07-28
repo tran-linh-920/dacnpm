@@ -59,6 +59,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/job-managerment/job-managerment.module').then(m => m.JobManagermentModule)
       },
       {
+        path: 'quan-ly-cham-cong',
+        loadChildren: () => import('./views/timekeeping-managerment/timekeeping-managerment.module').then(m => m.TimekeepingManagermentModule)
+      },
+      {
         path: 'quan-ly-thoi-gian',
         loadChildren: () => import('./views/workingtime-managerment/workingtime-managerment.module').then(m => m.WorkingtimeManagermentModule)
       },

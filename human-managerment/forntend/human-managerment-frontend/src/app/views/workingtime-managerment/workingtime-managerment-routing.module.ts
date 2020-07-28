@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WorkingtimeComponent } from './workingtime.component';
+import { ShiftComponent } from './shift/shift.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,13 @@ const routes: Routes = [
         component: WorkingtimeComponent,
         data: {
           title: 'Thời gian làm việc'
+        },
+      },
+      { 
+        path: 'ca-lam-viec', 
+        component: ShiftComponent,
+        data: {
+          title: 'Ca làm việc'
         },
       },
     ]

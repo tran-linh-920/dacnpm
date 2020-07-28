@@ -9,10 +9,10 @@ namespace HumanManagermentBackend.Dto
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public TimeSpan WorkStartTime { get; set; }
-        public TimeSpan WorkEndTime { get; set; }
-        public TimeSpan BreakStartTime { get; set; }
-        public TimeSpan BreakEndTime { get; set; }
+        public string WorkStartTime { get; set; }
+        public string WorkEndTime { get; set; }
+        public string BreakStartTime { get; set; }
+        public string BreakEndTime { get; set; }
         public double WorkingHoursNumber { get; set; }
         public double WorkingDaysNumber { get; set; }
     }

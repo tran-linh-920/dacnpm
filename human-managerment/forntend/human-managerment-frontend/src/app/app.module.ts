@@ -45,6 +45,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ModalModule.forRoot(),
+    TimepickerModule.forRoot(),
     ChartsModule,
     NgxDatatableModule
 

@@ -62,8 +62,8 @@ export const navItems: INavData[] = [
         url: '/quan-ly-thoi-gian/thoi-gian-lam-viec'
       },
       {
-        name: 'Khung giờ',
-        url: '/quan-ly-thoi-gian/khung-gio'
+        name: 'Ca làm việc',
+        url: '/quan-ly-thoi-gian/ca-lam-viec'
       }
     ]
   },

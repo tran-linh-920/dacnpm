@@ -14,6 +14,9 @@ export class ApiService {
       home: `${this.baseUrl}employees`,
       images: `${this.baseUrl}uploads/images/employees/`
     },
+    shifts: {
+      home: `${this.baseUrl}shifts`
+    },
     workingTimes: {
       home: `${this.baseUrl}working-times`
     },

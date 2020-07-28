@@ -79,6 +79,8 @@ export class BasicInfoComponent implements OnInit {
 
 
   choose(row) {
+    console.log(row);
+    
     this.choosedEmp = row;
   }
 

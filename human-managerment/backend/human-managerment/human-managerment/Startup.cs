@@ -34,6 +34,12 @@ namespace HumanManagermentBackend
             services.AddScoped<ShiftServiceImpl>();
             services.AddScoped<WorkingTimeServiceImpl>();
             services.AddScoped<TimeSlotServiceImpl>();
+            services.AddScoped<ProvinceServiceImpl>();
+            services.AddScoped<DistrictServiceImpl>();
+            services.AddScoped<WardServiceImpl>();
+            services.AddScoped<AddressServiceImpl>();
+
+
 
             services.AddScoped<WorkingTimeUpdater>();
 

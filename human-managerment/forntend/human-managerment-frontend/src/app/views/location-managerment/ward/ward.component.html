@@ -1,1 +1,57 @@
-<p>ward works!</p>
+<div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+          <span>Phường/ Xã </span>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>
+            Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <ngx-datatable 
+      class="material" 
+      [rows]="wards" 
+      [rowHeight]="50" 
+      [columnMode]="'force'" 
+      [sortType]="'multi'" 
+      [headerHeight]="50" 
+      [footerHeight]="50" 
+      [externalPaging]="true"
+      [count]="paging.totalItems"
+      [offset]="paging.page - 1"
+      [limit]="paging.pageLimit"
+      (page)="loadWard($event)"   
+      >
+      <ngx-datatable-column name="ID" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              <span>{{ row.id}}</span>
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Tỉnh/ Thành phố" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.district.province.name}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+      <ngx-datatable-column name="Quận/huyện">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.district.name}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Phường xã">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.name}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [width]="40">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              <i class="fa fa-edit text-primary mr-1 pointer"></i>
+              <i class="fa fa-trash-o text-danger pointer"></i>
+          </ng-template>
+      </ngx-datatable-column>
+  </ngx-datatable>
+    </div>
+  </div>
+  

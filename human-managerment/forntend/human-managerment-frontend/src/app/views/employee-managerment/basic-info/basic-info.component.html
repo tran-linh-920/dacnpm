@@ -23,7 +23,8 @@
                             </div>
                             <div class="col-3">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class=" h4 text-danger"><small>{{choosedEmp.lastname}} {{choosedEmp.firstname}}</small></p>
+                                    <p class=" h4 text-danger"><small>{{choosedEmp.lastname}}
+                                            {{choosedEmp.firstname}}</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class="h4 text-dark"><small> {{choosedEmp.birthDay}}</small></p>
@@ -54,9 +55,9 @@
                                     <p class="h4 text-primary"><small></small></p>
                                 </div>
                             </div>
-                            </div>
                         </div>
                     </div>
+                </div>
             </tab>
             <tab heading="Liên lạc">
                 <div class="row">
@@ -77,7 +78,7 @@
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class=" text-md-left h4 p-6"><small>Địa chỉ: </small> </p>
                                 </div>
-                               
+
                             </div>
                             <div class="col-8">
                                 <div class="ml-3 mt-3 mb-4">
@@ -89,11 +90,11 @@
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class="h4 text-dark"><small> {{choosedEmp.address}}</small></p>
                                 </div>
-                               
-                                </div>
+
                             </div>
                         </div>
                     </div>
+                </div>
             </tab>
             <tab heading="Công Việc">
                 <div class="row">
@@ -106,10 +107,10 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class=" h4 p-6"><small>Lương cơ bản:  </small></p>
+                                    <p class=" h4 p-6"><small>Lương cơ bản: </small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class=" h4 p-6"><small>Công việc:  </small></p>
+                                    <p class=" h4 p-6"><small>Công việc: </small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class=" text-md-left h4 p-6"><small>Nơi làm việc: </small> </p>
@@ -125,10 +126,10 @@
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class="h4 text-dark"><small> </small></p>
                                 </div>
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </tab>
             <tab heading="Bằng Cấp">
                 <div class="row">
@@ -139,8 +140,8 @@
                     </div>
                     <div class="col-9">
                         <div class="h3">Cố vấn tối cao tổng thống donal chum</div>
-                        </div>
                     </div>
+                </div>
             </tab>
         </tabset>
     </div>
@@ -168,21 +169,10 @@
         </div>
     </div>
     <div class="card-body">
-        <ngx-datatable 
-        class="material" 
-        [rows]="employees" 
-        [rowHeight]="50" 
-        [columnMode]="'force'" 
-        [sortType]="'multi'" 
-        [headerHeight]="50" 
-        [footerHeight]="50" 
-        [externalPaging]="true"
-        [count]="paging.totalItems"
-        [offset]="paging.page - 1"
-        [limit]="paging.pageLimit"
-        (page)="loadEmployee($event)"  
-        >
-            <ngx-datatable-column name="Tên" >
+        <ngx-datatable class="material" [rows]="employees" [rowHeight]="50" [columnMode]="'force'" [sortType]="'multi'"
+            [headerHeight]="50" [footerHeight]="50" [externalPaging]="true" [count]="paging.totalItems"
+            [offset]="paging.page - 1" [limit]="paging.pageLimit" (page)="loadEmployee($event)">
+            <ngx-datatable-column name="Tên">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                     <span class="cursor-hover" (click)="choose(row)">{{ row.firstname}}</span>
                 </ng-template>
@@ -206,38 +196,54 @@
 </div>
 
 <!-- -------------------------------------------------------- -->
-<!-- <div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 id="dialog-child-name" class="modal-title pull-left"> Employee</h4>
+                <h4 id="dialog-child-name" class="modal-title pull-left">Nhân viên</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form enctype="multipart/form-data">
+                <form [formGroup]="saveForm" novalidate (ngSubmit)="save()" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-9">
                             <div class="row form-group ">
                                 <div class="col-6">
                                     <label for="pwd">Họ</label>
-                                    <input type="text" class="form-control" [(ngModel)]="employee.F_Name" name="f_name">
+                                    <input type="text" class="form-control" [(ngModel)]="employee.firstname"
+                                    formControlName="firstname">
                                 </div>
                                 <div class="col-6">
                                     <label for="pwd">Tên</label>
-                                    <input type="text" class="form-control" [(ngModel)]="employee.L_Name" name="l_name">
+                                    <input type="text" class="form-control" [(ngModel)]="employee.lastname"
+                                    formControlName="lastname">
 
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="pwd">Địa chỉ</label>
-                                <input type="text" class="form-control" [(ngModel)]="employee.address" name="address">
+                            <div class="row form-group">
+                                <div class="col-6">
+                                    <label for="pwd">Ngày sinh</label>
+                                    <input type="date" class="form-control" [(ngModel)]="employee.birthDay"
+                                    formControlName="birthDay">
+                                </div>
+                                <div class="col-6">
+                                    <label for="pwd">Giới tính</label>
+                                    <select [(ngModel)]="employee.gender" class="form-control" formControlName="gender">
+                                        <option *ngFor="let g of genders" value="{{g.value}}">
+                                            {{g.name}}
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group ">
-                                <label for="pwd">Email</label>
-                                <input type="text" class="form-control" [(ngModel)]="employee.email" name="email">
-                            </div>
+                                <label for="pwd">Ảnh</label>
+                                <div class="custom-file">
+                                    <input #file type="file" class="custom-file-input" accept='image/*'
+                                    (change)="selectFile($event)" (change)="preview(file.files)" name="image">
+                                    <label class="custom-file-label" for="customFile">{{imgName}}</label>
+                                </div>                            </div>
                         </div>
                         <div class="col-3">
                             <img [src]="img" height="230em" width="155em"
@@ -245,39 +251,32 @@
                                 *ngIf="img">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="pwd">Ảnh</label>
-                        <div class="custom-file">
-                            <input #file type="file" class="custom-file-input" accept='image/*'
-                                (change)="preview(file.files)" [(ngModel)]="image" name="image">
-                            <label class="custom-file-label" for="customFile">{{imgName}}</label>
+                  
+                    <div class="row form-group ">
+                        <div class="col-6">
+                            <label for="pwd">Email</label>
+                            <input type="email" class="form-control" [(ngModel)]="employee.email" formControlName="email">
+
+                        </div>
+                        <div class="col-6">
+                            <label for="pwd">Số điện thoại</label>
+                            <input type="text" class="form-control" [(ngModel)]="employee.phoneNumber" formControlName="phoneNumber">
                         </div>
                     </div>
-                    <div class="row form-group ">
-                        <div class="col-4">
-                            <label for="pwd">Công việc</label>
-                            <select [(ngModel)]="job" class="form-control">
-                                <option *ngFor="let j of job" value="{{j.Job_ID}}">
-                                    {{j.Job_Name}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-8">
-                            <label for="pwd">Nơi làm việc</label>
-                            <input type="text" class="form-control" [(ngModel)]="employee.department">
-                        </div>
+                    <div class="form-group">
+                        <label for="pwd">Ngày vào làm</label>
+                        <input type="date" class="form-control" [(ngModel)]="employee.hireDay" formControlName="hireDay">
                     </div>
                     <div class="form-group">
                         <label for="pwd">Lương cơ bản</label>
-                        <input type="text" class="form-control" [(ngModel)]="employee.salary" name="currency">
+                        <input type="text" class="form-control" [(ngModel)]="employee.salary"formControlName="salary">
                     </div>
                     <div class="form-group col text-center">
-                        <button type="button" class="btn btn-outline-dark center" (click)="save()"
-                            (click)="hideModal()">SAVE</button>
+                        <button type="submit" class="btn btn-outline-dark center">Lưu</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div> -->
+</div>
 <!-- ------------------------------------------------ -->

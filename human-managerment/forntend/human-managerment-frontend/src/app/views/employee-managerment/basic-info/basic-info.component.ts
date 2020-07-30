@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Employee } from '../../../models/employee';
 import { Job } from '../../../models/job';
@@ -28,6 +29,10 @@ export class BasicInfoComponent implements OnInit {
     { name: 'Email', sortTable: true },
     { name: 'Địa chỉ', sortTable: true },
   ];
+  image: File; 
+  saveForm: FormGroup;
+  genders = [{value: true, name: 'Nam'}, {value: false, name: 'Nữ'}];
+  action: string;
   employees: Employee[] = [];
   employee: Employee = { id: 0 } as Employee;
   paging = { page: 0, pageLimit: 10, totalItems: 3 } as Paging;
@@ -51,11 +56,20 @@ export class BasicInfoComponent implements OnInit {
   };
 
   constructor(
-    private http: HttpClient,
-    private excelService: ExcelService,
-    private employeeService: EmployeeService,
-    private apiService: ApiService
-  ) { }
+    private http: HttpClient, private excelService: ExcelService, private employeeService: EmployeeService,
+    private apiService: ApiService, private fb: FormBuilder) { 
+    this.saveForm = this.fb.group({
+      firstname: [''],
+      lastname: [''],
+      birthDay:[''],
+      gender: [''],
+      email: [''],
+      phoneNumber: [''],
+      hireDay: [''],
+      salary: [''],
+      file:['']
+      });
+  }
 
   ngOnInit(): void {
     this.loadEmployee();
@@ -73,7 +87,6 @@ export class BasicInfoComponent implements OnInit {
     this.employeeService.list(this.paging).subscribe(res => {
       this.employees = res.data;
       this.paging = res.paging;
-      console.log(res);
     });
   };
 
@@ -85,8 +98,27 @@ export class BasicInfoComponent implements OnInit {
   }
 
   showAddModal() {
+    this.action = 'ADD';
     this.addModal.show();
 
+
+  }
+
+  selectFile(event){
+    this.image = event.target.files.item(0);
+    console.log(this.image);
+    
+  }
+
+  save(){
+    console.log(this.employee);
+    if(this.action == 'ADD'){
+      this.employeeService.addEmployee(this.image, this.employee).subscribe(res =>{
+        console.log(res);
+        this.loadEmployee(null);
+      });
+    }
+    this.hideModal();
   }
 
   hideModal() {

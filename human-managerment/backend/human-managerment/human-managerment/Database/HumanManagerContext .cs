@@ -15,6 +15,11 @@ namespace HumanManagermentBackend.Database
         public DbSet<WardEntity> Wards { get; set; }
         public DbSet<DistrictEntity> Districts { get; set; }
         public DbSet<ProvinceEntity> Provinces { get; set; }
+        public DbSet<JobEntity> Jobs { get; set; }
+        public DbSet<JobHistoryEntity> JobHistory { get; set; }
+        public DbSet<DepartmentEntity> Departments { get; set; }
+        public DbSet<DegreeEntity> Degrees { get; set; }
+        public DbSet<IndentificationEntity> Indentifications { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -48,6 +53,18 @@ namespace HumanManagermentBackend.Database
                 .HasOne(p => p.Province)
                 .WithMany(d => d.Districts)
                 .HasForeignKey(pk => pk.Province_Id);
+
+            modelBuilder.Entity<JobHistoryEntity>()
+                .HasOne(jh => jh.Job)
+                .WithMany(j => j.JobHistorys)
+                .HasForeignKey(jh => jh.JobId);
+
+            modelBuilder.Entity<JobHistoryEntity>()
+                .HasOne(jh => jh.Department)
+                .WithMany(d => d.JobHistorys)
+                .HasForeignKey(jh => jh.DepartmentId);
+
+
 
         }
     }

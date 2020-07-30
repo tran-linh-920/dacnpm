@@ -15,15 +15,15 @@ export interface Employee {
     // Department_ID: Department;
     // isActive: boolean;
 
-    id: number,
-    firstname: string,
-    lastname: string,
-    birthDay: string,
-    gender: boolean,
-    email: string,
-    phoneNumber: string,
-    hireDay: string,
-    salary: number,
-    imageName: string
+    id: number;
+    firstname: string;
+    lastname: string;
+    birthDay: string;
+    gender: boolean;
+    email: string;
+    phoneNumber: string;
+    hireDay: string;
+    salary: number;
+    imageName: string;
 
 }

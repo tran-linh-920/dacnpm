@@ -54,6 +54,8 @@ namespace HumanManagermentBackend.Database
                 .WithMany(d => d.Districts)
                 .HasForeignKey(pk => pk.Province_Id);
 
+            modelBuilder.Entity<JobHistoryEntity>().HasKey(jh => new { jh.JobId, jh.DepartmentId });
+
             modelBuilder.Entity<JobHistoryEntity>()
                 .HasOne(jh => jh.Job)
                 .WithMany(j => j.JobHistorys)

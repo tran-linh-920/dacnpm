@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HumanManagermentBackend.Controller
 {
-    [Route("/department")]
+    [Route("/departments")]
     [ApiController]
     public class DepartmentController : ControllerBase
     {

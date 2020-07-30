@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace HumanManagermentBackend.Controller
 {
-    [Route("/degree")]
+    [Route("/degrees")]
     [ApiController]
     public class DegreeController : ControllerBase
     {

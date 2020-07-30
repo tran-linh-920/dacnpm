@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HumanManagermentBackend.Controller
 {
-    [Route("/job")]
+    [Route("/jobs")]
     [ApiController]
     public class JobController : ControllerBase
     {

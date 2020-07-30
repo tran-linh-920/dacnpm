@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace HumanManagermentBackend.Controller
 {
-    [Route("/indentification")]
+    [Route("/indentifications")]
     [ApiController]
     public class IndentificationController : ControllerBase
     {

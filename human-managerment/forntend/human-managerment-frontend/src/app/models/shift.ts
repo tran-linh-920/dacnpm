@@ -3,8 +3,8 @@ export class Shift {
     name: string;
     workStartTime: string;
     workEndTime: string;
-    breakStartTime: string;
-    breakEndTime: string;
-    workingHoursNumber: string;
-    workingDaysNumber:string;
+    breakStartTime?: string;
+    breakEndTime?: string;
+    workingHoursNumber: number;
+    workingDaysNumber:number;
 }

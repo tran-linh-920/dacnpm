@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { WorkingtimeManagermentRoutingModule } from './workingtime-managerment-routing.module';
 import { WorkingtimeComponent } from './workingtime.component';
@@ -17,6 +18,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
   declarations: [WorkingtimeComponent, ShiftComponent],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     WorkingtimeManagermentRoutingModule,
     ModalModule,

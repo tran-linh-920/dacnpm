@@ -19,4 +19,12 @@ export class ShiftService {
     return this.apiService.get<RootObj<[Shift]>>
       (`${this.apiService.apiUrl.shifts.home}?${query}`);
   }
+
+  save(data: Shift): Observable<RootObj<Shift>> {
+    if (data.id === 0 || data.id == null) {
+      return this.apiService.post<RootObj<Shift>>(this.apiService.apiUrl.shifts.home, data);
+    } else {
+      return this.apiService.put<RootObj<Shift>>(`${this.apiService.apiUrl.shifts.home}/${data.id}`, data);
+    }
+  }
 }

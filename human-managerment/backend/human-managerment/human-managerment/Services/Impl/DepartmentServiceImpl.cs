@@ -18,19 +18,26 @@ namespace HumanManagermentBackend.Services.Impl
         private readonly IMapper _mapper;
 
 
+        public int CountAll()
+        {
+            return _humanManagerContext.Departments.Count();
+        }
+
+
         public DepartmentServiceImpl(HumanManagerContext humanManagerContext, IMapper mapper)
         {
             _humanManagerContext = humanManagerContext;
             _mapper = mapper;
         }
 
-        public List<DepartmentDTO> FindAll()
+
+        public List<DepartmentDTO> FindAll(int page, int limit)
         {
             List<DepartmentDTO> dtos = new List<DepartmentDTO>();
 
             List<DepartmentEntity> entities = _humanManagerContext.Departments
-
-                                           .ToList();
+                                            .Skip((page - 1) * limit)
+                                            .Take(limit).ToList();
 
 
             entities.ForEach(entity =>

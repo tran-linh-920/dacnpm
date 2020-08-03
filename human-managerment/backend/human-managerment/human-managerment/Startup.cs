@@ -39,15 +39,12 @@ namespace HumanManagermentBackend
             services.AddScoped<WardServiceImpl>();
             services.AddScoped<AddressServiceImpl>();
             services.AddScoped<JobServiceImpl>();
-
             services.AddScoped<DegreeServiceImpl>();
             services.AddScoped<DepartmentServiceImpl>();
             services.AddScoped<IndentificationServiceImpl>();
+            services.AddScoped<TimeKeepingServiceImpl>();
+
             services.AddScoped<JobUpdater>();
-
-
-
-
 
             services.AddScoped<WorkingTimeUpdater>();
 

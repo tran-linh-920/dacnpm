@@ -1,0 +1,77 @@
+<div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+          <span>Bảng chấm công : </span>
+          <input type='text' placeholder='Search id' (keyup)='updateFilter($event.target.value)' />
+        </div>
+        
+        <div class="col-auto">
+          <button type="button" (click)="creatTimeKeeping()" onclick="alert('Đã tạo Bảng lương thành công')" class="btn btn-primary"><i class="fa fa-plus"></i>
+           Tạo bảng lương</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <ngx-datatable 
+      class="material" 
+      [rows]="timeKeeping" 
+      [rowHeight]="50" 
+      [columnMode]="'force'" 
+      [sortType]="'multi'" 
+      [headerHeight]="50" 
+      [footerHeight]="50" 
+      [limit]="15"
+ 
+      >
+      <ngx-datatable-column name="ID" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              <span>{{ row.id}}</span>
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Mã Nhân viên" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.idEmployee}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+
+      <ngx-datatable-column name="Tổng số giờ làm">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.totalWorkTime}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Giờ làm trễ">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.timeLate}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Giờ tăng ca">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.overTime}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Ngày chấm công">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.dateStart}}</span>
+      </ng-template>
+
+      </ngx-datatable-column>
+      <ngx-datatable-column [width]="40">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>  Xóa </button>
+            <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>
+              Chấm</button>
+          </ng-template>
+      </ngx-datatable-column>
+  </ngx-datatable>
+    </div>
+  </div>
+<!--   
+  [externalPaging]="true"
+  [count]="paging.totalItems"
+  [offset]="paging.page - 1"
+  [limit]="paging.pageLimit"
+  (page)="loadTimeKeeping($event)"   -->

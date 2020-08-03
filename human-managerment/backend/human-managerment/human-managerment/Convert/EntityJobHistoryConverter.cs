@@ -42,7 +42,7 @@ namespace HumanManagermentBackend.Convert
                 destination.Department = new DepartmentDTO();
 
                 destination.Department.Id = source.Department.Id;
-                destination.Department.DepartmentName = source.Department.DepartmentName;
+                destination.Department.Name = source.Department.Name;
 
             }
 

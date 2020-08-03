@@ -69,8 +69,13 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Quản lý chấm công',
-    url: '/quan-ly-cham-cong',
     icon: 'icon-check',
+    children: [
+      {
+        name: 'Chấm công',
+        url: '/quan-ly-cham-cong/cham-cong'
+      },
+    ],
   },
   {
     name: 'Quản lý vị trí',

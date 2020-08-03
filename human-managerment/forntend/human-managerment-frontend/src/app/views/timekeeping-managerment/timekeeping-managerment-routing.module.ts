@@ -1,15 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TimekeppingComponent } from './timekepping.component';
+import { KeepingsComponent } from './keepings/keepings.component';
 
 
 const routes: Routes = [
   { 
     path: '', 
-    component: TimekeppingComponent,
     data: {
       title: 'Quản lý chấm công'
     },
+    children:[
+        { 
+          path: 'cham-cong', 
+          component: KeepingsComponent,
+          data: {
+            title: 'Chấm công '
+          },
+       
+    }]
   },
 ];
 

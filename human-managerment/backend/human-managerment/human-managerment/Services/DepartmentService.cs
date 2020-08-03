@@ -12,10 +12,9 @@ namespace HumanManagermentBackend.Services
 
     public interface DepartmentService
     {
-        public List<DepartmentDTO> FindAll();
+        public int CountAll();
+        public List<DepartmentDTO> FindAll(int page, int limit);
         public DepartmentDTO Save(DepartmentEntity entity);
-
-
-
+        
     }
 }

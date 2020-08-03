@@ -1,6 +1,7 @@
 ﻿using human_managerment_backend.Entities;
 using HumanManagermentBackend.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace HumanManagermentBackend.Database
 {
@@ -20,6 +21,8 @@ namespace HumanManagermentBackend.Database
         public DbSet<DepartmentEntity> Departments { get; set; }
         public DbSet<DegreeEntity> Degrees { get; set; }
         public DbSet<IndentificationEntity> Indentifications { get; set; }
+        public DbSet<TimeKeepingEntity> Timekeepings { get; set; }
+        public IEnumerable<object> TimeKeepings { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

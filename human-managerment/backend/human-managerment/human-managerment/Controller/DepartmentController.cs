@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using human_managerment_backend;
@@ -28,11 +30,18 @@ namespace HumanManagermentBackend.Controller
             _departmentService = departmentService;
         }
         [HttpGet]
-        public ActionResult<Api<List<DepartmentDTO>>> GetAll()
+        public ActionResult<Api<List<DepartmentDTO>>> GetAll(
+                                                              [FromQuery(Name = "page"), DefaultValue(1), Required] int page,//
+                                                              [FromQuery(Name = "page_limit"), DefaultValue(10),] int limit//
+                                                            )
         {
-            List<DepartmentDTO> dtos = _departmentService.FindAll();
+            int totalItems = _departmentService.CountAll();
 
-            Api<List<DepartmentDTO>> result = new Api<List<DepartmentDTO>>(200, dtos, "Success");
+            int totalPages = (int)Math.Ceiling((double)totalItems / limit);
+
+            List<DepartmentDTO> dtos = _departmentService.FindAll( page,  limit);
+
+            Api<List<DepartmentDTO>> result = new Api<List<DepartmentDTO>>(200, dtos, "Success", new Paging(page, limit, totalPages, totalItems));
 
             return Ok(result);
         }

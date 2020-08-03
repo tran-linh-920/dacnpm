@@ -115,7 +115,7 @@ export class BasicInfoComponent implements OnInit {
     if(this.action == 'ADD'){
       this.employeeService.addEmployee(this.image, this.employee).subscribe(res =>{
         console.log(res);
-        this.loadEmployee(null);
+        this.ngOnInit;
       });
     }
     this.hideModal();

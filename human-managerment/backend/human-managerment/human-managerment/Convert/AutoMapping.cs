@@ -28,6 +28,7 @@ namespace MyApiWithDB.Convert
             CreateMap<DistrictEntity, DistrictDTO>().ConvertUsing<EntityDistrictConverter>();
             CreateMap<WardEntity, WardDTO>().ConvertUsing<EntityWardConverter>();
             CreateMap<AddressEntity, AddressDTO>().ConvertUsing<AddressConverter>();
+            CreateMap<TimeKeepingEntity, TimeKeepingDTO>();
 
             CreateMap<DepartmentEntity, DepartmentDTO>();
             CreateMap<JobHistoryEntity, JobHistoryDTO>().ConvertUsing<EntityJobHistoryConverter>();

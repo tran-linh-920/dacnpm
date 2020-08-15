@@ -14,6 +14,12 @@ export class ApiService {
       home: `${this.baseUrl}employees`,
       images: `${this.baseUrl}uploads/images/employees/`
     },
+    timeKeepingDetail: {
+      home: `${this.baseUrl}time-keeping-detail`,
+      monrning: `${this.baseUrl}time-keeping-detail/morning`,
+      afteroon: `${this.baseUrl}time-keeping-detail/afternoon`
+
+    },
     departments: {
       home: `${this.baseUrl}departments`
     },
@@ -38,8 +44,10 @@ export class ApiService {
     },
     timekeeping: {
       home: `${this.baseUrl}time-keepings`,
-      creat: `${this.baseUrl}time-keepings`
-      
+      creat: `${this.baseUrl}time-keepings`,
+      morning:`${this.baseUrl}time-keepings/morning`,
+      afternoon:`${this.baseUrl}time-keepings/afternoon`,
+      refet : `${this.baseUrl}time-keepings/refet`
     },
   };
 

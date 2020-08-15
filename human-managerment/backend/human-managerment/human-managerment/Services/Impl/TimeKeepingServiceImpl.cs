@@ -20,10 +20,9 @@ namespace HumanManagermentBackend.Services.Impl
         {
             _humanManagerContext = humanManagerContext;
             _mapper = mapper;
-
-
         }
 
+    
         public List<TimeKeepingDTO> FindAll()
         {
             List<TimeKeepingDTO> dtos = new List<TimeKeepingDTO>();
@@ -35,6 +34,32 @@ namespace HumanManagermentBackend.Services.Impl
             });
             return dtos;
         }
+        // hien thi ca sang
+        public List<TimeKeepingDTO> findMorning()
+        {
+            List<TimeKeepingDTO> dtos = new List<TimeKeepingDTO>();
+            List<TimeKeepingEntity> entities = _humanManagerContext.Timekeepings.Where(tk => tk.status == 1 && tk.morning ==1).ToList();
+
+            entities.ForEach(entity =>
+            {
+                dtos.Add(_mapper.Map<TimeKeepingDTO>(entity));
+            });
+            return dtos;
+        }
+        // hien thi ca chieu
+        public List<TimeKeepingDTO> findAfternoon()
+        {
+            List<TimeKeepingDTO> dtos = new List<TimeKeepingDTO>();
+            List<TimeKeepingEntity> entities = _humanManagerContext.Timekeepings.Where(tk => tk.status == 1 && tk.afternoon == 1).ToList();
+
+            entities.ForEach(entity =>
+            {
+                dtos.Add(_mapper.Map<TimeKeepingDTO>(entity));
+            });
+            return dtos;
+        }
+
+
 
         public TimeKeepingDTO Replace(TimeKeepingEntity oldTimeKeeping)
         {
@@ -84,6 +109,64 @@ namespace HumanManagermentBackend.Services.Impl
 
             return listDTO;
 
+        }
+
+        public TimeKeepingDTO stardUp(TimeKeepingEntity entity,string shift)
+        {
+            TimeKeepingEntity oldEntity;
+
+            oldEntity = _humanManagerContext.Timekeepings.Where(tk => tk.Id == entity.Id).SingleOrDefault();
+            oldEntity.morning = 0;
+
+            //craeat Timekeepingdetail với ngày giờ hiện tại và trạng thái 1 đagn chấm công
+            DateTime nowDate = DateTime.Now;
+            TimeKeepingDetailEntity tkdEntity = new TimeKeepingDetailEntity();
+            if (string.Compare(shift, "morning",true)==0)
+            {
+                tkdEntity.shift = "morning" ;
+                oldEntity.morning = 0;
+            }
+            if (string.Compare(shift, "afternoon", true) == 0)
+            {
+                tkdEntity.shift = "afternoon";
+                oldEntity.afternoon = 0;
+            }
+            tkdEntity.timeStart = nowDate;
+            tkdEntity.status = 1;
+            tkdEntity.timeKeepingId = oldEntity.Id;
+            tkdEntity.employeeId = oldEntity.idEmployee;
+
+            _humanManagerContext.TimeKeepingDetails.Add(tkdEntity);
+            _humanManagerContext.SaveChanges();
+
+            return _mapper.Map<TimeKeepingDTO>(oldEntity);
+        }
+
+        public List<TimeKeepingDTO> RefetTimeKeeping()
+        {
+            var transaction = _humanManagerContext.Database.BeginTransaction();
+            List<TimeKeepingEntity> entities = _humanManagerContext.Timekeepings.ToList();
+            List<TimeKeepingDetailEntity> entityTimeKeepingDetail = _humanManagerContext.TimeKeepingDetails.Where(tkd => tkd.status == 1).ToList();
+
+            if(entityTimeKeepingDetail.Count <= 0 || entityTimeKeepingDetail == null)
+            {
+                List<TimeKeepingDTO> dtos = new List<TimeKeepingDTO>();
+                entities.ForEach(entity =>
+                {
+                    entity.morning = 1;
+                    entity.afternoon = 1;
+                    dtos.Add(_mapper.Map<TimeKeepingDTO>(entity));
+                });
+                _humanManagerContext.SaveChanges();
+                transaction.Commit();
+                return dtos;
+            }
+            else
+            {
+                return null;
+            }
+           
+           
         }
     }
 }

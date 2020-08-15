@@ -1,5 +1,6 @@
 import { INavData } from '@coreui/angular';
 
+
 export const navItems: INavData[] = [
   {
     name: 'Dashboard',
@@ -72,9 +73,18 @@ export const navItems: INavData[] = [
     icon: 'icon-check',
     children: [
       {
-        name: 'Chấm công',
+        name: 'Bắt đầu ca làm',
         url: '/quan-ly-cham-cong/cham-cong'
       },
+      {
+        name : 'Chốt ca làm',
+        url : '/quan-ly-cham-cong/cham-cong-chitiet'
+      },
+      {
+        name : 'Lịch sử',
+        url : '/quan-ly-cham-cong/cham-cong-lichsu'
+      }
+      
     ],
   },
   {

@@ -8273,19 +8273,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tran Linh\\.nuget\\packages\\": {}
+    "C:\\Users\\Kiet Zenitsu\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+      "projectUniqueName": "C:\\Users\\Kiet Zenitsu\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
       "projectName": "HumanManagermentBackend",
-      "projectPath": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
-      "packagesPath": "C:\\Users\\Tran Linh\\.nuget\\packages\\",
-      "outputPath": "E:\\TaiLieu\\CNTT\\DotNet\\workspace\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\obj\\",
+      "projectPath": "C:\\Users\\Kiet Zenitsu\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+      "packagesPath": "C:\\Users\\Kiet Zenitsu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kiet Zenitsu\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Tran Linh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kiet Zenitsu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

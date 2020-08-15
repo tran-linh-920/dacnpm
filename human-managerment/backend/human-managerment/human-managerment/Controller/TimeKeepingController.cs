@@ -29,6 +29,44 @@ namespace HumanManagermentBackend.Controller
             Api<List<TimeKeepingDTO>> result = new Api<List<TimeKeepingDTO>>(200, dtos, "Success");
             return Ok(result);
         }
+        [HttpGet("/time-keepings/refet")]
+        public ActionResult<Api<List<TimeKeepingDTO>>> RefetTimeKeeping()
+        {
+            List<TimeKeepingDTO> dtos = _timeKeepingService.RefetTimeKeeping();
+            Api<List<TimeKeepingDTO>> result = new Api<List<TimeKeepingDTO>>(200, dtos, "Success");
+            return Ok(result);
+        }
+        [HttpGet("/time-keepings/morning")]
+        public ActionResult<Api<List<TimeKeepingDTO>>> GetMorning()
+        {
+            List<TimeKeepingDTO> dtos = _timeKeepingService.findMorning();
+            Api<List<TimeKeepingDTO>> result = new Api<List<TimeKeepingDTO>>(200, dtos, "Success");
+            return Ok(result);
+        }
+        [HttpGet("/time-keepings/afternoon")]
+        public ActionResult<Api<List<TimeKeepingDTO>>> GetAfternoon()
+        {
+            List<TimeKeepingDTO> dtos = _timeKeepingService.findAfternoon();
+            Api<List<TimeKeepingDTO>> result = new Api<List<TimeKeepingDTO>>(200, dtos, "Success");
+            return Ok(result);
+        }
+        [HttpPut("/time-keepings/morning/{id}")]
+        public ActionResult<Api<TimeKeepingDTO>> StartUpMorning(long id, TimeKeepingEntity newEntity)
+        {
+            newEntity.Id = id;
+            TimeKeepingDTO dto = _timeKeepingService.stardUp(newEntity, "morning");
+            Api<TimeKeepingDTO> result = new Api<TimeKeepingDTO>(200, dto, "Edit Success");
+            return Ok(result);
+        }
+        [HttpPut("/time-keepings/afternoon/{id}")]
+        public ActionResult<Api<TimeKeepingDTO>> StartUpAfternoon(long id, TimeKeepingEntity newEntity)
+        {
+            newEntity.Id = id;
+
+            TimeKeepingDTO dto = _timeKeepingService.stardUp(newEntity, "afternoon");
+            Api<TimeKeepingDTO> result = new Api<TimeKeepingDTO>(200, dto, "Edit Success");
+            return Ok(result);
+        }
 
         [HttpPost]
         public ActionResult<Api<TimeKeepingDTO>> New()
@@ -37,11 +75,6 @@ namespace HumanManagermentBackend.Controller
             Api<List<TimeKeepingDTO>> result = new Api<List<TimeKeepingDTO>>(200, dtos, "Success");
             return Ok(result);
         }
-        [HttpPut("{id}")]
-        public ActionResult<Api<TimeKeepingDTO>> Edit(long id, TimeKeepingEntity newEntity)
-        {
-
-            return null;
-        }
+       
     }
 }

@@ -1,0 +1,107 @@
+<p>Ca sáng</p>
+
+    <div class="card-body">
+      <ngx-datatable 
+      class="material" 
+      [rows]="listMorning" 
+      [rowHeight]="50" 
+      [columnMode]="'force'" 
+      [sortType]="'multi'" 
+      [headerHeight]="50" 
+      [footerHeight]="50" 
+      [limit]="15"
+ 
+      >
+      <ngx-datatable-column name="ID" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              <span>{{ row.id}}</span>
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Mã Nhân viên" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.employeeId}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+
+      <ngx-datatable-column name="Giờ vào">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.timeStart}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Giờ ra">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.timeEnd}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Ca làm">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.shift}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+
+      <ngx-datatable-column name="Kết thúc ca">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <button type="button" (click)="openEdit(row)" class="btn btn-warning"><i class="fa fa-plus"></i>  kết thúc </button>
+            <button type="button" (click)="removeTimeKeepingDetail(row)" class="btn btn-danger"><i class="fa fa-remove"></i>  Xóa </button>
+          </ng-template>
+      </ngx-datatable-column>
+
+  </ngx-datatable>
+</div>
+<p>Ca chiều</p>
+<div class="card">
+  <div class="card-body">
+    <ngx-datatable 
+    class="material" 
+    [rows]="listAfternoon" 
+    [rowHeight]="50" 
+    [columnMode]="'force'" 
+    [sortType]="'multi'" 
+    [headerHeight]="50" 
+    [footerHeight]="50" 
+    [limit]="15"
+
+    >
+    <ngx-datatable-column name="ID" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.id}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Mã Nhân viên" >
+      <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.employeeId}}</span>
+      </ng-template>
+  </ngx-datatable-column>
+
+    <ngx-datatable-column name="Giờ vào">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <span>{{ row.timeStart}}</span>
+    </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Giờ ra">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <span>{{ row.timeEnd}}</span>
+    </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Ca làm">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <span>{{ row.shift}}</span>
+    </ng-template>
+    </ngx-datatable-column>
+
+
+    <ngx-datatable-column name="Kết thúc ca">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <button type="button" (click)="openEdit(row)" class="btn btn-warning"><i class="fa fa-plus"></i>  kết thúc </button>
+          <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i>  Xóa </button>
+        </ng-template>
+    </ngx-datatable-column>
+
+</ngx-datatable>
+</div>
+</div>

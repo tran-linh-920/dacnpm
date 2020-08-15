@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HumanManagermentBackend.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -33,10 +34,20 @@ namespace human_managerment_backend.Entities
         [Column("empHireDay", TypeName = "date"), Required]
         public DateTime HireDay { get; set; }
 
-        [Column("empSalary", TypeName = "int"), Required]
-        public int Salary { get; set; }
+        [Column("empJobLevel", TypeName = "int"), Required]
+        public int JobLevel { get; set; }
 
         [Column("empImageName", TypeName = "varchar(128)")]
         public string ImageName { get; set; }
+
+        [Column("empJob_id", TypeName = "bigint")]
+        public long JobId { get; set; }
+        public JobEntity Job { get; set; }
+
+        public List<JobHistoryEntity> JobHistorys { get; set; }
+
+        public List<RewardPunishEntity> RewardPunishes { get; set; }
+
+        public List<SalaryHistoryEntity> SalaryHistories { get; set; }
     }
 }

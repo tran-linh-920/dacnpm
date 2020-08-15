@@ -33,8 +33,8 @@ namespace HumanManagermentBackend.Convert
 
                 destination.Job.Id = source.Job.Id;
                 destination.Job.JobTitle = source.Job.JobTitle;
-                destination.Job.MinSalary = source.Job.MinSalary;
-                destination.Job.MaxSalary = source.Job.MaxSalary;
+                //destination.Job.MinSalary = source.Job.MinSalary;
+                //destination.Job.MaxSalary = source.Job.MaxSalary;
             }
 
             if (source.Department != null)

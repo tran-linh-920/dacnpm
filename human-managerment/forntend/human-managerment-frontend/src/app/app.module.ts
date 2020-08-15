@@ -75,7 +75,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   providers: [{
     provide: LocationStrategy,

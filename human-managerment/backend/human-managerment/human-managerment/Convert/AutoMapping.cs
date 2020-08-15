@@ -24,19 +24,24 @@ namespace MyApiWithDB.Convert
             CreateMap<WorkingTimeEntity, WorkingTimeDTO>();
             CreateMap<WorkingTimeDetailEntity, WorkingTimeDetailDTO>().ConvertUsing<EntityWorkingTimeDetailConverter>();
             CreateMap<TimeSlotEntity, TimeSlotDTO>();
+
             CreateMap<ProvinceEntity, ProvinceDTO>();
             CreateMap<DistrictEntity, DistrictDTO>().ConvertUsing<EntityDistrictConverter>();
             CreateMap<WardEntity, WardDTO>().ConvertUsing<EntityWardConverter>();
             CreateMap<AddressEntity, AddressDTO>().ConvertUsing<AddressConverter>();
+
             CreateMap<TimeKeepingEntity, TimeKeepingDTO>();
 
             CreateMap<DepartmentEntity, DepartmentDTO>();
-            CreateMap<JobHistoryEntity, JobHistoryDTO>().ConvertUsing<EntityJobHistoryConverter>();
+
             CreateMap<JobEntity, JobDTO>();
+            CreateMap<JobHistoryEntity, JobHistoryDTO>().ConvertUsing<EntityJobHistoryConverter>();
+            CreateMap<JobLevelEntity, JobLevelDTO>();
+
             CreateMap<DegreeEntity, DegreeDTO>();
             CreateMap<IndentificationEntity, IndentificationDTO>();
 
-
+            CreateMap<SalaryHistoryEntity, SalaryHistoryDTO>();
         }
     }
 

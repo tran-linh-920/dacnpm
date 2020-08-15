@@ -41,6 +41,11 @@ export class ApiService {
       creat: `${this.baseUrl}time-keepings`
       
     },
+    salary: {
+      counting: `${this.baseUrl}salaries/counting`,
+      increasing: `${this.baseUrl}salaries/increasing`,
+      histories: `${this.baseUrl}salaries/histories`
+    },
   };
 
   get<T>(url: string): Observable<T> {

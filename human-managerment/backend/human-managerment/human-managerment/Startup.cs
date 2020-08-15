@@ -46,14 +46,11 @@ namespace HumanManagermentBackend
             services.AddScoped<DepartmentServiceImpl>();
             services.AddScoped<IndentificationServiceImpl>();
             services.AddScoped<TimeKeepingServiceImpl>();
-<<<<<<< HEAD
             services.AddScoped<NoteServiceImpl>();
             services.AddScoped<CandidateServiceImpl>();
             services.AddScoped<MailServiceImpl>();
             services.AddScoped<ScheduleServiceImpl>();
-=======
             services.AddScoped<SalaryServiceImpl>();
->>>>>>> 022c2b8fa652b95b114cfc6665560c23c7fb0eef
 
             services.AddScoped<JobUpdater>();
 

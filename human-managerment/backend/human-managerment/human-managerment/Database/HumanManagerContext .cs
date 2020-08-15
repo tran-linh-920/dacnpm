@@ -28,16 +28,11 @@ namespace HumanManagermentBackend.Database
         public DbSet<DegreeEntity> Degrees { get; set; }
         public DbSet<IndentificationEntity> Indentifications { get; set; }
         public DbSet<TimeKeepingEntity> Timekeepings { get; set; }
-<<<<<<< HEAD
-
         public DbSet<CandidateEntity> Candidates { get; set; }
 
         public DbSet<NoteEntity> Notes { get; set; }
         public DbSet<ScheduleEntity> Schedules { get; set; }
-
-=======
         public DbSet<TaxEntity> Taxs { get; set; }
->>>>>>> 022c2b8fa652b95b114cfc6665560c23c7fb0eef
         public IEnumerable<object> TimeKeepings { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -86,7 +81,6 @@ namespace HumanManagermentBackend.Database
                 .WithMany(d => d.JobHistorys)
                 .HasForeignKey(jh => jh.DepartmentId);
 
-<<<<<<< HEAD
             modelBuilder.Entity<NoteEntity>()
                 .HasOne(c => c.Candidate)
                 .WithOne(n => n.Note)
@@ -97,13 +91,10 @@ namespace HumanManagermentBackend.Database
                 .WithMany(s => s.Schedules)
                 .HasForeignKey(ci => ci.CanId);
                 
-
-=======
             modelBuilder.Entity<JobEntity>()
                 .HasOne(j => j.JobLevel)
                 .WithOne(jlv => jlv.Job)
                 .HasForeignKey<JobLevelEntity>(jlv => jlv.JobId);
->>>>>>> 022c2b8fa652b95b114cfc6665560c23c7fb0eef
 
         }
     }

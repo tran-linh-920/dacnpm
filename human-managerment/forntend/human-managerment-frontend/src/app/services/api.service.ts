@@ -53,17 +53,14 @@ export class ApiService {
       home: `${this.baseUrl}time-keepings`,
       creat: `${this.baseUrl}time-keepings`
     },
-<<<<<<< HEAD
     schedule: {
       home: `${this.baseUrl}schedules`,
-    }
-=======
+    },
     salary: {
       counting: `${this.baseUrl}salaries/counting`,
       increasing: `${this.baseUrl}salaries/increasing`,
       histories: `${this.baseUrl}salaries/histories`
     },
->>>>>>> 022c2b8fa652b95b114cfc6665560c23c7fb0eef
   };
 
   get<T>(url: string): Observable<T> {

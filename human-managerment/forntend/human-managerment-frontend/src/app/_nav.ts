@@ -106,8 +106,7 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Tính lương',
-        url: '/quan-ly-luong/tinh-luong'
-      },
+        url: '/quan-ly-luong/tinh-luong'      },
       {
         name: 'Nâng lương',
         url: '/quan-ly-luong/nang-luong'

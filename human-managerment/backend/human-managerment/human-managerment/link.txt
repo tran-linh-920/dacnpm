@@ -43,3 +43,6 @@ https://code-maze.com/action-filters-aspnetcore/
 Global Error Handling 
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-3.1
 https://code-maze.com/global-error-handling-aspnetcore/
+
+fix merge when pull
+https://stackoverflow.com/questions/278081/resolving-a-git-conflict-with-binary-files

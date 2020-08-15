@@ -43,13 +43,16 @@ namespace HumanManagermentBackend
             services.AddScoped<DepartmentServiceImpl>();
             services.AddScoped<IndentificationServiceImpl>();
             services.AddScoped<TimeKeepingServiceImpl>();
+            services.AddScoped<NoteServiceImpl>();
+            services.AddScoped<CandidateServiceImpl>();
+            services.AddScoped<MailServiceImpl>();
+            services.AddScoped<ScheduleServiceImpl>();
 
             services.AddScoped<JobUpdater>();
 
             services.AddScoped<WorkingTimeUpdater>();
 
             services.AddScoped<UploadUtil>();
-
             services.AddCors(options =>
             {
                 options.AddPolicy(

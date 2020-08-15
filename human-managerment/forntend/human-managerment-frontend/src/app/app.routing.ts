@@ -71,6 +71,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/location-managerment/location-managerment.module').then(m => m.LocationManagermentModule)
       },
       {
+        path: 'tuyen-dung',
+        loadChildren: () => import('./views/recruitment/recruitment.module').then(m => m.RecruitmentModule)
+      },
+      {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },

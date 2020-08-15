@@ -1,0 +1,123 @@
+<div class="card text-left">
+  <img class="card-img-top" src="holder.js/100px180/" alt="">
+  <div class="card-body">
+    <form [formGroup]="saveForm" novalidate (ngSubmit)="save()" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-9">
+                <div class="row form-group ">
+                    <div class="col-6">
+                        <label for="pwd">Họ</label>
+                        <input type="text" class="form-control"  [(ngModel)]="candidate.firstname"
+                        formControlName="firstname">
+                    </div>
+                    <div class="col-6">
+                        <label for="pwd">Tên</label>
+                        <input type="text" class="form-control" [(ngModel)]="candidate.lastname"
+                        formControlName="lastname">
+
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-6">
+                        <label for="pwd">Ngày sinh</label>
+                        <input type="date" class="form-control" [(ngModel)]="candidate.birthDay"
+                        formControlName="birthDay">
+                    </div>
+                    <div class="col-6">
+                        <label for="pwd">Giới tính</label>
+                        <select [(ngModel)]="candidate.gender" class="form-control" formControlName="gender">
+                            <option *ngFor="let g of genders" value="{{g.value}}">
+                                {{g.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-3">
+                        <label for="pwd">Dân tộc</label>
+                        <input type="text" class="form-control" [(ngModel)]="candidate.ethnic" formControlName="ethnic" >
+                    </div>
+                    <div class="col-9">
+                        <label for="pwd">Quê quán</label>
+                        <input type="text" class="form-control" [(ngModel)]="candidate.hometown" formControlName="hometown" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <img [src]="img" height="230em" width="155em"
+                    style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
+                    *ngIf="img">
+            </div>
+        </div> 
+        <div class="form-group ">
+            <label for="pwd">Ảnh</label>
+            <div class="custom-file">
+                <input #file type="file" class="custom-file-input" accept='image/*'
+                (change)="selectFile($event)" (change)="preview(file.files)" name="image">
+                <label class="custom-file-label" for="customFile">{{imgName}}</label>
+            </div>                           
+         </div>
+        <div class="row form-group ">
+            <div class="col-4">
+                <label for="pwd">Email</label>
+                <input type="email" class="form-control" [(ngModel)]="candidate.email" formControlName="email">
+
+            </div>
+            <div class="col-4">
+                <label for="pwd">Số điện thoại</label>
+                <input type="text" class="form-control" [(ngModel)]="candidate.phoneNumber" formControlName="phoneNumber">
+            </div>
+            <div class="col-4">
+                <label for="pwd">CMND</label>
+                <input type="text" class="form-control" [(ngModel)]="candidate.IDCard" formControlName="IDCard">
+            </div>
+        </div>
+
+        <div class="row form-group ">
+            <div class="col-4">
+                <label for="pwd">Học vấn</label>
+                <input type="email" class="form-control" [(ngModel)]="candidate.literacy" formControlName="literacy">
+
+            </div>
+            <div class="col-4">
+                <label for="pwd">Bẳng cấp</label>
+                <input type="text" class="form-control" [(ngModel)]="candidate.degree" formControlName="degree">
+            </div>
+            <div class="col-4">
+                <label for="pwd">Chuyên ngành</label>
+                <input type="text" class="form-control" [(ngModel)]="candidate.career" formControlName="career">
+            </div>
+           
+        </div>
+
+        <div class="row form-group ">
+            <div class="col-4">
+                <label for="pwd">Vị trí ứng tuyển</label>
+                <input type="email" class="form-control" [(ngModel)]="candidate.position" formControlName="position">
+
+            </div>
+            <div class="col-8">
+                <label for="pwd">kinh nghiệm làm việc</label>
+                <input type="text" class="form-control" [(ngModel)]="candidate.experience" formControlName="experience">
+            </div>
+        </div>
+
+        <div class="row form-group ">
+            <div class="col-6">
+                <label for="pwd">Kĩ năng</label>
+                <input type="email" class="form-control" [(ngModel)]="candidate.skill" formControlName="skill">
+
+            </div>
+            <div class="col-6">
+                <label for="pwd">Sở thích</label>
+                <input type="text" class="form-control" [(ngModel)]="candidate.hobby" formControlName="hobby">
+            </div>
+        </div>
+        
+        <div class="form-group col text-center">
+            <button type="submit" class="btn btn-outline-dark center">Lưu</button>
+        </div>
+
+    </form>
+  </div> 
+</div>

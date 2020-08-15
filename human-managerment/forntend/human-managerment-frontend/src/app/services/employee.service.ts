@@ -16,7 +16,7 @@ export class EmployeeService {
 
   list(paging: Paging): Observable<RootObj<[Employee]>> {
     const query = `page=${paging.page + 1}&page_limit=4`;
-    console.log(`${this.apiService.apiUrl.employees.home}?${query}`);   
+    console.log(`${this.apiService.apiUrl.employees.home}?${query}`);
     return this.apiService.get<RootObj<[Employee]>>
       (`${this.apiService.apiUrl.employees.home}?${query}`);
   }

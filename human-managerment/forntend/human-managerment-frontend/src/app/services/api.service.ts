@@ -12,7 +12,21 @@ export class ApiService {
   apiUrl = {
     employees: {
       home: `${this.baseUrl}employees`,
-      images: `${this.baseUrl}uploads/images/employees/`
+      images: `${this.baseUrl}uploads/images/employees/`,
+      canimg: `${this.baseUrl}uploads/images/candidates/`
+
+
+    },
+    candidates: {
+      home: `${this.baseUrl}candidates`,
+      type: `${this.baseUrl}candidates/type`,
+
+    },
+    notes: {
+      home: `${this.baseUrl}notes`,
+    },
+    mails:{
+      home: `${this.baseUrl}mails`,
     },
     departments: {
       home: `${this.baseUrl}departments`
@@ -34,13 +48,14 @@ export class ApiService {
       district: `${this.baseUrl}addresses/district`,
       ward: `${this.baseUrl}addresses/ward`,
       address: `${this.baseUrl}addresses/address`
-
     },
     timekeeping: {
       home: `${this.baseUrl}time-keepings`,
       creat: `${this.baseUrl}time-keepings`
-      
     },
+    schedule: {
+      home: `${this.baseUrl}schedules`,
+    }
   };
 
   get<T>(url: string): Observable<T> {

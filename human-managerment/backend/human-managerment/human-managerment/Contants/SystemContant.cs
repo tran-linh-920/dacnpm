@@ -13,6 +13,9 @@ namespace HumanManagermentBackend.Contants
 
         public const string Employee_Uploading_Path = "uploads/images/employees";
 
+        public const string Candidate_Uploading_Path = "uploads/images/candidates";
+
+
         public const string Uploaded_file_Prefix = "img";
     }
 }

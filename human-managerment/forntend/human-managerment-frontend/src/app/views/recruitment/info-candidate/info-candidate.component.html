@@ -1,0 +1,207 @@
+<div class="card text-center">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-2">
+                <img [src]="empImgPath + candidate.imageName" height="100px" width="100px" class="rounded-circle"
+                    alt="Cinque Terre">
+            </div>
+            <div class="col-8">
+                <div class="d-flex justify-content-between">
+                    <p class="text-md-left text-danger  h4 p-6"><small>{{candidate.firstname}} {{candidate.lastname}}
+                        </small></p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="text-md-left  h4 p-6"><small>Vị trí ứng tuyển: {{candidate.position}} </small></p>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="float-right">
+                    <div class="btn btn-success" (click)="showAddModal()"><i class="fa fa-calendar"> Đặt lịch</i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <tabset #staticTabs>
+            <tab heading="Thông tin cơ bản" style="height: 250px;">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="d-flex justify-content-between">
+                            <p class="float-md-left h4 "><small>Chứng minh thư: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="float-md-left h4 "><small>Ngày sinh: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class=" h4 p-6"><small>Giới tính: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class=" text-md-left h4 p-6"><small>Dân tộc </small> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class=" text-md-left h4 p-6"><small>Quê quán </small> </p>
+                        </div>
+
+                    </div>
+                    <div class="col-9">
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.idCard}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.birthDay}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-darkr"><small>{{candidate.gender}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.ethnic}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.hometown}}</small></p>
+                        </div>
+
+                    </div>
+                </div>
+            </tab>
+
+            <tab heading="Liên lạc" style="height: 250px;">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="d-flex justify-content-between">
+                            <p class="float-md-left h4 "><small>Email: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class=" h4 p-6"><small>Số điện thoại: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class=" text-md-left h4 p-6"><small>Địa chỉ: </small> </p>
+                        </div>
+
+                    </div>
+                    <div class="col-9">
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.email}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-darkr"><small>{{candidate.phoneNumber}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.hometown}}</small></p>
+                        </div>
+
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Kinh nghiệm và bằng cấp" style="height: 250px;">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="d-flex justify-content-between">
+                            <p class="float-md-left h4 "><small>Trình độ học vấn: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="float-md-left h4 "><small>Chuyên ngành: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="float-md-left h4 "><small>Kinh nghiệm làm việc: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class=" h4 p-6"><small>Bằng cấp: </small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class=" text-md-left h4 p-6"><small>Kĩ năng: </small> </p>
+                        </div>
+
+
+                    </div>
+                    <div class="col-9">
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.literacy}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.career}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.experience}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-darkr"><small>{{candidate.degree}}</small></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="h4 text-dark"><small>{{candidate.skill}}</small></p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </tab>
+
+            <tab heading="Đánh giá" style="height: 250px;">
+
+                <textarea class="form-control text_field " style="height: 220px;" (input)="noteType($event)"
+                    name="message" rows="4" placeholder="">{{note.content}}</textarea>
+
+
+            </tab>
+        </tabset>
+    </div>
+</div>
+<!-- ------------------------------------------------------------------- -->
+<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title pull-left">Lịch phỏng vấn</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="saveForm" novalidate (ngSubmit)="save()" enctype="multipart/form-data">
+                    <div class="form-group">
+                            <input type="datetime-local" class="form-control" (change)="change($event)" [(ngModel)]="schedule.interviewDate" formControlName="date">
+
+                    </div>
+                    <div class="card">
+                        <div class="card-footer text-muted">
+                            <div class="row form-group">
+                                <div class="col-5">
+                                    <label for="pwd">Tiêu đề</label>
+                                    <input type="text"  class="form-control" [(ngModel)]="mailForm.title" formControlName="title">
+
+                                </div>
+                                <div class="col-7">
+                                    <label for="pwd">Địa chỉ phỏng vấn</label>
+                                    <input type="text" class="form-control" (change)="change($event)" [(ngModel)]="position" formControlName="position">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Nội dung</label>
+                                <textarea class="form-control text_field "  [(ngModel)]="mes" style="height: 220px;" name="message"
+                                    rows="4" placeholder="" formControlName="content"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="container">
+                        <div class="float-left">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" (change)="toggleVisibility($event)" >
+                                <label class="form-check-label" for="defaultCheck1" >
+                                  Gửi mail cho ứng viên
+                                </label>
+                              </div>
+                        </div>
+                    <div class="float-right">
+                        <div class="row">
+                            <div class="btn btn-primary mr-3" (click)="create()">Tạo lịch</div>
+                            <div class="btn btn-light pr-2" (click)="hideModal()">Hủy</div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------ -->

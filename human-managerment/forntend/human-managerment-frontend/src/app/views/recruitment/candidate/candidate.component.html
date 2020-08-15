@@ -1,0 +1,66 @@
+<div class="card mt-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <span>Danh sách ứng viên: </span>
+            </div>
+            <div class="col-auto">
+                <button type="button" (click)="toSchedule()" class="btn btn-primary"><i class="fa fa-calendar"></i>
+                    Lịch phỏng vấn</button>
+                <button type="button" (click)="toAdd()" class="btn btn-success"><i class="fa fa-plus"></i>
+                    Thêm hồ sơ</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <!-- <ngx-datatable class="material" [rows]="candidates" [rowHeight]="50" [columnMode]="'force'" [sortType]="'multi'"
+            [headerHeight]="50" [footerHeight]="50" [externalPaging]="true" [count]="paging.totalItems"
+            [offset]="paging.page - 1" [limit]="paging.pageLimit" (page)="loadCandidate($event)">
+            <ngx-datatable-column name="Tên">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span class="cursor-hover" (click)="choose(row.id)">{{ row.firstname}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Số điện thoại">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.phoneNumber}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Email">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.email}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Vị trí ứng tuyển">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.position}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [width]="40">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <div class="btn btn-danger"><i class="fa fa-trash-o"></i>Xóa</div>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable> -->
+        <div class="row">
+        <div class="card col-3 mb-4 ml-5 mr-5" style="border-radius: 12px; " *ngFor="let c of candidates" >
+            <div class="choose" (click)="choose(c.id)">
+            <div class="d-flex justify-content-center p-4">
+                <img [src]="empImgPath + c.imageName" height="100px" width="100px" class="rounded-circle"
+                    alt="Cinque Terre">
+            </div>
+            <h4 class="d-flex justify-content-center card-title">{{c.lastname}} {{c.firstname}}</h4>
+            <hr>
+            <span class="p-2 d-flex justify-content-center">Ứng tuyển: &nbsp; <span class="font-weight-bold"> {{c.position}}</span></span>
+
+            <span class="p-2 d-flex justify-content-center">Trình độ: &nbsp; <span class="font-weight-bold">{{c.literacy}}</span></span>
+            </div>
+            <div class="row pt-3">
+                <div class="choose p-2 col-6 border  border-bottom-0  border-left-0" (click)="accept(c.id)"><span class="font-weight-bold d-flex justify-content-center text-success">Chấp nhận</span></div>
+                <div class="choose p-2 col-6 border  border-bottom-0  border-left-0 border-right-0" (click)="decline(c.id)"><span class="font-weight-bold d-flex justify-content-center text-danger">Từ chối</span></div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

@@ -5,6 +5,8 @@ using human_managerment_backend.Forms;
 using HumanManagermentBackend.Convert;
 using HumanManagermentBackend.Dto;
 using HumanManagermentBackend.Entities;
+using HumanManagermentBackend.Forms;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,17 @@ namespace MyApiWithDB.Convert
             CreateMap<JobEntity, JobDTO>();
             CreateMap<DegreeEntity, DegreeDTO>();
             CreateMap<IndentificationEntity, IndentificationDTO>();
+            CreateMap<CandidateEntity, CandidateDTO>();
+            //CreateMap<CandidateEntity, CandidateDTO>().ConvertUsing<EntityCandidateConverter>();
+            CreateMap<CandidateForm, CandidateEntity>().ConvertUsing<CandidateFormConverter>();
+
+            // CreateMap<NoteEntity, NoteDTO>().ConvertUsing<EntityNoteConverter>();
+            CreateMap<NoteEntity, NoteDTO>();
+            CreateMap<NoteDTO, NoteEntity>();
+            CreateMap<ScheduleEntity, ScheduleDTO>();
+
+
+
 
 
         }

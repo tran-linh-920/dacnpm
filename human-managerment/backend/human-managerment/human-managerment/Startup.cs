@@ -1,6 +1,9 @@
 using AutoMapper;
 using HumanManagermentBackend.Contants;
 using HumanManagermentBackend.Database;
+using HumanManagermentBackend.Exceptions;
+using HumanManagermentBackend.Extensions;
+using HumanManagermentBackend.Models;
 using HumanManagermentBackend.Services;
 using HumanManagermentBackend.Services.Impl;
 using HumanManagermentBackend.Updaters;
@@ -43,13 +46,21 @@ namespace HumanManagermentBackend
             services.AddScoped<DepartmentServiceImpl>();
             services.AddScoped<IndentificationServiceImpl>();
             services.AddScoped<TimeKeepingServiceImpl>();
+
             services.AddScoped<TimeKeepingDetailServiceImpl>();
+
+            services.AddScoped<NoteServiceImpl>();
+            services.AddScoped<CandidateServiceImpl>();
+            services.AddScoped<MailServiceImpl>();
+            services.AddScoped<ScheduleServiceImpl>();
+            services.AddScoped<SalaryServiceImpl>();
+
+
             services.AddScoped<JobUpdater>();
 
             services.AddScoped<WorkingTimeUpdater>();
 
             services.AddScoped<UploadUtil>();
-
             services.AddCors(options =>
             {
                 options.AddPolicy(
@@ -72,12 +83,13 @@ namespace HumanManagermentBackend
                 app.UseDeveloperExceptionPage();
             }
 
+            app.ConfigureCustomExceptionMiddleware();
+
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, SystemContant.Uploading_Folder)),
                 RequestPath = "/uploads"
             });
-
 
             app.UseRouting();
 
@@ -96,5 +108,6 @@ namespace HumanManagermentBackend
                 });
             });
         }
+
     }
 }

@@ -35,6 +35,28 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Tuyển dụng',
+    url: '',
+    icon: 'icon-magnifier-add',
+    children: [
+      {
+        name: 'Danh sách ứng viên',
+        url: '/tuyen-dung/tuyen-nhan-su',
+        icon: 'icon-people',
+      },
+      {
+        name: 'Thỏa thuận',
+        url: '/tuyen-dung/chap-nhan',
+        icon: 'icon-user-following',
+      },
+      {
+        name: 'Không đạt yêu cầu',
+        url: '/tuyen-dung/huy-bo',
+        icon: 'icon-user-unfollow',
+      }
+    ]
+  },
+  {
     name: 'Quản lý công việc',
     url: '/quan-ly-cong-viec',
     icon: 'icon-briefcase',
@@ -86,6 +108,20 @@ export const navItems: INavData[] = [
       }
       
     ],
+  },
+  {
+    name: 'Quản lý lương',
+    url: '/quan-ly-luong',
+    icon: 'icon-pie-chart',
+    children: [
+      {
+        name: 'Tính lương',
+        url: '/quan-ly-luong/tinh-luong'      },
+      {
+        name: 'Nâng lương',
+        url: '/quan-ly-luong/nang-luong'
+      }
+    ]
   },
   {
     name: 'Quản lý vị trí',

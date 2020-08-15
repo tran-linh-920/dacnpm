@@ -25,7 +25,7 @@ namespace HumanManagermentBackend.Controller
         }
 
         [HttpGet]
-        public ActionResult<Api<List<WorkingTimeDTO>>> GetAll(//
+        public ActionResult<Api<List<EmployeeDTO>>> GetAll(//
                                                               [FromQuery(Name = "page"), DefaultValue(1), Required] int page,//
                                                               [FromQuery(Name = "page_limit"), DefaultValue(10),] int limit//
                                                               )

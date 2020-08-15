@@ -13,6 +13,17 @@ namespace HumanManagermentBackend.Contants
 
         public const string Employee_Uploading_Path = "uploads/images/employees";
 
+        public const string Candidate_Uploading_Path = "uploads/images/candidates";
+
+
         public const string Uploaded_file_Prefix = "img";
+
+        public const string JOB_LEVEL_NAME_PREFIX = "Level";
+
+        public const string SALARY_COUNTING_SUCCSESS_MASSAGE = "Success salary counting.";
+
+        public const string SALARY_COUNTING_FIELD_MASSAGE = "Cannot count salary for employees.";
+
+        public const string SALARY_COUNTING_FIELD_DETAIL_MASSAGE = "Cannot count salary for employees: ";
     }
 }

@@ -1,0 +1,73 @@
+<div class="card mt-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <span>Danh sách nhân viên: </span>
+                <!-- <select [(ngModel)]="customerTypeId" (change)="loadCustomer()">
+                      <option value="0"> --- All ---</option>
+                      <option *ngFor="let aCUT of customerTypes" value="{{aCUT.id}}">
+                          {{aCUT.name}}
+                      </option>
+                  </select> -->
+            </div>
+            <div class="col-auto">
+                <button type="button" (click)="exportAsXLSX()" class="btn btn-success"><i class="fa fa-download"></i>
+                    Export</button>
+
+                <button type="button" (click)="showAddModal()" class="btn btn-primary"><i class="fa fa-plus"></i>
+                    Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <ngx-datatable class="material" [rows]="salaryHistories" [rowHeight]="50" [columnMode]="'force'" [sortType]="'multi'"
+            [headerHeight]="50" [footerHeight]="50" [externalPaging]="true" [count]="paging.totalItems"
+            [offset]="paging.page - 1" [limit]="paging.pageLimit" (page)="loadSalaryHistories($event)">
+            <ngx-datatable-column name="Tên">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span class="cursor-hover" (click)="choose(row)">{{ row.employee.lastname}} {{ row.employee.firstname}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Ngày tính lương" prop="salary">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.countedDate | date:'shortDate'}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Lương được nhận">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.salary | currency:'VND'}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Số ngày làm">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.workDay}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Hệ số lương">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.salaryCoefficient}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tiền thuế">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.taxMoney| currency:'VND'}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tiền thưởng">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.rewardMoney| currency:'VND'}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tiền phạt">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.publishMoney| currency:'VND'}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tiền bảo hiểm">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.insurranceMoney| currency:'VND'}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>

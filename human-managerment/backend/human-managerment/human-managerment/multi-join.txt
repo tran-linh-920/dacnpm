@@ -1,0 +1,8 @@
+﻿ List<Entities.JobLevelDetailEntity> abc = _humanManagerContext.JobLevelDetails
+                                                        .Include(jld => jld.Employee)
+                                                        .ThenInclude(e => e.Penalties)
+                                                        .Include(jld => jld.Employee)
+                                                        .ThenInclude(e => e.Insurrances)
+                                                        .Include(jld => jld.JobLevel)
+                                                        .ThenInclude(jl => jl.Job)
+                                                        .ToList();

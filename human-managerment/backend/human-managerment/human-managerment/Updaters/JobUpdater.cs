@@ -20,8 +20,8 @@ namespace HumanManagermentBackend.Updaters
         public JobEntity DoUpdate(JobEntity oldEntity, JobEntity newEntity)
         {
             oldEntity.JobTitle = newEntity.JobTitle;
-            oldEntity.MaxSalary = newEntity.MaxSalary;
-            oldEntity.MinSalary = newEntity.MinSalary;
+            //oldEntity.MaxSalary = newEntity.MaxSalary;
+            //oldEntity.MinSalary = newEntity.MinSalary;
 
             var oldJhs = oldEntity.JobHistorys;
             var newJhs = newEntity.JobHistorys;

@@ -16,7 +16,7 @@ namespace human_managerment_backend.Dto
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime HireDay { get; set; }
-        public int Salary { get; set; }
+        public int JobLevel { get; set; }
         public string ImageName { get; set; }
     }
 }

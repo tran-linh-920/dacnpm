@@ -6,6 +6,7 @@ using HumanManagermentBackend.Dto;
 using HumanManagermentBackend.Entities;
 
 using HumanManagermentBackend.Updaters;
+using HumanManagermentBackend.Utils;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,8 +33,7 @@ namespace HumanManagermentBackend.Services.Impl
             List<JobDTO> dtos = new List<JobDTO>();
 
             List<JobEntity> entities = _humanManagerContext.Jobs
-                                            .Include(j => j.JobHistorys)
-                                            .ThenInclude(jh => jh.Department).ToList();
+                                            .Include(j => j.JobLevel).ToList();
 
             entities.ForEach(entity =>
             {

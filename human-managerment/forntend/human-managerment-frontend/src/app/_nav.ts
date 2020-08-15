@@ -100,6 +100,21 @@ export const navItems: INavData[] = [
     ],
   },
   {
+    name: 'Quản lý lương',
+    url: '/quan-ly-luong',
+    icon: 'icon-pie-chart',
+    children: [
+      {
+        name: 'Tính lương',
+        url: '/quan-ly-luong/tinh-luong'
+      },
+      {
+        name: 'Nâng lương',
+        url: '/quan-ly-luong/nang-luong'
+      }
+    ]
+  },
+  {
     name: 'Quản lý vị trí',
     url: '/quan-ly-vị-tri',
     icon: 'icon-location-pin',

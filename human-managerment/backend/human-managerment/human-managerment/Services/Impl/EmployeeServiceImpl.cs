@@ -51,10 +51,6 @@ namespace HumanManagermentBackend.Services.Impl
             return dtos;
         }
 
-<<<<<<< HEAD
-        public EmployeeDTO Save(EmployeeEntity emp)
-=======
-
         public List<EmployeeDTO> FindWithJob(int page, int limit)
         {
             List<EmployeeDTO> dtos = new List<EmployeeDTO>();
@@ -73,11 +69,12 @@ namespace HumanManagermentBackend.Services.Impl
             return dtos;
         }
 
-        public EmployeeDTO Save(EmployeeEntity entity)
->>>>>>> 10c84172a5a87a1bbbd9d4904bf3174555e94e91
+        public EmployeeDTO Save(EmployeeEntity emp)
         {
+            emp.Job = null;
             var transaction = _humanManagerContext.Database.BeginTransaction();
             EmployeeEntity entity = null;
+
 
             try
             {
@@ -88,10 +85,10 @@ namespace HumanManagermentBackend.Services.Impl
                 EmployeeDTO dto = _mapper.Map<EmployeeDTO>(entity);
                 return dto;
             }
-            catch
+            catch(Exception ex)
             {
                 transaction.Rollback();
-                return null;
+                throw ex;
             }
         }
 

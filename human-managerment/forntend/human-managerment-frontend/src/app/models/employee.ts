@@ -23,11 +23,7 @@ export interface Employee {
     gender: boolean;
     email: string;
     phoneNumber: string;
-<<<<<<< HEAD
-    hireDay: string;
-=======
     hireDay: Date;
->>>>>>> 10c84172a5a87a1bbbd9d4904bf3174555e94e91
     jobLevel: number;
     imageName: string;
     job: Job;

@@ -72,6 +72,7 @@ namespace HumanManagermentBackend.Controller
         [HttpPost("accept")]
         public ActionResult<Api<EmployeeDTO>> Accept(EmployeeEntity emp)
         {
+            emp.JobId = emp.Job.Id;
             EmployeeDTO dto = _employeeService.Save(emp);
             Api<EmployeeDTO> result = new Api<EmployeeDTO>(200, dto, "Add Success");
             return Ok(result);

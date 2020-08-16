@@ -41,7 +41,7 @@ export class CandidateService {
     formData.append('UploadedFile', file);
     formData.append('Firstname', candidate.firstname );
     formData.append('Lastname', candidate.lastname);
-    formData.append('BirthDay', candidate.birthDay);
+    formData.append('BirthDay', candidate.birthDay + '') ;
     formData.append('Gender', candidate.gender + '');
     formData.append('Email', candidate.email );
     formData.append('PhoneNumber', candidate.phoneNumber);

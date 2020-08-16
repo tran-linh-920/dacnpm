@@ -44,5 +44,24 @@ namespace HumanManagermentBackend.Services.Impl
         {
             return _humanManagerContext.Provinces.Count();
         }
+
+        public ProvinceDTO save(ProvinceEntity entity)
+        {
+            var transaction = _humanManagerContext.Database.BeginTransaction();
+            try
+            {
+                entity = _humanManagerContext.Provinces.Add(entity).Entity;
+                _humanManagerContext.SaveChanges();
+
+                transaction.Commit();
+                ProvinceDTO dto = _mapper.Map<ProvinceDTO>(entity);
+                return dto;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return null;
+            }
+        }
     }
 }

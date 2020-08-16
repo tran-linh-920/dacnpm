@@ -46,5 +46,24 @@ namespace HumanManagermentBackend.Services.Impl
 
             return dtos;
         }
+
+        public DistrictDTO Save(DistrictEntity district)
+        {
+            var transaction = _humanManagerContext.Database.BeginTransaction();
+            try
+            {
+                district = _humanManagerContext.Districts.Add(district).Entity;
+                _humanManagerContext.SaveChanges();
+
+                transaction.Commit();
+                DistrictDTO dto = _mapper.Map<DistrictDTO>(district);
+                return dto;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return null;
+            }
+        }
     }
 }

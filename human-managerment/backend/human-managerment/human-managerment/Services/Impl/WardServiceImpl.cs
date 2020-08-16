@@ -31,6 +31,33 @@ namespace HumanManagermentBackend.Services.Impl
             return _humanManagerContext.Wards.Count();
         }
 
+        public WardDTO Edit(long id, WardEntity ward)
+        {
+            var transaction = _humanManagerContext.Database.BeginTransaction();
+            try
+            {
+                WardEntity entity = _humanManagerContext.Wards.SingleOrDefault(item => item.Id == id);
+                if (entity != null)
+                {
+                   // entity.Id = ward.Id;
+                    entity.Name = ward.Name;
+                    entity.District_Id = ward.District_Id;
+                    _humanManagerContext.SaveChanges();
+                }
+
+                transaction.Commit();
+
+                WardDTO dto = _mapper.Map<WardDTO>(entity);
+
+                return dto;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return null;
+            }
+        }
+
         public List<WardDTO> FindAll(int page, int limit)
         {
             List<WardDTO> dtos = new List<WardDTO>();
@@ -46,5 +73,24 @@ namespace HumanManagermentBackend.Services.Impl
 
             return dtos;
         }
-}
+
+        public WardDTO Save(WardEntity ward)
+        {
+            var transaction = _humanManagerContext.Database.BeginTransaction();
+            try
+            {
+                ward = _humanManagerContext.Wards.Add(ward).Entity;
+                _humanManagerContext.SaveChanges();
+
+                transaction.Commit();
+                WardDTO dto = _mapper.Map<WardDTO>(ward);
+                return dto;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return null;
+            }
+        }
+    }
 }

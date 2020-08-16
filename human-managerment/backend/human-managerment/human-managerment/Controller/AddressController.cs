@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using HumanManagermentBackend.Dto;
+using HumanManagermentBackend.Entities;
 using HumanManagermentBackend.Models;
 using HumanManagermentBackend.Services;
 using HumanManagermentBackend.Services.Impl;
@@ -48,6 +49,16 @@ namespace HumanManagermentBackend.Controller
             return Ok(result);
         }
 
+        [HttpPost("province")]
+        public ActionResult<Api<ProvinceDTO>> AddProvince(ProvinceEntity province)
+        {
+            ProvinceDTO dto = _provinceService.save(province);
+
+            Api<ProvinceDTO> result = new Api<ProvinceDTO>(200, dto, "Success", null);
+
+            return Ok(result);
+        }
+
         [HttpGet("district")]
         public ActionResult<Api<List<DistrictDTO>>> GetAllDistrict(//
                                                               [FromQuery(Name = "page"), DefaultValue(1)] int page,//
@@ -66,6 +77,16 @@ namespace HumanManagermentBackend.Controller
             return Ok(result);
         }
 
+        [HttpPost("district")]
+        public ActionResult<Api<DistrictDTO>> AddDistrict(DistrictEntity district)
+        {
+            DistrictDTO dto = _districtService.Save(district);
+
+            Api<DistrictDTO> result = new Api<DistrictDTO>(200, dto, "Success", null);
+
+            return Ok(result);
+        }
+
         [HttpGet("ward")]
         public ActionResult<Api<List<WardDTO>>> GetAllWard(//
                                                               [FromQuery(Name = "page"), DefaultValue(1)] int page,//
@@ -80,6 +101,16 @@ namespace HumanManagermentBackend.Controller
             List<WardDTO> dtos = _wardService.FindAll(page, limit);
 
             Api<List<WardDTO>> result = new Api<List<WardDTO>>(200, dtos, "Success", new Paging(page, limit, totalPages, totalItems));
+
+            return Ok(result);
+        }
+
+        [HttpPost("ward")]
+        public ActionResult<Api<WardDTO>> AddWard(WardEntity ward)
+        {
+            WardDTO dto = _wardService.Save(ward);
+
+            Api<WardDTO> result = new Api<WardDTO>(200, dto, "Success", null);
 
             return Ok(result);
         }

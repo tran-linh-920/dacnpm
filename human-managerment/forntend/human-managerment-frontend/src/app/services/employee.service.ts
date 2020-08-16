@@ -21,6 +21,10 @@ export class EmployeeService {
       (`${this.apiService.apiUrl.employees.home}?${query}`);
   }
 
+  OfficialEmployee(Acceptcandidate: Employee):  Observable<any>{
+    this.ap
+  }
+
   addEmployee(file: File, employee: Employee): Observable<any>{
     const formData: FormData = new FormData();
     formData.append('UploadedFile', file);
@@ -31,7 +35,7 @@ export class EmployeeService {
     formData.append('Email', employee.email );
     formData.append('PhoneNumber', employee.phoneNumber);
     formData.append('HireDay', employee.hireDay );
-    formData.append('Salary', employee.salary + '');
+    formData.append('JobLevel', employee.jobLevel + '');
     formData.append('ImageName', '');
 
     const req = new HttpRequest('POST', this.apiService.apiUrl.employees.home, formData);

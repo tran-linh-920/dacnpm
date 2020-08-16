@@ -51,7 +51,7 @@ export class BasicInfoComponent implements OnInit {
     email: '',
     phoneNumber: '',
     hireDay: '',
-    salary: 0,
+    jobLevel: 0,
     imageName: '',
   };
 

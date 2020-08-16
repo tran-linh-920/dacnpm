@@ -23,7 +23,7 @@ export interface Employee {
     email: string;
     phoneNumber: string;
     hireDay: string;
-    salary: number;
+    jobLevel: number;
     imageName: string;
 
 }

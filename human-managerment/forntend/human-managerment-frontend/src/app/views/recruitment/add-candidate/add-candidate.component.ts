@@ -51,8 +51,9 @@ export class AddCandidateComponent implements OnInit {
   save() {
     this.candidateService.addCandidate(this.image, this.candidate).subscribe(res =>{
       console.log(res);
-      this.router.navigateByUrl('tuyen-dung/tuyen-nhan-su');
-
+      this.router.navigateByUrl('tuyen-dung/tuyen-nhan-su', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['tuyen-dung/tuyen-nhan-su']);
+    }); 
     });
   }
 

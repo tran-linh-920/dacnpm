@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable' 
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { DayService, WeekService, WorkWeekService, MonthService, AgendaService } from '@syncfusion/ej2-angular-schedule';
+import { ToastrModule } from 'ngx-toastr';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -70,6 +71,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     ChartsModule,
     NgxDatatableModule,
     ScheduleModule,
+    ToastrModule.forRoot(), // ToastrModule added
 
   ],
   declarations: [

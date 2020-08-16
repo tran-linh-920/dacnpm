@@ -169,9 +169,19 @@
         </div>
     </div>
     <div class="card-body">
-        <ngx-datatable class="material" [rows]="employees" [rowHeight]="50" [columnMode]="'force'" [sortType]="'multi'"
-            [headerHeight]="50" [footerHeight]="50" [externalPaging]="true" [count]="paging.totalItems"
-            [offset]="paging.page - 1" [limit]="paging.pageLimit" (page)="loadEmployee($event)">
+
+        <ngx-datatable class="material"
+         [rows]="employees" 
+         [rowHeight]="50" 
+         [columnMode]="'force'" 
+         [sortType]="'multi'"
+            [headerHeight]="50"
+             [footerHeight]="50"
+              [externalPaging]="true" 
+              [count]="paging.totalItems"
+            [offset]="paging.page - 1" 
+            [limit]="paging.pageLimit" (page)="loadEmployee($event)">
+            
             <ngx-datatable-column name="Tên">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                     <span class="cursor-hover" (click)="choose(row)">{{ row.firstname}}</span>

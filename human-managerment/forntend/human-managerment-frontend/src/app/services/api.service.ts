@@ -28,6 +28,12 @@ export class ApiService {
     mails:{
       home: `${this.baseUrl}mails`,
     },
+    timeKeepingDetail: {
+      home: `${this.baseUrl}time-keeping-detail`,
+      monrning: `${this.baseUrl}time-keeping-detail/morning`,
+      afteroon: `${this.baseUrl}time-keeping-detail/afternoon`
+
+    },
     departments: {
       home: `${this.baseUrl}departments`
     },
@@ -51,7 +57,13 @@ export class ApiService {
     },
     timekeeping: {
       home: `${this.baseUrl}time-keepings`,
-      creat: `${this.baseUrl}time-keepings`
+
+      creat: `${this.baseUrl}time-keepings`,
+      morning:`${this.baseUrl}time-keepings/morning`,
+      afternoon:`${this.baseUrl}time-keepings/afternoon`,
+      refet : `${this.baseUrl}time-keepings/refet`,
+      close : `${this.baseUrl}time-keepings/close`,
+      
     },
     schedule: {
       home: `${this.baseUrl}schedules`,
@@ -60,6 +72,7 @@ export class ApiService {
       counting: `${this.baseUrl}salaries/counting`,
       increasing: `${this.baseUrl}salaries/increasing`,
       histories: `${this.baseUrl}salaries/histories`
+
     },
   };
 

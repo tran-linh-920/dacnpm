@@ -28,16 +28,20 @@ namespace HumanManagermentBackend.Database
         public DbSet<DegreeEntity> Degrees { get; set; }
         public DbSet<IndentificationEntity> Indentifications { get; set; }
         public DbSet<TimeKeepingEntity> Timekeepings { get; set; }
+
+        public DbSet<TimeKeepingDetailEntity> TimeKeepingDetails { get; set; }
+
         public DbSet<CandidateEntity> Candidates { get; set; }
 
         public DbSet<NoteEntity> Notes { get; set; }
         public DbSet<ScheduleEntity> Schedules { get; set; }
         public DbSet<TaxEntity> Taxs { get; set; }
+
         public IEnumerable<object> TimeKeepings { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=12345;database=HumanManagerment");
+            optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=123456789;database=HumanManagerment");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

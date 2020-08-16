@@ -33,6 +33,7 @@ namespace MyApiWithDB.Convert
             CreateMap<AddressEntity, AddressDTO>().ConvertUsing<AddressConverter>();
 
             CreateMap<TimeKeepingEntity, TimeKeepingDTO>();
+            CreateMap<TimeKeepingDetailEntity , TimeKeepingDetailDTO>();
 
             CreateMap<DepartmentEntity, DepartmentDTO>();
 

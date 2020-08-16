@@ -21,8 +21,8 @@ export class EmployeeService {
       (`${this.apiService.apiUrl.employees.home}?${query}`);
   }
 
-  OfficialEmployee(Acceptcandidate: Employee):  Observable<any>{
-    this.ap
+  OfficialEmployee(acceptcandidate: Employee):  Observable<any>{
+    return this.apiService.post(this.apiService.apiUrl.employees.accept, acceptcandidate);
   }
 
   addEmployee(file: File, employee: Employee): Observable<any>{

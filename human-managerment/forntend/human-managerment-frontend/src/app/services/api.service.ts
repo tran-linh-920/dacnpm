@@ -13,13 +13,13 @@ export class ApiService {
     employees: {
       home: `${this.baseUrl}employees`,
       images: `${this.baseUrl}uploads/images/employees/`,
-      canimg: `${this.baseUrl}uploads/images/candidates/`
-
-
+      canimg: `${this.baseUrl}uploads/images/candidates/`,
+      accept: `${this.baseUrl}employees/accept`,
     },
     candidates: {
       home: `${this.baseUrl}candidates`,
       type: `${this.baseUrl}candidates/type`,
+      job: `${this.baseUrl}jobs`
 
     },
     notes: {

@@ -11,6 +11,9 @@ import { ApiService } from './../../../services/api.service';
 import { Employee } from '../../../models/employee';
 import { MailForm } from '../../../models/mail-form';
 import { MailService } from '../../../services/mail.service';
+import { EmployeeService } from './../../../services/employee.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -26,13 +29,14 @@ export class AcceptCandidateComponent implements OnInit {
   candidates: Candidate[];
   mailForm: MailForm = {title: 'Thư mời nhận việc'} as MailForm;
   chosenCandidate: Candidate = {id: 0} as Candidate;
+  chosenEmployee: Employee = {id: 0} as Employee;
   paging = { page: 0, pageLimit: 10, totalItems: 3 } as Paging;
   empImgPath: any = this.apiService.apiUrl.employees.canimg;
   position: string;
   date: Date;
   mes: string;
   constructor(private candidateService: CandidateService, private fb: FormBuilder, private router: Router, private apiService: ApiService,
-              private mailService: MailService) 
+              private mailService: MailService, private employeeService: EmployeeService, private toast: ToastrService) 
               {
                 this.salaryForm = this.fb.group({
                   salary: [''],
@@ -84,9 +88,20 @@ export class AcceptCandidateComponent implements OnInit {
   accept() {
     this.mailForm.address = this.chosenCandidate.email;
     this.mailForm.content = this.mes;
-    this.mailService.send(this.mailForm).subscribe(res => {
+    this.chosenEmployee = {birthDay: this.chosenCandidate.birthDay, email: this.chosenCandidate.email,
+                           firstname: this.chosenCandidate.firstname, id: 0,
+                            gender: this.chosenCandidate.gender, jobLevel: 1, hireDay: this.chosenCandidate.birthDay,
+                            imageName: this.chosenCandidate.imageName, phoneNumber: this.chosenCandidate.phoneNumber,
+                            lastname: this.chosenCandidate.lastname }
+    console.log(this.chosenEmployee);
+    
+    this.employeeService.OfficialEmployee(this.chosenEmployee).subscribe(res => {
       console.log(res);
     });
+    // this.mailService.send(this.mailForm).subscribe(res => {
+    //   console.log(res);
+    // });
+    this.toast.success('Thông báo', 'Thành công');
     this.hideModal();
   }
 }

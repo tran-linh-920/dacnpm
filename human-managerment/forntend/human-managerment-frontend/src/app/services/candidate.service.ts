@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { RootObj } from '../models/root-obj';
 import { Paging } from '../models/paging';
 import { Candidate } from '../models/candidate';
+import { Job } from '../models/job';
 import { ApiService } from './api.service';
 import { HttpClient, HttpRequest, HttpHeaders, HttpEvent } from '@angular/common/http';
 @Injectable({
@@ -17,6 +18,10 @@ export class CandidateService {
     console.log(`${this.apiService.apiUrl.candidates.home}/${type}?${query}`);
     return this.apiService.get<RootObj<[Candidate]>>
       (`${this.apiService.apiUrl.candidates.type}/${type}?${query}`);
+  }
+
+  getJob():Observable<RootObj<[Job]>> {
+    return this.apiService.get<RootObj<[Job]>>(this.apiService.apiUrl.candidates.job);
   }
 
   getOne(id): Observable<RootObj<Candidate>> {

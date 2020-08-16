@@ -51,9 +51,25 @@ namespace HumanManagermentBackend.Services.Impl
             return dtos;
         }
 
-        public EmployeeDTO Save(EmployeeEntity entity)
+        public EmployeeDTO Save(EmployeeEntity emp)
         {
-            throw new NotImplementedException();
+            var transaction = _humanManagerContext.Database.BeginTransaction();
+            EmployeeEntity entity = null;
+
+            try
+            {
+                entity = _humanManagerContext.Employees.Add(emp).Entity;
+                _humanManagerContext.SaveChanges();
+                transaction.Commit();
+
+                EmployeeDTO dto = _mapper.Map<EmployeeDTO>(entity);
+                return dto;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return null;
+            }
         }
 
         public EmployeeDTO Save(EmployeeForm empForm)

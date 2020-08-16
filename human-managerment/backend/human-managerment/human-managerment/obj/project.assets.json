@@ -8720,23 +8720,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kiet Zenitsu\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kiet Zenitsu\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+      "projectUniqueName": "E:\\DOTNET\\CNPM\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
       "projectName": "HumanManagermentBackend",
-      "projectPath": "C:\\Users\\Kiet Zenitsu\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
-      "packagesPath": "C:\\Users\\Kiet Zenitsu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kiet Zenitsu\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\obj\\",
+      "projectPath": "E:\\DOTNET\\CNPM\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "E:\\DOTNET\\CNPM\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Kiet Zenitsu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8803,7 +8799,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

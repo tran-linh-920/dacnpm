@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using human_managerment_backend.Dto;
+using human_managerment_backend.Entities;
 using human_managerment_backend.Forms;
 using HumanManagermentBackend.Contants;
 using HumanManagermentBackend.Dto;
@@ -46,6 +47,14 @@ namespace HumanManagermentBackend.Controller
         public ActionResult<Api<EmployeeDTO>> New([FromForm] EmployeeForm empForm)
         {
             EmployeeDTO dto = _employeeService.Save(empForm);
+            Api<EmployeeDTO> result = new Api<EmployeeDTO>(200, dto, "Add Success");
+            return Ok(result);
+        }
+
+        [HttpPost("accept")]
+        public ActionResult<Api<EmployeeDTO>> Accept(EmployeeEntity emp)
+        {
+            EmployeeDTO dto = _employeeService.Save(emp);
             Api<EmployeeDTO> result = new Api<EmployeeDTO>(200, dto, "Add Success");
             return Ok(result);
         }

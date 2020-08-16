@@ -11,7 +11,7 @@ namespace HumanManagermentBackend.Services
     {
         public List<TimeKeepingDetailDTO> findAllMorning();
         public List<TimeKeepingDetailDTO> findAllAfteroon();
-        public List<TimeKeepingDetailDTO> findAllHistory(int page, int limit);
+        public List<TimeKeepingDetailDTO> findAllHistory();
         public TimeKeepingDetailDTO endTimeKeepingforOneDay(TimeKeepingDetailEntity entity);
         public TimeKeepingDetailDTO removeTimeKeeping(long id);
     }

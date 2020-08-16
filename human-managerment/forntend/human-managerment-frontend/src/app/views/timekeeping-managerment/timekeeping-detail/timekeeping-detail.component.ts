@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TimeKeepingDetailService } from '../../../services/time-keeping-detail.service';
 import { Paging } from '../../../models/paging';
 import { TimekeepingDetail } from '../../../models/timekeeping-detail';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-timekeeping-detail',
@@ -12,7 +13,7 @@ export class TimekeepingDetailComponent implements OnInit {
   paging = { page: 0, pageLimit: 10, totalItems: 3 } as Paging ;
   listMorning =[] ;
   listAfternoon=[];
-  constructor(private timeKeepingDetailService : TimeKeepingDetailService ) { }
+  constructor(private timeKeepingDetailService : TimeKeepingDetailService ,private toastr :ToastrService) { }
 
   ngOnInit(): void {
     this.loadTimeKeepingDetailMorning();
@@ -38,6 +39,7 @@ export class TimekeepingDetailComponent implements OnInit {
   }
   openEdit(timekeepingdetail : TimekeepingDetail){
     this.timeKeepingDetailService.save(timekeepingdetail).subscribe(res => {
+      this.toastr.warning("Đã kết thúc ca làm" ,"Nhân viên" +timekeepingdetail.employeeId);
     
       this.loadTimeKeepingDetailMorning();
       this.loadTimeKeepingDetailAfternoon();
@@ -46,6 +48,8 @@ export class TimekeepingDetailComponent implements OnInit {
   }
   removeTimeKeepingDetail(timekeepingdetail : TimekeepingDetail){
     this.timeKeepingDetailService.removeTimeKeepingDetail(timekeepingdetail).subscribe(res =>{
+      this.toastr.error("Đã Xóa Ca "+timekeepingdetail.shift,"Nhân viên " +timekeepingdetail.id );
+      console.log(timekeepingdetail);
       this.loadTimeKeepingDetailMorning();
       this.loadTimeKeepingDetailAfternoon();
     });

@@ -36,6 +36,13 @@ namespace HumanManagermentBackend.Controller
             Api<List<TimeKeepingDTO>> result = new Api<List<TimeKeepingDTO>>(200, dtos, "Success");
             return Ok(result);
         }
+        [HttpGet("/time-keepings/close")]
+        public ActionResult<Api<List<TimeKeepingDTO>>> CloseTimeKeeping()
+        {
+            List<TimeKeepingDTO> dtos = _timeKeepingService.CloseTimeKeeping();
+            Api<List<TimeKeepingDTO>> result = new Api<List<TimeKeepingDTO>>(200, dtos, "Success");
+            return Ok(result);
+        }
         [HttpGet("/time-keepings/morning")]
         public ActionResult<Api<List<TimeKeepingDTO>>> GetMorning()
         {

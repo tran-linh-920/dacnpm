@@ -29,6 +29,7 @@ namespace HumanManagermentBackend.Dto
         public int morning { get; set; }
         public int afternoon { get; set; }
 
+        public int workDay { get; set; }
 
         public int status { get; set; }
     }

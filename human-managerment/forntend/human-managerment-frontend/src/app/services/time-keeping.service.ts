@@ -11,7 +11,10 @@ export class TimeKeepingService {
 
   constructor(private apiService: ApiService) { }
 
-  
+  closeTimeKeeping(): Observable<RootObj<[Timekeeping]>> {
+
+      return this.apiService.get<RootObj<[Timekeeping]>>(`${this.apiService.apiUrl.timekeeping.close}`);
+    }
   refetTimeKeeping(): Observable<RootObj<[Timekeeping]>> {
     //  const query = `page=${paging.page + 1}&page_limit=4`;
       return this.apiService.get<RootObj<[Timekeeping]>>(`${this.apiService.apiUrl.timekeeping.refet}`);

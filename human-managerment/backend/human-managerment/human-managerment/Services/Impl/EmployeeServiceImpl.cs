@@ -51,6 +51,25 @@ namespace HumanManagermentBackend.Services.Impl
             return dtos;
         }
 
+
+        public List<EmployeeDTO> FindWithJob(int page, int limit)
+        {
+            List<EmployeeDTO> dtos = new List<EmployeeDTO>();
+
+            List<EmployeeEntity> entities = _humanManagerContext.Employees
+                                            .Include(e => e.Job)
+                                            .ThenInclude(j => j.JobLevel)
+                                            .Skip((page - 1) * limit)
+                                            .Take(limit).ToList();
+
+            entities.ForEach(entity =>
+            {
+                dtos.Add(_mapper.Map<EmployeeDTO>(entity));
+            });
+
+            return dtos;
+        }
+
         public EmployeeDTO Save(EmployeeEntity entity)
         {
             throw new NotImplementedException();
@@ -93,5 +112,6 @@ namespace HumanManagermentBackend.Services.Impl
         {
             throw new NotImplementedException();
         }
+
     }
 }

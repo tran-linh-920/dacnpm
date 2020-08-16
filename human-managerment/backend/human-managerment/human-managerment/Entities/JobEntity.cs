@@ -1,4 +1,5 @@
 ﻿using human_managerment_backend.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -27,6 +28,7 @@ namespace HumanManagermentBackend.Entities
 
         public List<JobHistoryEntity> JobHistorys { get; set; }
         public  JobLevelEntity JobLevel { get; set; }
+
         public List<EmployeeEntity> Employees { get; set; }
 
     }

@@ -11,11 +11,8 @@
                   </select> -->
             </div>
             <div class="col-auto">
-                <button type="button" (click)="exportAsXLSX()" class="btn btn-success"><i class="fa fa-download"></i>
-                    Export</button>
-
-                <button type="button" (click)="showAddModal()" class="btn btn-primary"><i class="fa fa-plus"></i>
-                    Add</button>
+                <button type="button" (click)="countSalary()" class="btn btn-success"><i class="fa fa-dollar"></i>
+                    Tính lương</button>
             </div>
         </div>
     </div>
@@ -71,3 +68,13 @@
         </ngx-datatable>
     </div>
 </div>
+
+<ng-template #notifyModalTemplate>
+    <div class="modal-body" style="text-align: center;">
+     {{message}}
+     <button type="button" class="close pull-right" aria-label="Close" (click)="notifyModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </ng-template>
+

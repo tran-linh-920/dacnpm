@@ -23,6 +23,9 @@ https://stackoverflow.com/questions/19342908/how-to-create-a-many-to-many-mappin
 join mutiple table
 https://stackoverflow.com/questions/10822656/entity-framework-include-multiple-levels-of-properties
 
+fix vong lap json
+https://docs.microsoft.com/en-us/ef/core/querying/related-data#related-data-and-serialization
+
 JSON Web Token hay Session Cookies
 https://topdev.vn/blog/json-web-token-hay-session-cookies/
 

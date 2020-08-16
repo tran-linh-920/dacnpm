@@ -68,15 +68,15 @@ namespace HumanManagermentBackend.Controller
                     if (!_salaryService.DoSalaryCounting(emp.Id))
                     {
                         isErr = true;
-                        massage += emp.Id + " ";
+                        massage += " " + emp.Id + ":" + emp.Lastname + emp.Firstname + " - ";
                     }
                 }
             }
 
             if (!isErr)
-                massage = SystemContant.SALARY_COUNTING_SUCCSESS_MASSAGE;
+                return Ok(new Api<Object>((int)HttpStatusCode.OK, null, SystemContant.SALARY_COUNTING_SUCCSESS_MASSAGE));
 
-            return Ok(new Api<Object>((int)HttpStatusCode.OK, null, massage));
+            return Ok(new Api<Object>((int)HttpStatusCode.InternalServerError, null, massage));
         }
 
         [HttpPut("increasing/{empId}")]

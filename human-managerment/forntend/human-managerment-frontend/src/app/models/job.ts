@@ -1,7 +1,8 @@
-export interface Job {
-    Job_ID: number;
-    Job_Name: string;
-    Min_Salary: number;
-    Max_Salary: number;
+import { JobLevel } from './job-level';
 
+export interface Job {
+    id: number;
+    jobTitle: string;
+    jobBio: string;
+    jobLevel: JobLevel;
 }

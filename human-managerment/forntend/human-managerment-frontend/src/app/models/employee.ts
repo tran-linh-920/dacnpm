@@ -1,4 +1,5 @@
 import {Department} from './department';
+import { Job } from './job';
 
 export interface Employee {
     // Emp_ID: number;
@@ -18,12 +19,17 @@ export interface Employee {
     id: number;
     firstname: string;
     lastname: string;
-    birthDay: string;
+    birthDay: Date;
     gender: boolean;
     email: string;
     phoneNumber: string;
+<<<<<<< HEAD
     hireDay: string;
+=======
+    hireDay: Date;
+>>>>>>> 10c84172a5a87a1bbbd9d4904bf3174555e94e91
     jobLevel: number;
     imageName: string;
+    job: Job;
 
 }

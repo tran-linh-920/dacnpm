@@ -20,10 +20,10 @@ namespace HumanManagermentBackend.Contants
 
         public const string JOB_LEVEL_NAME_PREFIX = "Level";
 
-        public const string SALARY_COUNTING_SUCCSESS_MASSAGE = "Success salary counting.";
+        public const string SALARY_COUNTING_SUCCSESS_MASSAGE = "Tính lương thành công.";
 
-        public const string SALARY_COUNTING_FIELD_MASSAGE = "Cannot count salary for employees.";
+        public const string SALARY_COUNTING_FIELD_MASSAGE = "Không thể tính lương cho nhân viên.";
 
-        public const string SALARY_COUNTING_FIELD_DETAIL_MASSAGE = "Cannot count salary for employees: ";
+        public const string SALARY_COUNTING_FIELD_DETAIL_MASSAGE = "Không thể tính lương cho nhân viên: ";
     }
 }

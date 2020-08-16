@@ -48,6 +48,7 @@ namespace HumanManagermentBackend.Entities
         public long idEmployee { get; set; }
 
 
+
         public void plusWorkingTime(int time)
         {
             this.totalWorkTime += time;

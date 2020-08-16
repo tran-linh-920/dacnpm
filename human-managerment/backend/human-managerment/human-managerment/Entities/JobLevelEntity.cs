@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -45,7 +46,6 @@ namespace HumanManagermentBackend.Entities
 
         [Column("jlvJob_id", TypeName = "bigint")]
         public long JobId { get; set; }
-
         public JobEntity Job { get; set; }
     }
 }

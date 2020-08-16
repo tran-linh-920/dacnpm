@@ -15,5 +15,6 @@ namespace HumanManagermentBackend.Services
         public EmployeeDTO Save(EmployeeForm empForm);
         public EmployeeDTO Replace(EmployeeEntity entity);
         public bool Delete(EmployeeEntity newEntity);
+        List<EmployeeDTO> FindWithJob(int page, int limit);
     }
 }

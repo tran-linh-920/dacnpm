@@ -69,11 +69,7 @@ namespace HumanManagermentBackend.Services.Impl
                 // Lấy số ngày công thực tế
                 int empWorkDay = 30;
 
-                // Lấy bảng thuế
-                List<TaxEntity> taxs = _humanManagerContext.Taxs.ToList();
-
                 // Tính phụ cấp
-
 
                 // Tính thưởng phạt
                 int rewardMoney = SalaryUtil.DoRewardMoneyCounting(employeeEntity.RewardPunishes);
@@ -81,6 +77,9 @@ namespace HumanManagermentBackend.Services.Impl
 
                 // Tính bảo hiểm
                 double totalInsurranceRatio = SalaryUtil.CountTotalInsurranceRatio(insurrances);
+
+                // Lấy bảng thuế
+                List<TaxEntity> taxs = _humanManagerContext.Taxs.ToList();
 
                 // Tính lương
                 SalaryHistoryEntity salaryHistoryEntity =//

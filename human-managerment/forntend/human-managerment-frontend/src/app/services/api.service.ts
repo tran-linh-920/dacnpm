@@ -14,7 +14,11 @@ export class ApiService {
       home: `${this.baseUrl}employees`,
       images: `${this.baseUrl}uploads/images/employees/`,
       canimg: `${this.baseUrl}uploads/images/candidates/`,
+<<<<<<< HEAD
       accept: `${this.baseUrl}employees/accept`,
+=======
+      jobInformations: `${this.baseUrl}employees/job-informations`,
+>>>>>>> 10c84172a5a87a1bbbd9d4904bf3174555e94e91
     },
     candidates: {
       home: `${this.baseUrl}candidates`,

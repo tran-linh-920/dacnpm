@@ -46,13 +46,19 @@ export class BasicInfoComponent implements OnInit {
     id: 0,
     firstname: '',
     lastname: '',
-    birthDay: '',
+    birthDay: null,
     gender: true,
     email: '',
     phoneNumber: '',
+<<<<<<< HEAD
     hireDay: '',
     jobLevel: 0,
+=======
+    hireDay: null,
+    jobLevel: 1,
+>>>>>>> 10c84172a5a87a1bbbd9d4904bf3174555e94e91
     imageName: '',
+    job: null,
   };
 
   constructor(

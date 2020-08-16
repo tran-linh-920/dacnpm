@@ -1,1 +1,106 @@
-<p>salary-increasing works!</p>
+<div class="card mt-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <span>Danh sách nhân viên: </span>
+                <!-- <select [(ngModel)]="customerTypeId" (change)="loadCustomer()">
+                      <option value="0"> --- All ---</option>
+                      <option *ngFor="let aCUT of customerTypes" value="{{aCUT.id}}">
+                          {{aCUT.name}}
+                      </option>
+                  </select> -->
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <ngx-datatable class="material" [rows]="employees" [rowHeight]="50" [columnMode]="'force'" [sortType]="'multi'"
+            [headerHeight]="50" [footerHeight]="50" [externalPaging]="true" [count]="paging.totalItems"
+            [offset]="paging.page - 1" [limit]="paging.pageLimit" (page)="loadEmpWithJobInfor($event)">
+            <ngx-datatable-column name="ID">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span class="cursor-hover" (click)="choose(row)">{{ row.id}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tên">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span class="cursor-hover" (click)="choose(row)">{{ row.lastname}} {{ row.firstname}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Công việc">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>{{ row.job.jobTitle}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp độ">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: red;">{{ row.jobLevel}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="#">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span>-</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level1}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 2">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level2}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 3">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level3}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 4">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level4}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 5">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level5}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 6">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level6}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 7">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level7}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 8">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level8}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cấp 9">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span style="color: blue;">{{ row.job.jobLevel.level9}}</span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Hành động">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <i title="Nâng lương" (click)="increaseSalary(row.id,1)"
+                        class="fa fa-dollar text-primary mr-1 pointer"></i>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>
+
+<ng-template #notifyModalTemplate>
+    <div class="modal-body" style="text-align: center;">
+     {{message}}
+     <button type="button" class="close pull-right" aria-label="Close" (click)="notifyModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </ng-template>

@@ -32,12 +32,12 @@ namespace HumanManagermentBackend.Services.Impl
             throw new NotImplementedException();
         }
 
-        public List<TimeKeepingDetailDTO> findAllHistory(int page, int limit)
+        public List<TimeKeepingDetailDTO> findAllHistory()
         {
             List<TimeKeepingDetailDTO> dtos = new List<TimeKeepingDetailDTO>();
             List<TimeKeepingDetailEntity> entities = _humanManagerContext.TimeKeepingDetails.Where(tkd =>tkd.status ==0)
-                                            .Skip((page - 1) * limit)
-                                            .Take(limit)
+                                            //.Skip((page - 1) * limit)
+                                           // .Take(limit)
                                             .ToList();
 
             for(int i =entities.Count -1 ; i>=0; i--)

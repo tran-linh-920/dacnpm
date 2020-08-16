@@ -42,6 +42,9 @@ namespace HumanManagermentBackend.Entities
         [Column("status", TypeName = "INT")]
         public int status { get; set; }
 
+        [Column("workDay", TypeName = "INT")]
+        public int workDay { get; set; }
+
         public long idEmployee { get; set; }
 
 

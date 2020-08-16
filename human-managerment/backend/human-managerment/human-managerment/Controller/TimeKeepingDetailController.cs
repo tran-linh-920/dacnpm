@@ -28,11 +28,11 @@ namespace HumanManagermentBackend.Controller
         }
         [HttpGet]
         public ActionResult<Api<List<TimeKeepingDetailDTO>>> GetAll(//
-                                                              [FromQuery(Name = "page"), DefaultValue(1)] int page,//
-                                                              [FromQuery(Name = "page_limit"), DefaultValue(10),] int limit//
+                                                          //    [FromQuery(Name = "page"), DefaultValue(1)] int page,//
+                                                           //   [FromQuery(Name = "page_limit"), DefaultValue(10),] int limit//
                                                                 )
         {
-            List<TimeKeepingDetailDTO> dtos = _timekeepingDetailService.findAllHistory(page, limit);
+            List<TimeKeepingDetailDTO> dtos = _timekeepingDetailService.findAllHistory();
             Api<List<TimeKeepingDetailDTO>> result = new Api<List<TimeKeepingDetailDTO>>(200, dtos, "Success");
             return Ok(result);
         }

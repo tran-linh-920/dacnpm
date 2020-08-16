@@ -61,7 +61,9 @@ export class ApiService {
       creat: `${this.baseUrl}time-keepings`,
       morning:`${this.baseUrl}time-keepings/morning`,
       afternoon:`${this.baseUrl}time-keepings/afternoon`,
-      refet : `${this.baseUrl}time-keepings/refet`
+      refet : `${this.baseUrl}time-keepings/refet`,
+      close : `${this.baseUrl}time-keepings/close`,
+      
     },
     schedule: {
       home: `${this.baseUrl}schedules`,

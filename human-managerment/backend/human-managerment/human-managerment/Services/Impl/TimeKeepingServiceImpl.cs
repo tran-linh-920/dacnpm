@@ -93,6 +93,8 @@ namespace HumanManagermentBackend.Services.Impl
                 entityTimeKeeping.idEmployee = entity.Id;
                 entityTimeKeeping.minimumTime = 6;
                 entityTimeKeeping.status = 1;
+                entityTimeKeeping.morning = 1;
+                entityTimeKeeping.afternoon = 1;
                 entityTimeKeeping.dateStart = date;
 
                 entityTimeKeeping = _humanManagerContext.Timekeepings.Add(entityTimeKeeping).Entity;
@@ -165,6 +167,44 @@ namespace HumanManagermentBackend.Services.Impl
             {
                 return null;
             }
+           
+           
+        }
+
+        public List<TimeKeepingDTO> CloseTimeKeeping()
+        {
+            var transaction = _humanManagerContext.Database.BeginTransaction();
+            
+            try
+            {
+                List<TimeKeepingEntity> entities = _humanManagerContext.Timekeepings.ToList();
+                List<TimeKeepingDTO> dtos = new List<TimeKeepingDTO>();
+                entities.ForEach(entity =>
+                {
+                    
+                    //tính số ngày làm việc
+                    double workDay = (entity.totalWorkTime + entity.overTime -entity.timeLate) / entity.minimumTime;
+                    double dayRest = workDay - (int)workDay;
+                   
+                    if(dayRest >= 0.5)
+                    {
+                        entity.workDay = (int)workDay + 1;
+                    }
+                    else
+                    {
+                        entity.workDay = (int)workDay;
+                    }
+                    entity.status = 0;
+                    dtos.Add(_mapper.Map<TimeKeepingDTO>(entity));
+                });
+                transaction.Commit();
+                return dtos;
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
+        
            
            
         }

@@ -16,5 +16,7 @@ namespace HumanManagermentBackend.Services
         public List<TimeKeepingDTO> findAfternoon();
         public TimeKeepingDTO stardUp(TimeKeepingEntity entity, string shift);
         public List<TimeKeepingDTO> RefetTimeKeeping();
+        public List<TimeKeepingDTO> CloseTimeKeeping();
+
     }
 }

@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace HumanManagermentBackend.Dto
 {
-    public class DegreeDTO
+    public class DegreeTypeDTO
     {
         public long Id { get; set; }
-        public DegreeTypeDTO DegreeType { get; set; }
-        public string ImageName { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -41,7 +41,9 @@ namespace MyApiWithDB.Convert
             CreateMap<JobHistoryEntity, JobHistoryDTO>().ConvertUsing<EntityJobHistoryConverter>();
             CreateMap<JobLevelEntity, JobLevelDTO>();
 
+            CreateMap<DegreeForm, DegreeEntity>();
             CreateMap<DegreeEntity, DegreeDTO>();
+            CreateMap<DegreeTypeEntity, DegreeTypeDTO>();
             CreateMap<IndentificationEntity, IndentificationDTO>();
             CreateMap<CandidateEntity, CandidateDTO>();
             //CreateMap<CandidateEntity, CandidateDTO>().ConvertUsing<EntityCandidateConverter>();

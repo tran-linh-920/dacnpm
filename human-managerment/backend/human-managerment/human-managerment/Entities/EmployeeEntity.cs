@@ -43,7 +43,7 @@ namespace human_managerment_backend.Entities
         [Column("empJob_id", TypeName = "bigint")]
         public long JobId { get; set; }
         public JobEntity Job { get; set; }
-
+        public List<DegreeEntity> Degrees { get; set; }
         public List<JobHistoryEntity> JobHistorys { get; set; }
 
         public List<RewardPunishEntity> RewardPunishes { get; set; }

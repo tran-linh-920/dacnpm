@@ -13,6 +13,7 @@ export class ApiService {
     employees: {
       home: `${this.baseUrl}employees`,
       images: `${this.baseUrl}uploads/images/employees/`,
+      degreeImages: `${this.baseUrl}uploads/images/degrees/`,
       canimg: `${this.baseUrl}uploads/images/candidates/`,
       jobInformations: `${this.baseUrl}employees/job-informations`,
     },

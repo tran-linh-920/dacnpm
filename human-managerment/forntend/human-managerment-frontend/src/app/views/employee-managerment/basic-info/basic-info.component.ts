@@ -1,15 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Employee } from '../../../models/employee';
 import { Job } from '../../../models/job';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { ModalDirective, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { HttpClient } from '@angular/common/http';
 import { ExcelService } from '../../../services/excel.service';
 import { Paging } from '../../../models/paging';
 import { EmployeeService } from '../../../services/employee.service';
 import { JsonPipe } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
+import { DegreeService } from '../../../services/degree.service';
 
 
 @Component({
@@ -29,9 +30,9 @@ export class BasicInfoComponent implements OnInit {
     { name: 'Email', sortTable: true },
     { name: 'Địa chỉ', sortTable: true },
   ];
-  image: File; 
+  image: File;
   saveForm: FormGroup;
-  genders = [{value: true, name: 'Nam'}, {value: false, name: 'Nữ'}];
+  genders = [{ value: true, name: 'Nam' }, { value: false, name: 'Nữ' }];
   action: string;
   employees: Employee[] = [];
   employee: Employee = { id: 0 } as Employee;
@@ -41,6 +42,10 @@ export class BasicInfoComponent implements OnInit {
   imgName: string = 'Choose file';
   public imagePath;
   public job: any;
+  degreeImage = '';
+  degreeImagePath = this.apiService.apiUrl.employees.degreeImages;
+  degreeFile :File;
+
 
   choosedEmp: Employee = {
     id: 0,
@@ -54,23 +59,28 @@ export class BasicInfoComponent implements OnInit {
     jobLevel: 1,
     imageName: '',
     job: null,
+    degrees: null,
   };
 
+  addDegreeModalRef: BsModalRef;
+  @ViewChild('addDegreeModal') public addDegreeModal: TemplateRef<any>;
+
   constructor(
-    private http: HttpClient, private excelService: ExcelService, private employeeService: EmployeeService,
-    private apiService: ApiService, private fb: FormBuilder) { 
+    private http: HttpClient, private excelService: ExcelService, private employeeService: EmployeeService, private degreeService: DegreeService,
+    private apiService: ApiService, private fb: FormBuilder,private modalService: BsModalService) {
     this.saveForm = this.fb.group({
       firstname: [''],
       lastname: [''],
-      birthDay:[''],
+      birthDay: [''],
       gender: [''],
       email: [''],
       phoneNumber: [''],
       hireDay: [''],
       salary: [''],
-      file:['']
-      });
+      file: ['']
+    });
   }
+  
 
   ngOnInit(): void {
     this.loadEmployee();
@@ -94,7 +104,7 @@ export class BasicInfoComponent implements OnInit {
 
   choose(row) {
     console.log(row);
-    
+
     this.choosedEmp = row;
   }
 
@@ -105,16 +115,16 @@ export class BasicInfoComponent implements OnInit {
 
   }
 
-  selectFile(event){
+  selectFile(event) {
     this.image = event.target.files.item(0);
     console.log(this.image);
-    
+
   }
 
-  save(){
+  save() {
     console.log(this.employee);
-    if(this.action == 'ADD'){
-      this.employeeService.addEmployee(this.image, this.employee).subscribe(res =>{
+    if (this.action == 'ADD') {
+      this.employeeService.addEmployee(this.image, this.employee).subscribe(res => {
         console.log(res);
         this.ngOnInit;
       });
@@ -149,5 +159,27 @@ export class BasicInfoComponent implements OnInit {
       this.img = reader.result;
 
     }
+  }
+
+  changeDegree(imageName) {
+    console.log('da vao');
+    this.degreeImage = imageName;
+  }
+
+  addDegree(file: File, degreeTypeId: number, employeeId: number) {
+    this.degreeService.addDegree(file,degreeTypeId,employeeId).subscribe(res => {
+      console.log(res);
+      this.ngOnInit;
+    });
+  }
+
+  openDegreeModal(){
+    this.addDegreeModalRef = this.modalService.show(this.addDegreeModal);
+  }
+
+  selectDegreeFile(event) {
+    this.degreeFile = event.target.files.item(0);
+    console.log(this.image);
+
   }
 }

@@ -68,6 +68,25 @@ namespace HumanManagermentBackend.Controller
             return Ok(result);
         }
 
+
+        [HttpGet("degrees")]
+        public ActionResult<Api<List<EmployeeDTO>>> GetWithDegree(//
+                                                             [FromQuery(Name = "page"), DefaultValue(1), Required] int page,//
+                                                             [FromQuery(Name = "page_limit"), DefaultValue(10),] int limit//
+                                                             )
+        {
+
+            int totalItems = _employeeService.CountAll();
+
+            int totalPages = (int)Math.Ceiling((double)totalItems / limit);
+
+            List<EmployeeDTO> dtos = _employeeService.FindWithDegree(page, limit);
+
+            Api<List<EmployeeDTO>> result = new Api<List<EmployeeDTO>>(200, dtos, "Success", new Paging(page, limit, totalPages, totalItems));
+
+            return Ok(result);
+        }
+
         //[HttpPut("{id}")]
         //public ActionResult<Api<WorkingTimeDTO>> Edit(long id, WorkingTimeEntity newEntity)
         //{

@@ -18,6 +18,7 @@ export class SalaryIncreasingComponent implements OnInit {
   message = '';
   notifyModalRef: BsModalRef;
   @ViewChild('notifyModalTemplate') public notifyModalTemplate: TemplateRef<any>;
+  isCountClick = false;
 
   constructor(private employeeService: EmployeeService, private salaryService: SalaryService, private apiService: ApiService, private modalService: BsModalService) { }
 
@@ -36,16 +37,20 @@ export class SalaryIncreasingComponent implements OnInit {
   };
 
   increaseSalary(empId: number, jobLevel: number) {
-    console.log('empId ' + empId);
+    console.log('empId ' + jobLevel);
 
     this.salaryService.increase(empId, jobLevel).subscribe(
       res => {
+        this.message = 'Nâng lương thành công';    
         this.loadEmpWithJobInfor();
       },
       err => {
-        this.message = err.error.Message;
-        this.notifyModalRef = this.modalService.show(this.notifyModalTemplate);
+        this.message = err.error.Message;      
       });
+      this.notifyModalRef = this.modalService.show(this.notifyModalTemplate);
+      this.isCountClick = false;
   }
+
+  // increaseSalary(row.id,1)
 
 }

@@ -1,5 +1,6 @@
 ﻿
 using HumanManagermentBackend.Dto;
+using HumanManagermentBackend.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,5 +21,6 @@ namespace human_managerment_backend.Dto
         public int JobLevel { get; set; }
         public JobDTO Job { get; set; }
         public string ImageName { get; set; }
+        public List<DegreeDTO> Degrees { get; set; }
     }
 }

@@ -26,9 +26,9 @@ export class SalaryService {
   }
 
   increase(empId: number, jobLevel: number): Observable<RootObj<number>> {
-    var url = `${this.apiService.apiUrl.salary.increasing}/${empId}`;
+    var url = `${this.apiService.apiUrl.salary.increasing}/${empId}/${jobLevel}`;
     console.log(url);
-    return this.apiService.put<RootObj<number>>(url, jobLevel);
+    return this.apiService.put<RootObj<number>>(url, null);
   }
 
 }

@@ -1,5 +1,6 @@
 import {Department} from './department';
 import { Job } from './job';
+import { Degree } from './degree';
 
 export interface Employee {
     // Emp_ID: number;
@@ -27,5 +28,6 @@ export interface Employee {
     jobLevel: number;
     imageName: string;
     job: Job;
+    degrees?: [Degree];
 
 }

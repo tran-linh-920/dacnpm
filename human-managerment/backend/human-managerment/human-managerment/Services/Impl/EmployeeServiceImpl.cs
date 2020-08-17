@@ -40,6 +40,8 @@ namespace HumanManagermentBackend.Services.Impl
             List<EmployeeDTO> dtos = new List<EmployeeDTO>();
 
             List<EmployeeEntity> entities = _humanManagerContext.Employees
+                                            .Include(e => e.Degrees)
+                                            .ThenInclude(d => d.DegreeType)
                                             .Skip((page - 1) * limit)
                                             .Take(limit).ToList();
 
@@ -59,6 +61,24 @@ namespace HumanManagermentBackend.Services.Impl
             List<EmployeeEntity> entities = _humanManagerContext.Employees
                                             .Include(e => e.Job)
                                             .ThenInclude(j => j.JobLevel)
+                                            .Skip((page - 1) * limit)
+                                            .Take(limit).ToList();
+
+            entities.ForEach(entity =>
+            {
+                dtos.Add(_mapper.Map<EmployeeDTO>(entity));
+            });
+
+            return dtos;
+        }
+
+        public List<EmployeeDTO> FindWithDegree(int page, int limit)
+        {
+            List<EmployeeDTO> dtos = new List<EmployeeDTO>();
+
+            List<EmployeeEntity> entities = _humanManagerContext.Employees
+                                            .Include(e => e.Degrees)
+                                            .ThenInclude(d => d.DegreeType)
                                             .Skip((page - 1) * limit)
                                             .Take(limit).ToList();
 
@@ -113,5 +133,6 @@ namespace HumanManagermentBackend.Services.Impl
             throw new NotImplementedException();
         }
 
+    
     }
 }

@@ -79,8 +79,8 @@ namespace HumanManagermentBackend.Controller
             return Ok(new Api<Object>((int)HttpStatusCode.InternalServerError, null, massage));
         }
 
-        [HttpPut("increasing/{empId}")]
-        public ActionResult<Api<JobHistoryDetailDTO>> IncreaseSalary(long empId, [FromBody] int jobLevel)
+        [HttpPut("increasing/{empId}/{jobLevel}")]
+        public ActionResult<Api<JobHistoryDetailDTO>> IncreaseSalary(long empId, int jobLevel)
         {
             JobHistoryDetailDTO dto = _salaryService.DoSalaryIncreasing(empId, jobLevel);
             return Ok(new Api<JobHistoryDetailDTO>((int)HttpStatusCode.OK, dto, SalaryMessageContant.SALARY_INCREASING_SUCCESSFULL));

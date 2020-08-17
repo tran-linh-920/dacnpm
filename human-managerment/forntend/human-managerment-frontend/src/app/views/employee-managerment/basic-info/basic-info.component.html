@@ -27,7 +27,8 @@
                                             {{choosedEmp.firstname}}</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-dark"><small> {{choosedEmp.birthDay}}</small></p>
+                                    <p class="h4 text-dark"><small> {{choosedEmp.birthDay| date:'shortDate'}}</small>
+                                    </p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class="h4 text-dark"><small>{{choosedEmp.gender}}</small></p>
@@ -46,10 +47,12 @@
                             </div>
                             <div class="col-3">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class=" h4 text-dark"><small>{{choosedEmp.hireDay}}</small></p>
+                                    <p class=" h4 text-dark"><small>{{choosedEmp.hireDay | date:'shortDate'}}</small>
+                                    </p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-primary"><small> {{choosedEmp.salary}}</small></p>
+                                    <p class="h4 text-primary"><small> {{choosedEmp.salary | currency:'VND'}}</small>
+                                    </p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class="h4 text-primary"><small></small></p>
@@ -133,13 +136,25 @@
             </tab>
             <tab heading="Bằng Cấp">
                 <div class="row">
-                    <div class="col-3">
-                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                    <div class="col-6">
+                        <ul class="list-group overflow-auto">
+                            <li *ngFor="let degree of choosedEmp.degrees" class="list-group-item"><a
+                                    (click)="changeDegree(degree.imageName)">{{degree.degreeType.name}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-5">
+                        <img [src]="degreeImagePath + degreeImage" height="210em" width="300em"
                             style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
                             *ngIf="img">
                     </div>
-                    <div class="col-9">
-                        <div class="h3">Cố vấn tối cao tổng thống donal chum</div>
+                    <div class="col-1">
+                        <button type="button" (click)="openDegreeModal()" class="btn btn-secondary mt-3"
+                            style="width: 80px;">
+                            Thêm</button><br>
+                        <button type="button" (click)="openEdit()" class="btn btn-secondary mt-1" style="width: 80px;">
+                            Sửa</button><br>
+                        <button type="button" (click)="delete()" class="btn btn-secondary mt-1" style="width: 80px;">
+                            Xóa</button>
                     </div>
                 </div>
             </tab>
@@ -170,18 +185,10 @@
     </div>
     <div class="card-body">
 
-        <ngx-datatable class="material"
-         [rows]="employees" 
-         [rowHeight]="50" 
-         [columnMode]="'force'" 
-         [sortType]="'multi'"
-            [headerHeight]="50"
-             [footerHeight]="50"
-              [externalPaging]="true" 
-              [count]="paging.totalItems"
-            [offset]="paging.page - 1" 
-            [limit]="paging.pageLimit" (page)="loadEmployee($event)">
-            
+        <ngx-datatable class="material" [rows]="employees" [rowHeight]="50" [columnMode]="'force'" [sortType]="'multi'"
+            [headerHeight]="50" [footerHeight]="50" [externalPaging]="true" [count]="paging.totalItems"
+            [offset]="paging.page - 1" [limit]="paging.pageLimit" (page)="loadEmployee($event)">
+
             <ngx-datatable-column name="Tên">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                     <span class="cursor-hover" (click)="choose(row)">{{ row.firstname}}</span>
@@ -223,12 +230,12 @@
                                 <div class="col-6">
                                     <label for="pwd">Họ</label>
                                     <input type="text" class="form-control" [(ngModel)]="employee.firstname"
-                                    formControlName="firstname">
+                                        formControlName="firstname">
                                 </div>
                                 <div class="col-6">
                                     <label for="pwd">Tên</label>
                                     <input type="text" class="form-control" [(ngModel)]="employee.lastname"
-                                    formControlName="lastname">
+                                        formControlName="lastname">
 
                                 </div>
                             </div>
@@ -236,7 +243,7 @@
                                 <div class="col-6">
                                     <label for="pwd">Ngày sinh</label>
                                     <input type="date" class="form-control" [(ngModel)]="employee.birthDay"
-                                    formControlName="birthDay">
+                                        formControlName="birthDay">
                                 </div>
                                 <div class="col-6">
                                     <label for="pwd">Giới tính</label>
@@ -251,9 +258,10 @@
                                 <label for="pwd">Ảnh</label>
                                 <div class="custom-file">
                                     <input #file type="file" class="custom-file-input" accept='image/*'
-                                    (change)="selectFile($event)" (change)="preview(file.files)" name="image">
+                                        (change)="selectFile($event)" (change)="preview(file.files)" name="image">
                                     <label class="custom-file-label" for="customFile">{{imgName}}</label>
-                                </div>                            </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-3">
                             <img [src]="img" height="230em" width="155em"
@@ -261,25 +269,28 @@
                                 *ngIf="img">
                         </div>
                     </div>
-                  
+
                     <div class="row form-group ">
                         <div class="col-6">
                             <label for="pwd">Email</label>
-                            <input type="email" class="form-control" [(ngModel)]="employee.email" formControlName="email">
+                            <input type="email" class="form-control" [(ngModel)]="employee.email"
+                                formControlName="email">
 
                         </div>
                         <div class="col-6">
                             <label for="pwd">Số điện thoại</label>
-                            <input type="text" class="form-control" [(ngModel)]="employee.phoneNumber" formControlName="phoneNumber">
+                            <input type="text" class="form-control" [(ngModel)]="employee.phoneNumber"
+                                formControlName="phoneNumber">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="pwd">Ngày vào làm</label>
-                        <input type="date" class="form-control" [(ngModel)]="employee.hireDay" formControlName="hireDay">
+                        <input type="date" class="form-control" [(ngModel)]="employee.hireDay"
+                            formControlName="hireDay">
                     </div>
                     <div class="form-group">
                         <label for="pwd">Lương cơ bản</label>
-                        <input type="text" class="form-control" [(ngModel)]="employee.salary"formControlName="salary">
+                        <input type="text" class="form-control" [(ngModel)]="employee.salary" formControlName="salary">
                     </div>
                     <div class="form-group col text-center">
                         <button type="submit" class="btn btn-outline-dark center">Lưu</button>
@@ -290,3 +301,35 @@
     </div>
 </div>
 <!-- ------------------------------------------------ -->
+
+<ng-template #addDegreeModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="addDegreeModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="saveForm" novalidate (ngSubmit)="save()" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="pwd">Loại bằng cấp</label>
+                <input type="text" class="form-control" [(ngModel)]="employee.salary" formControlName="salary">
+                <select class="form-control">
+                    <option>Default select</option>
+                    <option>Default select</option>
+                  </select>
+            </div>
+            <div class="form-group ">
+                <label for="pwd">Ảnh</label>
+                <div class="custom-file">
+                    <input #file type="file" class="custom-file-input" accept='image/*'
+                        (change)="selectFile($event)" (change)="preview(file.files)" name="image">
+                    <label class="custom-file-label" for="customFile">{{imgName}}</label>
+                </div>
+            </div>
+            <div class="form-group col text-center">
+                <button type="submit" class="btn btn-outline-dark center">Lưu</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

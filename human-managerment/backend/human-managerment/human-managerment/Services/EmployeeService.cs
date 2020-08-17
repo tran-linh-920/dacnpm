@@ -16,5 +16,6 @@ namespace HumanManagermentBackend.Services
         public EmployeeDTO Replace(EmployeeEntity entity);
         public bool Delete(EmployeeEntity newEntity);
         List<EmployeeDTO> FindWithJob(int page, int limit);
+        List<EmployeeDTO> FindWithDegree(int page, int limit);
     }
 }

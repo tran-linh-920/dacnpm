@@ -86,9 +86,17 @@
                     <span style="color: blue;">{{ row.job.jobLevel.level9}}</span>
                 </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Hành động">
+            <ngx-datatable-column name="Hành động" *ngIf="isCountClick">
+                <ng-template style="width: 150px;" let-row="row" ngx-datatable-cell-template>
+                    <input #jobLevel style="width: 35px;" type="number" min="1" max="9">
+                    <button class="btn btn-outline-info btn-sm"><i title="Nâng lương"
+                            (click)="increaseSalary(row.id,jobLevel.value)"
+                            class="fa fa-check text-primary mr-1 pointer"></i></button>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Hành động" *ngIf="!isCountClick">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    <i title="Nâng lương" (click)="increaseSalary(row.id,1)"
+                    <i title="Nâng lương" (click)="isCountClick = !isCountClick"
                         class="fa fa-dollar text-primary mr-1 pointer"></i>
                 </ng-template>
             </ngx-datatable-column>
@@ -98,9 +106,9 @@
 
 <ng-template #notifyModalTemplate>
     <div class="modal-body" style="text-align: center;">
-     {{message}}
-     <button type="button" class="close pull-right" aria-label="Close" (click)="notifyModalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+        {{message}}
+        <button type="button" class="close pull-right" aria-label="Close" (click)="notifyModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-  </ng-template>
+</ng-template>

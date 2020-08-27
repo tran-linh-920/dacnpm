@@ -25,8 +25,11 @@ namespace HumanManagermentBackend.Dto
 
         public long idEmployee { get; set; }
 
+        public string nameEmployee { get; set; }
+
         // trang thai hiện thị buổi sáng chiều
         public int morning { get; set; }
+
         public int afternoon { get; set; }
 
         public int workDay { get; set; }

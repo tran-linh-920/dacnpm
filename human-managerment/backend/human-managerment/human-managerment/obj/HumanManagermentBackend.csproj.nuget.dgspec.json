@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DOTNET\\CNPM\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj": {}
+    "C:\\Users\\Kiet Vo\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj": {}
   },
   "projects": {
-    "E:\\DOTNET\\CNPM\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj": {
+    "C:\\Users\\Kiet Vo\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DOTNET\\CNPM\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+        "projectUniqueName": "C:\\Users\\Kiet Vo\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
         "projectName": "HumanManagermentBackend",
-        "projectPath": "E:\\DOTNET\\CNPM\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "E:\\DOTNET\\CNPM\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\obj\\",
+        "projectPath": "C:\\Users\\Kiet Vo\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\HumanManagermentBackend.csproj",
+        "packagesPath": "C:\\Users\\Kiet Vo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kiet Vo\\Desktop\\dacnpm\\human-managerment\\backend\\human-managerment\\human-managerment\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kiet Vo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

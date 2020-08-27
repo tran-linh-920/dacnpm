@@ -43,7 +43,7 @@ namespace HumanManagermentBackend.Services.Impl
             for(int i =entities.Count -1 ; i>=0; i--)
             {
                 EmployeeEntity em = _humanManagerContext.Employees.Where(e =>e.Id == entities[i].employeeId).SingleOrDefault();
-                entities[i].employeeName = em.Lastname + em.Firstname +"";
+                entities[i].employeeName = em.Lastname +" "+ em.Firstname ;
                 dtos.Add(_mapper.Map<TimeKeepingDetailDTO>(entities[i]));
             }
          
@@ -65,26 +65,35 @@ namespace HumanManagermentBackend.Services.Impl
         // chức năng kết thúc ngày công
         public TimeKeepingDetailDTO endTimeKeepingforOneDay(TimeKeepingDetailEntity oldEntity)
         {
+            var transaction = _humanManagerContext.Database.BeginTransaction();
             DateTime nowDate = DateTime.Now;
             //  DateTime endDate = new DateTime('8/11/2020 10:06:00 PM');
+            try
+            {
+                TimeKeepingDetailEntity old = _humanManagerContext.TimeKeepingDetails.Where(tkd => tkd.Id == oldEntity.Id).SingleOrDefault();
 
-            TimeKeepingDetailEntity old = _humanManagerContext.TimeKeepingDetails.Where(tkd => tkd.Id == oldEntity.Id).SingleOrDefault();
+                TimeKeepingEntity oldTimeKeeping = _humanManagerContext.Timekeepings.Where(tk => tk.Id == old.timeKeepingId).SingleOrDefault();
+                String test = oldTimeKeeping.Id + "";
+                DateTime oldDateTime = old.timeStart;
+                TimeSpan t = nowDate - oldDateTime;
+                int count = t.Hours;
 
-            TimeKeepingEntity oldTimeKeeping = _humanManagerContext.Timekeepings.Where(tk => tk.Id == old.timeKeepingId).SingleOrDefault();
-            String test = oldTimeKeeping.Id + "";
-            DateTime oldDateTime = old.timeStart;
-            TimeSpan t = nowDate - oldDateTime;
-            int count = t.Hours;
+                //Cộng thời gian làm lên
+                oldTimeKeeping.plusWorkingTime(count);
 
-            //Cộng thời gian làm lên
-            oldTimeKeeping.plusWorkingTime(count);
+                old.status = 0;
+                old.timeEnd = nowDate;
+                old.timeWorking = count;
 
-            old.status = 0;
-            old.timeEnd = nowDate;
-            old.timeWorking = count;
-
-            _humanManagerContext.SaveChanges();
-            return _mapper.Map<TimeKeepingDetailDTO>(old);
+                _humanManagerContext.SaveChanges();
+                return _mapper.Map<TimeKeepingDetailDTO>(old);
+            }
+            catch
+            {
+                transaction.Rollback();
+                return null;
+            }
+         
         }
 
         public TimeKeepingDetailDTO removeTimeKeeping(long id)

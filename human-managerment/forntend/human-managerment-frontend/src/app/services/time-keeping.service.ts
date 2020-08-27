@@ -10,7 +10,10 @@ import {Timekeeping } from '../models/timekeeping';
 export class TimeKeepingService {
 
   constructor(private apiService: ApiService) { }
+  listcloseTimeKeeping(): Observable<RootObj<[Timekeeping]>> {
 
+    return this.apiService.get<RootObj<[Timekeeping]>>(`${this.apiService.apiUrl.timekeeping.listClose}`);
+  }
   closeTimeKeeping(): Observable<RootObj<[Timekeeping]>> {
 
       return this.apiService.get<RootObj<[Timekeeping]>>(`${this.apiService.apiUrl.timekeeping.close}`);

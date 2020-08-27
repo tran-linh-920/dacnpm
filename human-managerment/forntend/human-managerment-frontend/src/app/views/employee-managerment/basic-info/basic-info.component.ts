@@ -56,7 +56,7 @@ export class BasicInfoComponent implements OnInit {
     email: '',
     phoneNumber: '',
     hireDay: null,
-    jobLevel: 1,
+    jobLevel: 0,
     imageName: '',
     job: null,
     degrees: null,
@@ -92,9 +92,9 @@ export class BasicInfoComponent implements OnInit {
   }
 
   loadEmployee(page = null) {
-    if (page != null) {
-      this.paging.page = page.offset;
-    }
+    // if (page != null) {
+    //   this.paging.page = page.offset;
+    // }
     this.employeeService.list(this.paging).subscribe(res => {
       this.employees = res.data;
       this.paging = res.paging;
@@ -126,11 +126,11 @@ export class BasicInfoComponent implements OnInit {
     if (this.action == 'ADD') {
       this.employeeService.addEmployee(this.image, this.employee).subscribe(res => {
         console.log(res);
-        this.ngOnInit;
-      });
-    }
+        this.loadEmployee(null);
+    });
     this.hideModal();
   }
+}
 
   hideModal() {
     this.imgName = 'Choose file';

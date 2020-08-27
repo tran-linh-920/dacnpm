@@ -16,7 +16,8 @@ namespace HumanManagermentBackend.Dto
         public int RewardMoney { get; set; }
         public int PublishMoney { get; set; }
         public int InsurranceMoney { get; set; }
-        public double Salary { get; set; }
+        public int GrossSalary { get; set; }
+        public int NetSalary { get; set; }
         public bool IsActive { get; set; }
         public EmployeeDTO Employee { get; set; }
     }

@@ -26,6 +26,6 @@ namespace HumanManagermentBackend.Contants
 
         public const string SALARY_COUNTING_FIELD_MASSAGE = "Không thể tính lương cho nhân viên.";
 
-        public const string SALARY_COUNTING_FIELD_DETAIL_MASSAGE = "Không thể tính lương cho nhân viên: ";
+        public const string SALARY_COUNTING_FIELD_DETAIL_MASSAGE = "Nhân viên có lương không thay đổi: ";
     }
 }

@@ -38,7 +38,7 @@ namespace HumanManagermentBackend.Services.Impl
             throw new NotImplementedException();
         }
 
-        public bool DoSalaryCounting(long empId)
+        public bool DoSalaryCounting(long empId, Date countingDate)
         {
             var transaction = _humanManagerContext.Database.BeginTransaction();
             try
@@ -83,11 +83,11 @@ namespace HumanManagermentBackend.Services.Impl
 
                 // Tính lương
                 SalaryHistoryEntity salaryHistoryEntity =//
-                    SalaryUtil.DoSalaryConting(employeeEntity, miniumSalary, salaryCoefficient, regulationWorkDay, empWorkDay, rewardMoney, publishMoney, totalInsurranceRatio, taxs);
+                    SalaryUtil.DoSalaryConting(employeeEntity, new DateTime(countingDate.year, countingDate.month, countingDate.day),miniumSalary, salaryCoefficient, regulationWorkDay, empWorkDay, rewardMoney, publishMoney, totalInsurranceRatio, taxs);
 
                 // kiểm tra thay đổi lương
-                SalaryHistoryEntity oldSalaryHistory = _humanManagerContext.SalaryHistories.Where(sh => sh.EmployeeId == employeeEntity.Id && sh.IsActive == true).SingleOrDefault();
-                if (oldSalaryHistory == null || salaryHistoryEntity.Salary != oldSalaryHistory.Salary)
+                SalaryHistoryEntity oldSalaryHistory = _humanManagerContext.SalaryHistories.Where(sh => sh.EmployeeId == employeeEntity.Id && sh.CountedDate.Month == countingDate.month && sh.CountedDate.Year == countingDate.year && sh.IsActive == true).SingleOrDefault();
+                if (oldSalaryHistory == null || salaryHistoryEntity.NetSalary != oldSalaryHistory.NetSalary)
                 {
                     // Chuyển trạng thái lương cũ
                     if (oldSalaryHistory != null)
@@ -105,10 +105,10 @@ namespace HumanManagermentBackend.Services.Impl
                 return true;
 
             }
-            catch
+            catch(Exception ex)
             {
                 transaction.Rollback();
-                return false;
+                throw ex;
             }
         }
 
@@ -127,7 +127,7 @@ namespace HumanManagermentBackend.Services.Impl
 
                 // Kiểm tra việc tính lương. tính r ko đc nâng. 
                 bool haveCounted = _humanManagerContext.SalaryHistories.Where(sh => sh.EmployeeId == empId && sh.CountedDate.Month == today.Month && sh.CountedDate.Year == today.Year).Any();
-                if(haveCounted)
+                if (haveCounted)
                     throw new Exception(SalaryMessageContant.SALARY_COUNTED);
 
                 // kiểm tra và thay đổi job level
@@ -146,24 +146,24 @@ namespace HumanManagermentBackend.Services.Impl
                 return new JobHistoryDetailDTO(employeeEntity.Id, employeeEntity.Firstname + employeeEntity.Firstname, employeeEntity.JobId, employeeEntity.Job.JobTitle, jobLevel, System.DateTime.Today);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 transaction.Rollback();
                 throw ex;
             }
         }
 
-        int SalaryService.CountAllSalaryHistories()
+        int SalaryService.CountAllSalaryHistoriesByDate(Date date)
         {
-            return _humanManagerContext.SalaryHistories.Where(sh => sh.IsActive == true).Count();
+            return _humanManagerContext.SalaryHistories.Where(sh => sh.IsActive == true && sh.CountedDate.Month == date.month && sh.CountedDate.Year == date.year).Count();
         }
 
-        List<SalaryHistoryDTO> SalaryService.FindSalaryHistories(int page, int limit)
+        List<SalaryHistoryDTO> SalaryService.FindSalaryHistoriesByDate(int page, int limit, Date date)
         {
             List<SalaryHistoryDTO> dtos = new List<SalaryHistoryDTO>();
 
             List<SalaryHistoryEntity> entities = _humanManagerContext.SalaryHistories
-                                            .Where(sh => sh.IsActive == true)
+                                            .Where(sh => sh.IsActive == true && sh.CountedDate.Month == date.month && sh.CountedDate.Year == date.year)
                                             .Include(sh => sh.Employee)
                                             .Skip((page - 1) * limit)
                                             .Take(limit).ToList();

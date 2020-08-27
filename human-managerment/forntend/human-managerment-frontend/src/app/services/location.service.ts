@@ -31,4 +31,7 @@ export class LocationService {
     return this.apiService.get<RootObj<[Ward]>>(`${this.apiService.apiUrl.location.ward}?${query}`);
   }
 
+  addWard(ward: Ward): Observable<RootObj<Ward>> {
+    return this.apiService.post<RootObj<Ward>>(this.apiService.apiUrl.location.ward, ward);
+  }
 }

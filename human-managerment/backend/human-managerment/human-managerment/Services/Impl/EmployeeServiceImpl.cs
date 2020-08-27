@@ -53,7 +53,6 @@ namespace HumanManagermentBackend.Services.Impl
             return dtos;
         }
 
-
         public List<EmployeeDTO> FindWithJob(int page, int limit)
         {
             List<EmployeeDTO> dtos = new List<EmployeeDTO>();
@@ -90,9 +89,27 @@ namespace HumanManagermentBackend.Services.Impl
             return dtos;
         }
 
-        public EmployeeDTO Save(EmployeeEntity entity)
+        public EmployeeDTO Save(EmployeeEntity emp)
         {
-            throw new NotImplementedException();
+            emp.Job = null;
+            var transaction = _humanManagerContext.Database.BeginTransaction();
+            EmployeeEntity entity = null;
+
+
+            try
+            {
+                entity = _humanManagerContext.Employees.Add(emp).Entity;
+                _humanManagerContext.SaveChanges();
+                transaction.Commit();
+
+                EmployeeDTO dto = _mapper.Map<EmployeeDTO>(entity);
+                return dto;
+            }
+            catch(Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
         }
 
         public EmployeeDTO Save(EmployeeForm empForm)
@@ -109,6 +126,7 @@ namespace HumanManagermentBackend.Services.Impl
 
                 EmployeeEntity newEntity = _mapper.Map<EmployeeEntity>(empForm);
                 newEntity.ImageName = uploader.fileName;
+                newEntity.JobId = 1;
                 entity = _humanManagerContext.Employees.Add(newEntity).Entity;
                 _humanManagerContext.SaveChanges();
                 transaction.Commit();

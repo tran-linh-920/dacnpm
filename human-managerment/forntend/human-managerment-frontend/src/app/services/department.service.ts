@@ -15,8 +15,11 @@ export class DepartmentService {
 
   list(paging: Paging): Observable<RootObj<[Department]>> {
     const query = `page=${paging.page + 1}&page_limit=${paging.pageLimit}`;
-    console.log(`${this.apiService.apiUrl.departments.home}?${query}`);   
+    console.log(`${this.apiService.apiUrl.departments.home}?${query}`);
     return this.apiService.get<RootObj<[Department]>>
       (`${this.apiService.apiUrl.departments.home}?${query}`);
+  }
+  addDepart(department: Department): Observable<RootObj<Department>> {
+    return this.apiService.post(this.apiService.apiUrl.departments.home, department);
   }
 }

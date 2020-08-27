@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using human_managerment_backend.Dto;
+using human_managerment_backend.Entities;
 using human_managerment_backend.Forms;
 using HumanManagermentBackend.Contants;
 using HumanManagermentBackend.Dto;
@@ -68,7 +69,6 @@ namespace HumanManagermentBackend.Controller
             return Ok(result);
         }
 
-
         [HttpGet("degrees")]
         public ActionResult<Api<List<EmployeeDTO>>> GetWithDegree(//
                                                              [FromQuery(Name = "page"), DefaultValue(1), Required] int page,//
@@ -83,6 +83,16 @@ namespace HumanManagermentBackend.Controller
             List<EmployeeDTO> dtos = _employeeService.FindWithDegree(page, limit);
 
             Api<List<EmployeeDTO>> result = new Api<List<EmployeeDTO>>(200, dtos, "Success", new Paging(page, limit, totalPages, totalItems));
+
+            return result;
+        }
+
+        [HttpPost("accept")]
+        public ActionResult<Api<EmployeeDTO>> Accept(EmployeeEntity emp)
+        {
+            emp.JobId = emp.Job.Id;
+            EmployeeDTO dto = _employeeService.Save(emp);
+            Api<EmployeeDTO> result = new Api<EmployeeDTO>(200, dto, "Add Success");
 
             return Ok(result);
         }

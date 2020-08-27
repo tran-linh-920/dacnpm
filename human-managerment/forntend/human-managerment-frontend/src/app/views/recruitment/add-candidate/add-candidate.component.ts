@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Candidate } from '../../../models/candidate';
+import { Job } from '../../../models/job';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CandidateService } from './../../../services/candidate.service';
 
@@ -17,6 +18,7 @@ export class AddCandidateComponent implements OnInit {
   img: any = 'https://screenshotlayer.com/images/assets/placeholder.png';
   candidate: Candidate = { id: 0 } as Candidate;
   saveForm: FormGroup;
+  jobs: Job[];
 
   constructor( private router: Router, private fb: FormBuilder, private candidateService: CandidateService) { 
     this.saveForm = this.fb.group({
@@ -41,6 +43,11 @@ export class AddCandidateComponent implements OnInit {
   }
 
   ngOnInit(): void { 
+    this.candidateService.getJob().subscribe(res => {
+      this.jobs = res.data;
+      console.log(res);
+      
+    })
   }
 
   selectFile(event) {
@@ -51,9 +58,12 @@ export class AddCandidateComponent implements OnInit {
   save() {
     this.candidateService.addCandidate(this.image, this.candidate).subscribe(res =>{
       console.log(res);
-      this.router.navigateByUrl('tuyen-dung/tuyen-nhan-su');
-
-    });
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+    }
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['tuyen-dung/tuyen-nhan-su'], { queryParams: { index: 1 } });
+    }); 
   }
 
   preview(files) {

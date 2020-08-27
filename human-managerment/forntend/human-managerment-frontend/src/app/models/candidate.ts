@@ -4,7 +4,7 @@ export interface Candidate {
     id: number;
     firstname: string;
     lastname: string;
-    birthDay: string;
+    birthDay: Date;
     gender: boolean;
     email: string;
     phoneNumber: string;

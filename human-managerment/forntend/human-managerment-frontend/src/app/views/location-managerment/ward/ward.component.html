@@ -5,7 +5,7 @@
           <span>Phường/ Xã </span>
         </div>
         <div class="col-auto">
-          <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>
+          <button type="button" (click)="openModal()" class="btn btn-primary"><i class="fa fa-plus"></i>
             Add</button>
         </div>
       </div>
@@ -54,4 +54,35 @@
   </ngx-datatable>
     </div>
   </div>
-  
+  <!-- ----------------------------------------------------- -->
+  <div bsModal #wardModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title pull-left">Xã/ Phường</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="saveForm" novalidate (ngSubmit)="save()" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="pwd">Tên Phường/Xã</label>
+                        <input type="text" class="form-control" [(ngModel)]="ward.name" formControlName="ward">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Thành phố</label>
+                        <select [(ngModel)]="ward.district_Id" class="form-control" formControlName="district">
+                          <option *ngFor="let g of districts" value="{{g.id}}">
+                              {{g.name}}
+                          </option>
+                      </select>                    </div>
+                    <div class="form-group col text-center">
+                        <button type="submit" class="btn btn-outline-dark center">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------ -->

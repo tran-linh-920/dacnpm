@@ -1,4 +1,5 @@
 ﻿using HumanManagermentBackend.Dto;
+using HumanManagermentBackend.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,9 @@ namespace HumanManagermentBackend.Services
     {
         public int CountAll();
         public List<WardDTO> FindAll(int page, int limit);
+
+        public WardDTO Save(WardEntity ward);
+
+        public WardDTO Edit(long id, WardEntity ward);
     }
 }

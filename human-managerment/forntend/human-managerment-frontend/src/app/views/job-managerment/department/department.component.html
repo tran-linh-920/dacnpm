@@ -5,7 +5,7 @@
                 <span>Phòng ban: </span>
             </div>
             <div class="col-auto">
-                <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>
+                <button type="button" (click)="openModal()" class="btn btn-primary"><i class="fa fa-plus"></i>
                     Add</button>
             </div>
         </div>
@@ -15,20 +15,63 @@
             [sortType]="'multi'" [headerHeight]="50" [footerHeight]="50" [externalPaging]="true"
             [count]="paging.totalItems" [offset]="paging.page - 1" [limit]="paging.pageLimit"
             (page)="loadDepartments($event)">
-            <ngx-datatable-column name="Tên">
+            <ngx-datatable-column name="Phòng ban">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    <a (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-                        aria-controls="collapseBasic">{{ row.name}}</a>
-                    <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-                        <div class="well well-sm card card-block">
-                           <button style="width: 20;">avc</button>
-                           <br>
-                           <button>vccc</button>
-                        </div>
-                    </div>
+                    <!-- <a (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                        aria-controls="collapseBasic">{{ row.name}}</a> -->
+                        <mat-accordion>
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  <span><i class="fa fa-home"></i>	&nbsp; {{row.name}}</span>
+                                </mat-panel-title>
+                               
+                              </mat-expansion-panel-header>
+                               <div class="row">
+                                <div class="col-2">
+                                    <img style="width: 100px; height: 150px;" src="https://www.freeiconspng.com/uploads/building-icon-7.jpg" alt="">
+                                </div>
+                                <div class="col-5">
+                                    <div class="h5">{{row.name}}</div>
+                                    <div class="h5">{{row.bio}}</div>
+                                </div>
+                            </div>
+                            </mat-expansion-panel>
+                          </mat-accordion>
                 </ng-template>
             </ngx-datatable-column>
         </ngx-datatable>
-
     </div>
 </div>
+
+ <!-- ----------------------------------------------------- -->
+ <div bsModal #depModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title pull-left">Phòng ban</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="saveForm" novalidate (ngSubmit)="save()" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="pwd">Tên Phòng ban</label>
+                        <input type="text" class="form-control" [(ngModel)]="department.name" formControlName="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Bio</label>
+                        <input type="text" class="form-control" [(ngModel)]="department.bio" formControlName="bio">
+      
+                               </div>
+                    <div class="form-group col text-center">
+                        <button type="submit" class="btn btn-outline-dark center">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------ -->

@@ -13,8 +13,8 @@ export class SalaryService {
 
   constructor(private apiService: ApiService, private http: HttpClient) { }
 
-  histories(paging: Paging): Observable<RootObj<[SalaryHistory]>> {
-    const query = `page=${paging.page}&page_limit=${paging.pageLimit}`;
+  histories(paging: Paging, date: Date): Observable<RootObj<[SalaryHistory]>> {
+    const query = `page=${paging.page}&page_limit=${paging.pageLimit}&month=${date.getMonth()+1}&year=${date.getFullYear()}`;
     console.log(`${this.apiService.apiUrl.salary.histories}?${query}`);
     return this.apiService.get<RootObj<[SalaryHistory]>>
       (`${this.apiService.apiUrl.salary.histories}?${query}`);

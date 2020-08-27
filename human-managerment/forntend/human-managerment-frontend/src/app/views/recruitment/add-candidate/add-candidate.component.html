@@ -93,8 +93,12 @@
         <div class="row form-group ">
             <div class="col-4">
                 <label for="pwd">Vị trí ứng tuyển</label>
-                <input type="email" class="form-control" [(ngModel)]="candidate.position" formControlName="position">
-
+                <!-- <input type="email" class="form-control" [(ngModel)]="candidate.position" formControlName="position"> -->
+                <select [(ngModel)]="candidate.position" class="form-control" formControlName="position">
+                    <option *ngFor="let g of jobs" value="{{g.jobTitle}}">
+                        {{g.jobTitle}}
+                    </option>
+                </select>
             </div>
             <div class="col-8">
                 <label for="pwd">kinh nghiệm làm việc</label>

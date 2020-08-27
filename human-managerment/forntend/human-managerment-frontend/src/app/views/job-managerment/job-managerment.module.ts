@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule,  CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { JobManagermentRoutingModule } from './job-managerment-routing.module';
 import { JobInfomationComponent } from './job-infomation/job-infomation.component';
@@ -20,7 +21,9 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     ModalModule.forChild(),
     FormsModule, 
     ReactiveFormsModule,
-    CollapseModule
-  ]
+    CollapseModule,
+    MatExpansionModule
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class JobManagermentModule { }

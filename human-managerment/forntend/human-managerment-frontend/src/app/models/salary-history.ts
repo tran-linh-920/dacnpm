@@ -9,7 +9,8 @@ export interface SalaryHistory {
     rewardMoney: number,
     publishMoney: number,
     insurranceMoney: number,
-    salary: number,
+    grossSalary: number,
+    netSalary: number,
     isActive: boolean,
     employee: Employee
 }

@@ -38,8 +38,11 @@ namespace HumanManagermentBackend.Entities
         [Column("shInsurranceMoney", TypeName = "int")]
         public int InsurranceMoney { get; set; }
 
-        [Column("shSalary", TypeName = "double")]
-        public double Salary { get; set; }
+        [Column("shGrossSalary", TypeName = "int")]
+        public int GrossSalary { get; set; }
+
+        [Column("shNetSalary", TypeName = "int")]
+        public int NetSalary { get; set; }
 
         [Column("shIsActive", TypeName = "bit")]
         public bool IsActive { get; set; }
@@ -49,7 +52,7 @@ namespace HumanManagermentBackend.Entities
         public EmployeeEntity Employee { get; set; }
 
         public SalaryHistoryEntity() { }
-        public SalaryHistoryEntity(DateTime countedDate, int workDay, double salaryCoefficient, int taxMoney, int rewardMoney, int publishMoney, int insurranceMoney, double salary, EmployeeEntity employee)
+        public SalaryHistoryEntity(DateTime countedDate, int workDay, double salaryCoefficient, int taxMoney, int rewardMoney, int publishMoney, int insurranceMoney, int grossNalary, int netNalary, EmployeeEntity employee)
         {
             CountedDate = countedDate;
             WorkDay = workDay;
@@ -58,7 +61,8 @@ namespace HumanManagermentBackend.Entities
             RewardMoney = rewardMoney;
             PublishMoney = publishMoney;
             InsurranceMoney = insurranceMoney;
-            Salary = salary;
+            GrossSalary = grossNalary;
+            NetSalary = netNalary;
             Employee = employee;
             IsActive = true;
         }

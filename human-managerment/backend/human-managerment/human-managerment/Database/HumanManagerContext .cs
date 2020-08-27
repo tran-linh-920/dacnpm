@@ -26,6 +26,7 @@ namespace HumanManagermentBackend.Database
         public DbSet<DistrictEntity> Districts { get; set; }
         public DbSet<ProvinceEntity> Provinces { get; set; }
         public DbSet<DegreeEntity> Degrees { get; set; }
+        public DbSet<DegreeTypeEntity> DegreeTypes { get; set; }
         public DbSet<IndentificationEntity> Indentifications { get; set; }
         public DbSet<TimeKeepingEntity> Timekeepings { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using human_managerment_backend.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,10 +14,17 @@ namespace HumanManagermentBackend.Entities
         [Key, Column("dg_id", TypeName = "bigint")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        [Column("dgName", TypeName = "varchar(200)"), Required]
-        public String DegreeName { get; set; }
-        [Column("dgBio", TypeName = "varchar(200)"), Required]
-        public String DegreeBio { get; set; }
+
+        [Column("dgDegreeType_id", TypeName = "bigint")]
+        public long DegreeTypeId { get; set; }
+        public DegreeTypeEntity DegreeType { get; set; }
+
+        [Column("dgEmp_id", TypeName = "bigint")]
+        public long EmployeeId { get; set; } 
+        public EmployeeEntity Employee { get; set; }
+
+        [Column("dgImageName", TypeName = "varchar(128)")]
+        public string ImageName { get; set; }
 
     }
 

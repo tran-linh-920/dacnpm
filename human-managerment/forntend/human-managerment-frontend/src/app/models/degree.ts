@@ -1,6 +1,7 @@
-export class Degree {
+import { DegreeType } from './degree-type';
+
+export interface Degree {
     id: number;
-    name: string;
-    bio: string;
-    isActive: boolean;
+    degreeType: DegreeType;
+    imageName: string;
 }

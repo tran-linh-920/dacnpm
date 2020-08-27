@@ -33,14 +33,17 @@ namespace HumanManagermentBackend.Controller
         [HttpGet("histories")]
         public ActionResult<Api<List<SalaryHistoryEntity>>> GetSalaryHistory(
               [FromQuery(Name = "page"), DefaultValue(1), Required] int page,//
-              [FromQuery(Name = "page_limit"), DefaultValue(10),] int limit//
+              [FromQuery(Name = "page_limit"), DefaultValue(10)] int limit,//
+              [FromQuery(Name = "month"), DefaultValue(1)] int month,//
+              [FromQuery(Name = "year"), DefaultValue(1999)] int year//
             )
         {
-            int totalItems = _salaryService.CountAllSalaryHistories();
+            Date date = new Date() { month = month, year = year };
+            int totalItems = _salaryService.CountAllSalaryHistoriesByDate(date);
 
             int totalPages = (int)Math.Ceiling((double)totalItems / limit);
 
-            List<SalaryHistoryDTO> dtos = _salaryService.FindSalaryHistories(page, limit);
+            List<SalaryHistoryDTO> dtos = _salaryService.FindSalaryHistoriesByDate(page, limit, date);
 
             Api<List<SalaryHistoryDTO>> result = new Api<List<SalaryHistoryDTO>>((int)HttpStatusCode.OK, dtos, "Success", new Paging(page, limit, totalPages, totalItems));
 
@@ -57,15 +60,21 @@ namespace HumanManagermentBackend.Controller
             string massage = SystemContant.SALARY_COUNTING_FIELD_DETAIL_MASSAGE;
             bool isErr = false;
 
+            if(countingDate.day == 0)
+                countingDate.day = DateTime.Today.Day;
+
+            if (countingDate.month > DateTime.Today.Month || countingDate.year > DateTime.Today.Year)
+                throw new Exception(SalaryMessageContant.OVER_TIME);
+
             //if (!_salaryService.CanCounting(new DateTime(countingDate.year, countingDate.month, countingDate.day)))
             //    return Ok(new Api<string>(200, "", SystemContant.SALARY_COUNTING_FIELD_MASSAGE));
 
-            for (int i = page; i <= totalPages; i++)
+                for (int i = page; i <= totalPages; i++)
             {
                 List<EmployeeDTO> employees = _employeeService.FindAll(i, limit);
                 foreach (EmployeeDTO emp in employees)
                 {
-                    if (!_salaryService.DoSalaryCounting(emp.Id))
+                    if (!_salaryService.DoSalaryCounting(emp.Id, countingDate))
                     {
                         isErr = true;
                         massage += " " + emp.Id + ":" + emp.Lastname + emp.Firstname + " - ";
@@ -79,8 +88,8 @@ namespace HumanManagermentBackend.Controller
             return Ok(new Api<Object>((int)HttpStatusCode.InternalServerError, null, massage));
         }
 
-        [HttpPut("increasing/{empId}")]
-        public ActionResult<Api<JobHistoryDetailDTO>> IncreaseSalary(long empId, [FromBody] int jobLevel)
+        [HttpPut("increasing/{empId}/{jobLevel}")]
+        public ActionResult<Api<JobHistoryDetailDTO>> IncreaseSalary(long empId, int jobLevel)
         {
             JobHistoryDetailDTO dto = _salaryService.DoSalaryIncreasing(empId, jobLevel);
             return Ok(new Api<JobHistoryDetailDTO>((int)HttpStatusCode.OK, dto, SalaryMessageContant.SALARY_INCREASING_SUCCESSFULL));

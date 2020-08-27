@@ -84,14 +84,14 @@ namespace HumanManagermentBackend.Utils
             }
         }
 
-        public static SalaryHistoryEntity DoSalaryConting(EmployeeEntity employeeEntity, int miniumSalary, double salaryCoefficient, int regulationWorkDay, int workDay, int rewardMoney, int publishMoney, double totalInsurranceRatio, List<TaxEntity> taxs)
+        public static SalaryHistoryEntity DoSalaryConting(EmployeeEntity employeeEntity, DateTime contingDate,int miniumSalary, double salaryCoefficient, int regulationWorkDay, int workDay, int rewardMoney, int publishMoney, double totalInsurranceRatio, List<TaxEntity> taxs)
         {
             int grossSalary = (int)((miniumSalary * salaryCoefficient) * ((double)workDay / regulationWorkDay));
             int insurranceMoney = (int)(grossSalary * totalInsurranceRatio / 100);
             int netSalary = grossSalary - insurranceMoney + rewardMoney - publishMoney;
             int taxMoney = DoTaxCounting(netSalary, taxs);
             netSalary = netSalary - taxMoney;
-            return new SalaryHistoryEntity(DateTime.Today, workDay, salaryCoefficient, taxMoney, rewardMoney, publishMoney, insurranceMoney, netSalary, employeeEntity);
+            return new SalaryHistoryEntity(contingDate, workDay, salaryCoefficient, taxMoney, rewardMoney, publishMoney, insurranceMoney, grossSalary, netSalary, employeeEntity);
         }
 
         private static int DoTaxCounting(int netSalary, List<TaxEntity> taxs)

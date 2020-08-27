@@ -7,8 +7,9 @@ namespace HumanManagermentBackend.Contants
 {
     public class SalaryMessageContant
     {
-        public const string SALARY_INCREASING_SUCCESSFULL = "Nâng lương thành công.";
-        public const string SALARY_COUNTED = "Không thể nâng lương! Lương tháng này đã được tính.";
+        public const string SALARY_INCREASING_SUCCESSFULL = "Thay đổi lương thành công.";
+        public const string SALARY_COUNTED = "Không thể thay đổi lương! Lương tháng này đã được tính.";
         public const string JOB_LEVEL_NOT_EXITS = "Công việc không tồn tại cấp độ này.";
+        public const string OVER_TIME = "Chưa đến thời gian nâng lương.";
     }
 }

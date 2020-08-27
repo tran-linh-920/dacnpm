@@ -26,20 +26,27 @@ export class EmployeeService {
   }
 
   addEmployee(file: File, employee: Employee): Observable<any>{
+    console.log(file);
+    console.log(employee);
+    
+    
     const formData: FormData = new FormData();
     formData.append('UploadedFile', file);
-    formData.append('Firstname', employee.firstname );
-    formData.append('Lastname', employee.lastname);
-    formData.append('BirthDay', employee.birthDay.toString());
+    formData.append('Firstname', employee.firstname + '');
+    formData.append('Lastname', employee.lastname+ '');
+    formData.append('BirthDay', employee.birthDay+ '' );
     formData.append('Gender', employee.gender + '');
-    formData.append('Email', employee.email );
-    formData.append('PhoneNumber', employee.phoneNumber);
-    formData.append('HireDay', employee.hireDay.toString() );
-    formData.append('JobLevel', employee.jobLevel + '');
-    formData.append('HireDay', employee.hireDay.toString() );
+    formData.append('Email', employee.email + '');
+    formData.append('PhoneNumber', employee.phoneNumber + '');
+    formData.append('HireDay', employee.hireDay + '' );
+    // formData.append('JobLevel', employee.jobLevel + '');
+    //formData.append('HireDay', employee.hireDay.toString() );
     formData.append('Salary', employee.jobLevel + '');
     formData.append('ImageName', '');
 
+    console.log(formData.getAll);
+    
+    
     const req = new HttpRequest('POST', this.apiService.apiUrl.employees.home, formData);
 
     return this.http.request(req);

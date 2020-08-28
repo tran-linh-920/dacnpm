@@ -86,6 +86,8 @@ export class KeepingsComponent implements OnInit {
     this.timeKeepingService.closeTimeKeeping().subscribe(res=> {
       if(res.data != null){
         this.toastr.info("đã chốt lương","Thành Công");
+        this.loadTimeKeepingMorning();
+        this.loadTimeKeepingAfternoon();
       }
     });
   }

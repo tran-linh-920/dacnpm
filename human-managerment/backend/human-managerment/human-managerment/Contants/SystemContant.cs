@@ -17,6 +17,8 @@ namespace HumanManagermentBackend.Contants
 
         public const string Degrees_Uploading_Path = "uploads/images/degrees";
 
+        public const string LOGIN_FAIL = "Sai tên đăng nhập hoặc mật khẩu.";
+
 
         public const string Uploaded_file_Prefix = "img";
 

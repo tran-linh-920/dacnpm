@@ -42,7 +42,11 @@ namespace HumanManagermentBackend.Services.Impl
 
             entities.ForEach(entity =>
             {
-                dtos.Add(_mapper.Map<TimeKeepingDTO>(entity));
+                TimeKeepingDTO dto = _mapper.Map<TimeKeepingDTO>(entity);
+                EmployeeEntity emp = _humanManagerContext.Employees.Where(emp => emp.Id == dto.idEmployee).FirstOrDefault();
+                dto.nameEmployee = emp.Lastname + " " + emp.Firstname;
+                dtos.Add(dto);
+               
             });
             return dtos;
         }
@@ -54,7 +58,11 @@ namespace HumanManagermentBackend.Services.Impl
 
             entities.ForEach(entity =>
             {
-                dtos.Add(_mapper.Map<TimeKeepingDTO>(entity));
+                TimeKeepingDTO dto = _mapper.Map<TimeKeepingDTO>(entity);
+                EmployeeEntity emp = _humanManagerContext.Employees.Where(emp => emp.Id == dto.idEmployee).FirstOrDefault();
+                dto.nameEmployee = emp.Lastname + " " + emp.Firstname;
+                dtos.Add(dto);
+
             });
             return dtos;
         }
@@ -195,9 +203,12 @@ namespace HumanManagermentBackend.Services.Impl
                         entity.workDay = (int)workDay;
                     }
                     entity.status = 0;
+                    entity.morning = 0;
+                    entity.afternoon = 0;
                     dtos.Add(_mapper.Map<TimeKeepingDTO>(entity));
                 });
                 transaction.Commit();
+                _humanManagerContext.SaveChanges();
                 return dtos;
             }
             catch
@@ -207,6 +218,22 @@ namespace HumanManagermentBackend.Services.Impl
         
            
            
+        }
+
+        public List<TimeKeepingDTO> findTimeKeepingClose()
+        {
+            List<TimeKeepingDTO> dtos = new List<TimeKeepingDTO>();
+            List<TimeKeepingEntity> entities = _humanManagerContext.Timekeepings.Where(tk => tk.status ==0).ToList();
+
+            entities.ForEach(entity =>
+            {
+                TimeKeepingDTO dto = _mapper.Map<TimeKeepingDTO>(entity);
+                EmployeeEntity emp = _humanManagerContext.Employees.Where(emp => emp.Id == dto.idEmployee).FirstOrDefault();
+                dto.nameEmployee = emp.Lastname + " " + emp.Firstname;
+                dtos.Add(dto);
+
+            });
+            return dtos;
         }
     }
 }

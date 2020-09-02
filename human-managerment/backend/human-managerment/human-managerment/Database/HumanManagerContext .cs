@@ -40,6 +40,11 @@ namespace HumanManagermentBackend.Database
 
         public IEnumerable<object> TimeKeepings { get; internal set; }
 
+
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<RoleEntity> Roles { get; set; }
+        public DbSet<ResourceEntity> Resources { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=12345;database=HumanManagerment");
@@ -100,6 +105,30 @@ namespace HumanManagermentBackend.Database
                 .HasOne(j => j.JobLevel)
                 .WithOne(jlv => jlv.Job)
                 .HasForeignKey<JobLevelEntity>(jlv => jlv.JobId);
+
+            modelBuilder.Entity<UserRoleEntity>().HasKey(ur => new { ur.UserId, ur.RoleId });
+
+            modelBuilder.Entity<UserRoleEntity>()
+                .HasOne(ur => ur.User)
+                .WithMany(u => u.UserRoles)
+                .HasForeignKey(ur => ur.UserId);
+
+            modelBuilder.Entity<UserRoleEntity>()
+                .HasOne(ur => ur.Role)
+                .WithMany(r => r.UserRoles)
+                .HasForeignKey(ur => ur.RoleId);
+
+            modelBuilder.Entity<ResourceRoleEntity>().HasKey(rr => new { rr.ResourceId, rr.RoleId });
+
+            modelBuilder.Entity<ResourceRoleEntity>()
+                .HasOne(rr => rr.Resource)
+                .WithMany(r => r.ResourceRoles)
+                .HasForeignKey(rr => rr.ResourceId);
+
+            modelBuilder.Entity<ResourceRoleEntity>()
+                .HasOne(rr => rr.Role)
+                .WithMany(r => r.ResourceRoles)
+                .HasForeignKey(rr => rr.RoleId);
 
         }
     }

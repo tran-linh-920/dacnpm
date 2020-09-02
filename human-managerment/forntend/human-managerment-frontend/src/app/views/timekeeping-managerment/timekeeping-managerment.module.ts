@@ -10,9 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimekeepingDetailComponent } from './timekeeping-detail/timekeeping-detail.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimekeepingHistoryComponent } from './timekeeping-history/timekeeping-history.component' ;
-import {ToastrModule} from 'ngx-toastr'
+import {ToastrModule} from 'ngx-toastr';
+import { TimekeepingCloseComponent } from './timekeeping-close/timekeeping-close.component'
 @NgModule({
-  declarations: [TimekeppingComponent, KeepingsComponent, TimekeepingDetailComponent, TimekeepingHistoryComponent],
+  declarations: [TimekeppingComponent, KeepingsComponent, TimekeepingDetailComponent, TimekeepingHistoryComponent, TimekeepingCloseComponent],
   imports: [
     CommonModule,
     TimekeepingManagermentRoutingModule,

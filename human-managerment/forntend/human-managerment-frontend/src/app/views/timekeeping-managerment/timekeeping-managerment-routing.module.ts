@@ -4,6 +4,7 @@ import { TimekeppingComponent } from './timekepping.component';
 import { KeepingsComponent } from './keepings/keepings.component';
 import {TimekeepingDetailComponent} from './timekeeping-detail/timekeeping-detail.component';
 import { TimekeepingHistoryComponent } from './timekeeping-history/timekeeping-history.component';
+import { TimekeepingCloseComponent } from './timekeeping-close/timekeeping-close.component';
 
 const routes: Routes = [
   { 
@@ -32,7 +33,14 @@ const routes: Routes = [
           data:{
             title :'lichsu'
           }
-        }
+        },
+      {
+        path :'cham-cong-close',
+          component: TimekeepingCloseComponent,
+          data:{
+            title :'bảng công đã đóng'
+          }
+      }
      
   ]
   },

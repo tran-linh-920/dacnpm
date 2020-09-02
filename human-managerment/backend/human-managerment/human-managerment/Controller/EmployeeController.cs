@@ -6,7 +6,6 @@ using human_managerment_backend.Dto;
 using human_managerment_backend.Entities;
 using human_managerment_backend.Forms;
 using HumanManagermentBackend.Contants;
-using HumanManagermentBackend.Dto;
 using HumanManagermentBackend.Models;
 using HumanManagermentBackend.Services;
 using HumanManagermentBackend.Services.Impl;
@@ -31,7 +30,6 @@ namespace HumanManagermentBackend.Controller
                                                               [FromQuery(Name = "page_limit"), DefaultValue(10),] int limit//
                                                               )
         {
-
             int totalItems = _employeeService.CountAll();
 
             int totalPages = (int)Math.Ceiling((double)totalItems / limit);

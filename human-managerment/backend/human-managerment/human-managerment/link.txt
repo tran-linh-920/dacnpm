@@ -34,14 +34,41 @@ https://topdev.vn/blog/tai-sao-phai-su-dung-json-web-token-jwt-de-bao-mat-api/
 
 JSON Web Token
 https://topdev.vn/blog/jwt-la-gi/
-
+https://viblo.asia/p/tim-hieu-ve-json-web-token-jwt-7rVRqp73v4bP
+https://viblo.asia/p/su-khac-biet-giua-localstorage-sessionstorage-va-cookie-m68Z0Q7jlkG
+implement
 https://www.c-sharpcorner.com/article/jwt-json-web-token-authentication-in-asp-net-core/
+https://docs.microsoft.com/en-us/aspnet/core/security/authorization/simple?view=aspnetcore-3.1
 https://medium.com/@vaibhavrb999/jwt-authentication-authorization-in-net-core-3-1-e762a7abe00a
 http://www.c-sharp.vn/dot-net-core/dot-net-core-bearer-token-with-jwt-e477ff
+fix jwt
+https://thecodebuzz.com/idx10603-decryption-failed-keys-tried-pii-hidden-keysize/
+global authorize
+https://neelbhatt.com/2018/03/23/global-authorization-filter-in-net-core-net-core-security-part-v/
+fix authen
+https://stackoverflow.com/questions/61829324/endpoint-contains-authorization-metadata-but-a-middleware-was-not-found-that-su
+design db
+https://www.youtube.com/watch?v=LZz_eY1Gag8
+get claims
+https://stackoverflow.com/questions/45315274/get-claims-from-a-webapi-controller-jwt-token
+hash password
+https://jasonwatmore.com/post/2020/07/16/aspnet-core-3-hash-and-verify-passwords-with-bcrypt
+remove char
+https://stackoverflow.com/questions/3222125/fastest-way-to-remove-first-char-in-a-string
+
+Read value from appsetting.json
+https://www.c-sharpcorner.com/article/reading-values-from-appsettings-json-in-asp-net-core/
+
+role based authorization database design
+https://softwareengineering.stackexchange.com/questions/348636/how-to-design-role-based-access-control
 
 fillter
 https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters?view=aspnetcore-3.1#action-filters
 https://code-maze.com/action-filters-aspnetcore/
+get controller name
+https://forums.asp.net/t/2141597.aspx?Get+Controller+Name+From+Filter+Context
+get httpcontext at action filter
+https://stackoverflow.com/questions/2503032/where-to-use-controller-httpcontext
 
 Global Error Handling 
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-3.1

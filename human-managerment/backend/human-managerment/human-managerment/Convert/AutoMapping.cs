@@ -54,10 +54,15 @@ namespace MyApiWithDB.Convert
             CreateMap<NoteDTO, NoteEntity>();
             CreateMap<ScheduleEntity, ScheduleDTO>();
 
-
-
-
             CreateMap<SalaryHistoryEntity, SalaryHistoryDTO>();
+
+            CreateMap<UserEntity, UserDTO>();
+            CreateMap<UserRoleEntity, UserRoleDTO>();
+            CreateMap<RoleEntity, RoleDTO>();
+            CreateMap<ResourceEntity, ResourceDTO>();
+            CreateMap<ResourceRoleEntity, ResourceRoleDTO>();
+
+            CreateMap<LogEntity, LogDTO>();
         }
     }
 

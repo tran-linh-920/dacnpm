@@ -3,36 +3,63 @@ using HumanManagermentBackend.Contants;
 using HumanManagermentBackend.Database;
 using HumanManagermentBackend.Exceptions;
 using HumanManagermentBackend.Extensions;
+using HumanManagermentBackend.Filters;
 using HumanManagermentBackend.Models;
 using HumanManagermentBackend.Services;
 using HumanManagermentBackend.Services.Impl;
 using HumanManagermentBackend.Updaters;
 using HumanManagermentBackend.Utils;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using System.Configuration;
 using System.IO;
+using System.Text;
 
 namespace HumanManagermentBackend
 {
     public class Startup
     {
         readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        public IConfiguration _iConfig { get; }
+        public Startup(IConfiguration config)
+        {
+            _iConfig = config;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers().AddNewtonsoftJson(options =>
-                                                        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                                                        );
+        {         
+            var controller = services.AddControllers(opts =>
+            {
+               // add authorize for all controller
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                opts.Filters.Add(new AuthorizeFilter(policy));
+                // controller filter
+                opts.Filters.Add(new ControllerFilter());
+            });
 
+            // fix loop json
+            controller.AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
+            // db
             services.AddDbContext<HumanManagerContext>();
 
+            // to dto
             services.AddAutoMapper(typeof(Startup));
 
             services.AddScoped<EmployeeServiceImpl>();
@@ -57,12 +84,16 @@ namespace HumanManagermentBackend
             services.AddScoped<ScheduleServiceImpl>();
             services.AddScoped<SalaryServiceImpl>();
 
+            services.AddScoped<UserServiceImpl>();
 
             services.AddScoped<JobUpdater>();
 
             services.AddScoped<WorkingTimeUpdater>();
 
             services.AddScoped<UploadUtil>();
+            services.AddScoped<UserUtil>();
+
+            // CORS
             services.AddCors(options =>
             {
                 options.AddPolicy(
@@ -74,6 +105,23 @@ namespace HumanManagermentBackend
                                .AllowAnyHeader();
                     });
             });
+
+            //JWT
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                         {
+                             options.TokenValidationParameters = new TokenValidationParameters
+                             {
+                                 ValidateIssuer = true,
+                                 ValidateAudience = true,
+                                 ValidateLifetime = true,
+                                 ValidateIssuerSigningKey = true,
+                                 ValidIssuer = _iConfig.GetValue<string>("Jwt:Issuer"),
+                                 ValidAudience = _iConfig.GetValue<string>("Jwt:Issuer"),
+                                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_iConfig.GetValue<string>("Jwt:key"))),
+                             };
+                         });
+
 
         }
 
@@ -93,7 +141,11 @@ namespace HumanManagermentBackend
                 RequestPath = "/uploads"
             });
 
+            app.UseAuthentication();
+
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseCors(MyAllowSpecificOrigins);
 

@@ -1,0 +1,59 @@
+<p>Xem bảng công</p>
+<div class="card">
+    <div class="card-body">
+      <ngx-datatable class="material"
+       [rows]="listClose" 
+       [rowHeight]="50" 
+       [columnMode]="'force'"
+        [sortType]="'multi'"
+         [headerHeight]="50" 
+        [footerHeight]="50" 
+        [limit]="15">
+
+        <ngx-datatable-column name="ID">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.id}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Mã Nhân viên">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.idEmployee }}</span>
+          </ng-template>
+        </ngx-datatable-column>
+
+
+        <ngx-datatable-column name="Tên nhân viên">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.nameEmployee}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Tổng số giờ làm">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.totalWorkTime}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Giờ làm trễ">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.timeLate}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Giờ tăng ca">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.overTime}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Ngày chấm công">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.dateStart }}</span>
+          </ng-template>
+        </ngx-datatable-column>
+
+   
+      </ngx-datatable>
+    </div>
+  </div>
+

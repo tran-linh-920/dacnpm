@@ -8,6 +8,8 @@ export interface Timekeeping {
     dateStart:string;
     dateEnd:string;
     idEmployee:number;
+    nameEmployee :string;
     status:number;
+ 
 
 }

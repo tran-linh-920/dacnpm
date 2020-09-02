@@ -87,6 +87,14 @@ namespace HumanManagermentBackend.Services.Impl
 
                 _humanManagerContext.SaveChanges();
 
+                //Cộng thời gian làm lên
+                oldTimeKeeping.plusWorkingTime(count);
+
+                old.status = 0;
+                old.timeEnd = nowDate;
+                old.timeWorking = count;
+
+                _humanManagerContext.SaveChanges();
                 return _mapper.Map<TimeKeepingDetailDTO>(old);
             }
             catch

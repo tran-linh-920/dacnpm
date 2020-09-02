@@ -25,8 +25,6 @@ namespace HumanManagermentBackend.Filters
                     if (!havePassing)
                         throw new Exception(SecurityContant.NOT_AUTHORIZE);
                 }
-
-                int b = 0;
             }
 
            // bool boo = pathName.Contains("employees");

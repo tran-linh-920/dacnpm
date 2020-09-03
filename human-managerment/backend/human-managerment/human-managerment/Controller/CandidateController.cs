@@ -12,6 +12,7 @@ using HumanManagermentBackend.Models;
 using HumanManagermentBackend.Services;
 using HumanManagermentBackend.Services.Impl;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HumanManagermentBackend.Controller
 {
@@ -55,7 +56,6 @@ namespace HumanManagermentBackend.Controller
 
             return Ok(result);
         }
-
 
         [HttpPost, RequestSizeLimit(SystemContant.Uploaded_File_Size_Limit)]
         public ActionResult<Api<CandidateDTO>> New([FromForm] CandidateForm canForm)

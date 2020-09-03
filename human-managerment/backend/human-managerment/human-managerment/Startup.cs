@@ -92,6 +92,7 @@ namespace HumanManagermentBackend
 
             services.AddScoped<UploadUtil>();
             services.AddScoped<UserUtil>();
+            services.AddScoped<LogServiceImpl>();
 
             // CORS
             services.AddCors(options =>

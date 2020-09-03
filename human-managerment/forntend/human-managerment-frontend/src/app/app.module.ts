@@ -6,12 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable' 
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { DayService, WeekService, WorkWeekService, MonthService, AgendaService } from '@syncfusion/ej2-angular-schedule';
 import { ToastrModule } from 'ngx-toastr';
+import { AppInterceptor } from '../app/_interceptor/app.interceptor';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -85,7 +86,13 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, DayService, WeekService, WorkWeekService, MonthService, AgendaService],
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AppInterceptor,
+    multi: true,
+  },
+   DayService, WeekService, WorkWeekService, MonthService, AgendaService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

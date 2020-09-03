@@ -12,6 +12,7 @@ using HumanManagermentBackend.Services;
 using HumanManagermentBackend.Services.Impl;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HumanManagermentBackend.Controller
 {
@@ -27,6 +28,8 @@ namespace HumanManagermentBackend.Controller
             _jobService = jobService;
         }
 
+
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult<Api<List<JobDTO>>> GetAll()
         {

@@ -13,5 +13,8 @@ namespace HumanManagermentBackend.Dto
         public string Address { get; set; }
         public string Ip { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public long UserID { get; set; }
+        public UserDTO User { get; set; }
     }
 }

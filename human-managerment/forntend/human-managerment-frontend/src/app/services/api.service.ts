@@ -79,6 +79,9 @@ export class ApiService {
       histories: `${this.baseUrl}salaries/histories`
 
     },
+    log: {
+      hone: `${this.baseUrl}logs`,
+    }
   };
 
   get<T>(url: string): Observable<T> {

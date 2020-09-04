@@ -11,6 +11,7 @@ using HumanManagermentBackend.Services;
 using HumanManagermentBackend.Services.Impl;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HumanManagermentBackend.Controller
 {
@@ -48,7 +49,6 @@ namespace HumanManagermentBackend.Controller
 
             return Ok(result);
         }
-
         [HttpPost("province")]
         public ActionResult<Api<ProvinceDTO>> AddProvince(ProvinceEntity province)
         {
@@ -58,7 +58,6 @@ namespace HumanManagermentBackend.Controller
 
             return Ok(result);
         }
-
         [HttpGet("district")]
         public ActionResult<Api<List<DistrictDTO>>> GetAllDistrict(//
                                                               [FromQuery(Name = "page"), DefaultValue(1)] int page,//
@@ -76,7 +75,6 @@ namespace HumanManagermentBackend.Controller
 
             return Ok(result);
         }
-
         [HttpPost("district")]
         public ActionResult<Api<DistrictDTO>> AddDistrict(DistrictEntity district)
         {
@@ -86,7 +84,6 @@ namespace HumanManagermentBackend.Controller
 
             return Ok(result);
         }
-
         [HttpGet("ward")]
         public ActionResult<Api<List<WardDTO>>> GetAllWard(//
                                                               [FromQuery(Name = "page"), DefaultValue(1)] int page,//
@@ -104,7 +101,6 @@ namespace HumanManagermentBackend.Controller
 
             return Ok(result);
         }
-
         [HttpPost("ward")]
         public ActionResult<Api<WardDTO>> AddWard(WardEntity ward)
         {
@@ -114,7 +110,6 @@ namespace HumanManagermentBackend.Controller
 
             return Ok(result);
         }
-
         [HttpGet("address")]
         public ActionResult<Api<List<AddressDTO>>> GetAllAddress(//
                                                              [FromQuery(Name = "page"), DefaultValue(1)] int page,//

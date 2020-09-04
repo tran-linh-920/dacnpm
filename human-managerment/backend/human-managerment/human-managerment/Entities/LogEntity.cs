@@ -31,7 +31,7 @@ namespace HumanManagermentBackend.Entities
         public DateTime CreatedAt { get; set; }
 
         [Column("user_id")]
-        public long UserID { get; set; }
+        public long? UserID { get; set; }
         public UserEntity User { get; set; }
     }
 }

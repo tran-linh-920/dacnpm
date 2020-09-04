@@ -16,7 +16,7 @@ namespace HumanManagermentBackend.Filters
             string reqMethod = context.HttpContext.Request.Method;
             string path = context.HttpContext.Request.Path.Value;
 
-            if (!path.Equals("/users/login")) {
+            if (!path.Equals("/users/login") && !path.Equals("/logs") ) {
                 var identity = context.HttpContext.User.Identity as ClaimsIdentity;
                 if (identity != null)
                 {

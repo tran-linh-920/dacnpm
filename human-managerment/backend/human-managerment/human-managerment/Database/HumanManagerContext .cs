@@ -40,6 +40,7 @@ namespace HumanManagermentBackend.Database
 
         public IEnumerable<object> TimeKeepings { get; internal set; }
 
+        public DbSet<LogEntity> Logs { get; set; }
 
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<RoleEntity> Roles { get; set; }

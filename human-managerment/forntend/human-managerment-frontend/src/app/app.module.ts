@@ -12,6 +12,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable'
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { DayService, WeekService, WorkWeekService, MonthService, AgendaService } from '@syncfusion/ej2-angular-schedule';
 import { ToastrModule } from 'ngx-toastr';
+import { AppInterceptor } from '../app/_interceptor/app.interceptor';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -87,6 +88,7 @@ import { AuthenticationInterceptor } from './interceptors/authentication.interce
   providers: 
   [{
     provide: LocationStrategy,
+<<<<<<< HEAD
     useClass: HashLocationStrategy,
   }, 
   DayService, WeekService, WorkWeekService, MonthService, AgendaService,
@@ -96,6 +98,16 @@ import { AuthenticationInterceptor } from './interceptors/authentication.interce
     useClass: AuthenticationInterceptor,
     multi: true
   }],
+=======
+    useClass: HashLocationStrategy
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AppInterceptor,
+    multi: true,
+  },
+   DayService, WeekService, WorkWeekService, MonthService, AgendaService],
+>>>>>>> a2e7deda059d0616bff09b0e26dcf7cc4fb65e73
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -81,6 +81,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/recruitment/recruitment.module').then(m => m.RecruitmentModule)
       },
       {
+        path: 'nhat-ki',
+        loadChildren: () => import('./views/log/log.module').then(m => m.LogModule)
+      },
+      {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },
@@ -104,14 +108,6 @@ export const routes: Routes = [
         path: 'notifications',
         loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
       },
-      {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
-      },
-      {
-        path: 'widgets',
-        loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
-      }
     ]
   },
   { path: '**', component: P404Component }

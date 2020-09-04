@@ -18,6 +18,9 @@ export class ApiService {
       accept: `${this.baseUrl}employees/accept`,
       jobInformations: `${this.baseUrl}employees/job-informations`,
     },
+    users: {
+      login: `${this.baseUrl}users/login`,
+    },
     candidates: {
       home: `${this.baseUrl}candidates`,
       type: `${this.baseUrl}candidates/type`,

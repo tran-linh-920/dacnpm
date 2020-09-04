@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HumanManagermentBackend.Dto;
 using HumanManagermentBackend.Entities;
+using HumanManagermentBackend.Models;
 using HumanManagermentBackend.Services;
 using HumanManagermentBackend.Services.Impl;
 using HumanManagermentBackend.Utils;
@@ -36,7 +37,7 @@ namespace HumanManagermentBackend.Controller
             if (user != null)
             {
                 var tokenString = _userUtil.GenerateJSONWebToken(user);
-                response = Ok(new { token = tokenString });
+                response = Ok(new Api<object>(200, new {username = login.Username, token = tokenString }, "Login success", null));
             }
 
             return response;

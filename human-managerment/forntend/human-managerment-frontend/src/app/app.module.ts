@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable' 
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
@@ -49,6 +49,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import {  AuthenticationGuard } from './guards/authentication.guard';
+import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
 
 @NgModule({
   imports: [
@@ -82,10 +84,18 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     LoginComponent,
     RegisterComponent,
   ],
-  providers: [{
+  providers: 
+  [{
     provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }, DayService, WeekService, WorkWeekService, MonthService, AgendaService],
+    useClass: HashLocationStrategy,
+  }, 
+  DayService, WeekService, WorkWeekService, MonthService, AgendaService,
+  AuthenticationGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthenticationInterceptor,
+    multi: true
+  }],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

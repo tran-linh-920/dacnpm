@@ -39,12 +39,13 @@ namespace HumanManagermentBackend.Filters
         {
 
             bool result = false;
+            // get root action in path
+            string action = retriveAction(path);
 
             // kiem tra action
             string[] actions = userResources.Split(SecurityContant.ACTION_SEPARATOR);
             foreach (var act in actions.ToList()) {
-                // remove "/" ra khoi path
-                if (act.Contains(path.Substring(1)))
+                if (act.Contains(action))
                 {
                     // tach action vs request method
                     string[] parts = act.Split(SecurityContant.ACTION_REQUESTMETHOD_SEPARATOR);
@@ -62,6 +63,12 @@ namespace HumanManagermentBackend.Filters
             }
 
             return result;
+        }
+
+        private string retriveAction(string path)
+        {
+            string[] parts = path.Split(SecurityContant.PATH_SEPARATOR);
+            return parts[1];
         }
     }
 }
